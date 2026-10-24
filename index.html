@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Optimizador Compacto 1:1 en Tablero MDF 244×183 cm (Formas Reales y Colores)</title>
+  <title>Ingeniería y Carpintería CAD v7.0 — Lados Numerados en Maceta 3D + Tablero 1:1 (244×183 cm)</title>
   <style>
     :root {
-      --bg: #070d19;
-      --panel: #111c2d;
+      --bg: #060b14;
+      --panel: #101a2b;
       --card: #1e293b;
       --accent: #38bdf8;
       --accent2: #f59e0b;
@@ -22,51 +22,51 @@
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.45;
-      padding: 14px;
+      line-height: 1.44;
+      padding: 12px;
     }
     header {
-      background: linear-gradient(135deg, #152238 0%, #091326 100%);
+      background: linear-gradient(135deg, #142238 0%, #081121 100%);
       border: 1px solid #334155;
       border-left: 6px solid var(--accent2);
       border-radius: 10px;
-      padding: 14px 20px;
-      margin-bottom: 14px;
+      padding: 12px 18px;
+      margin-bottom: 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 10px;
     }
-    header h1 { font-size: 1.2rem; color: var(--accent); }
-    header p { color: var(--muted); font-size: 0.83rem; }
+    header h1 { font-size: 1.18rem; color: var(--accent); }
+    header p { color: var(--muted); font-size: 0.81rem; }
     .board-badge {
       background: rgba(245, 158, 11, 0.18);
       color: #fde68a;
       border: 1px solid #f59e0b;
       padding: 6px 14px;
       border-radius: 999px;
-      font-size: 0.79rem;
+      font-size: 0.78rem;
       font-weight: 700;
     }
 
     .workspace {
       display: grid;
-      grid-template-columns: 370px 1fr;
-      gap: 16px;
+      grid-template-columns: 355px 1fr;
+      gap: 14px;
     }
-    @media (max-width: 1150px) {
+    @media (max-width: 1180px) {
       .workspace { grid-template-columns: 1fr; }
     }
     .panel {
       background: var(--panel);
       border: 1px solid #334155;
       border-radius: 10px;
-      padding: 14px;
-      margin-bottom: 14px;
+      padding: 12px;
+      margin-bottom: 12px;
     }
     .panel h2 {
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: var(--accent2);
       margin-bottom: 8px;
       border-bottom: 1px solid #334155;
@@ -76,23 +76,23 @@
     }
     .filter-input {
       width: 100%;
-      padding: 7px 10px;
+      padding: 6px 9px;
       background: #050a14;
       border: 1px solid #475569;
       color: var(--text);
       border-radius: 6px;
-      font-size: 0.8rem;
-      margin-bottom: 8px;
+      font-size: 0.79rem;
+      margin-bottom: 7px;
     }
     .family-label {
-      font-size: 0.7rem;
+      font-size: 0.69rem;
       color: var(--accent);
       text-transform: uppercase;
       font-weight: 700;
-      margin: 7px 0 3px 0;
+      margin: 6px 0 3px 0;
     }
     .preset-scroll {
-      max-height: 350px;
+      max-height: 360px;
       overflow-y: auto;
       padding-right: 4px;
       margin-bottom: 10px;
@@ -100,62 +100,62 @@
     .preset-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 5px;
+      gap: 4px;
     }
     .preset-btn {
       background: #071020;
       color: var(--text);
       border: 1px solid #293548;
-      padding: 6px 8px;
+      padding: 5px 7px;
       border-radius: 5px;
       text-align: left;
       cursor: pointer;
-      font-size: 0.72rem;
+      font-size: 0.71rem;
       transition: 0.12s;
     }
     .preset-btn:hover, .preset-btn.active {
       border-color: var(--accent2);
       background: rgba(245, 158, 11, 0.22);
     }
-    .preset-btn strong { color: var(--accent2); display: block; font-size: 0.75rem; }
-    .preset-btn span { color: var(--muted); font-size: 0.68rem; }
+    .preset-btn strong { color: var(--accent2); display: block; font-size: 0.74rem; }
+    .preset-btn span { color: var(--muted); font-size: 0.66rem; }
 
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 7px;
+      gap: 6px;
     }
-    .form-group { margin-bottom: 5px; }
+    .form-group { margin-bottom: 4px; }
     .form-group label {
       display: flex;
       justify-content: space-between;
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       color: var(--muted);
       margin-bottom: 2px;
     }
     .form-group input, .form-group select {
       width: 100%;
-      padding: 6px 8px;
+      padding: 5px 7px;
       background: #050a14;
       border: 1px solid #475569;
       color: var(--text);
       border-radius: 5px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
     }
     .btn-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 7px;
+      gap: 6px;
       margin-top: 8px;
     }
     .action-btn {
       background: var(--accent);
       color: #050a14;
       border: none;
-      padding: 8px 9px;
+      padding: 8px 8px;
       border-radius: 6px;
       font-weight: 700;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       cursor: pointer;
     }
     .action-btn.secondary { background: var(--success); color: #052e16; }
@@ -166,34 +166,35 @@
       border: 1px solid var(--accent2);
     }
 
-    /* Top Preview Grid */
-    .preview-grid {
+    /* 3-Panel Engineering Header: 1. 3D Planter Cotas + Nums | 2. 2D Plan Map of Sides | 3. 3D Mold Assembly */
+    .eng-triple-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      grid-template-columns: 1.15fr 1fr 1.15fr;
+      gap: 10px;
       margin-bottom: 12px;
     }
-    @media (max-width: 900px) {
-      .preview-grid { grid-template-columns: 1fr; }
+    @media (max-width: 1280px) {
+      .eng-triple-grid { grid-template-columns: 1fr; }
     }
     .preview-card {
       background: linear-gradient(180deg, #0d1b2a 0%, #071020 100%);
       border: 1px solid #38bdf8;
       border-radius: 10px;
-      padding: 12px;
+      padding: 10px;
     }
+    .preview-card.plan-card { border-color: #10b981; }
     .preview-card.mold-card { border-color: var(--accent2); }
     .preview-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px dashed rgba(255,255,255,0.15);
-      padding-bottom: 6px;
-      margin-bottom: 8px;
-      font-size: 0.8rem;
+      padding-bottom: 5px;
+      margin-bottom: 6px;
+      font-size: 0.76rem;
       font-weight: 700;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 4px;
     }
 
     /* Alert & Zoom Bar */
@@ -202,15 +203,15 @@
       border: 1px solid #10b981;
       border-left: 5px solid #10b981;
       color: #d1fae5;
-      padding: 10px 14px;
+      padding: 9px 12px;
       border-radius: 8px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 10px;
-      font-size: 0.83rem;
+      gap: 8px;
+      font-size: 0.81rem;
     }
     .board-alert.multi {
       background: rgba(245, 158, 11, 0.16);
@@ -228,10 +229,10 @@
       background: #071020;
       color: var(--text);
       border: 1px solid #475569;
-      padding: 6px 10px;
+      padding: 5px 10px;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 600;
     }
     .scale-btn.active {
@@ -244,36 +245,36 @@
       background: #041222;
       border: 2px solid var(--accent2);
       border-radius: 10px;
-      padding: 12px;
+      padding: 10px;
       overflow-x: auto;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     svg.responsive-svg {
       width: 100%;
       height: auto;
-      min-width: 820px;
       display: block;
     }
 
-    /* Color Legend Cards Below the Board */
+    /* Color Legend Cards */
     .legend-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+      gap: 8px;
       margin-top: 8px;
     }
     .legend-card {
       background: #071020;
       border: 1px solid #334155;
       border-radius: 8px;
-      padding: 10px 12px;
+      padding: 9px 11px;
       display: flex;
       gap: 10px;
       align-items: flex-start;
     }
     .color-swatch {
-      width: 30px;
+      min-width: 34px;
       height: 30px;
+      padding: 0 5px;
       border-radius: 6px;
       border: 2px solid #fff;
       flex-shrink: 0;
@@ -282,52 +283,38 @@
       justify-content: center;
       font-family: monospace;
       font-weight: 800;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       color: #fff;
     }
-    .legend-info h4 {
-      font-size: 0.83rem;
-      color: var(--text);
-      margin-bottom: 2px;
-    }
-    .legend-info .dims {
-      color: #fde047;
-      font-family: monospace;
-      font-weight: 700;
-      font-size: 0.85rem;
-      display: block;
-    }
-    .legend-info p {
-      color: var(--muted);
-      font-size: 0.73rem;
-      margin-top: 2px;
-    }
+    .legend-info h4 { font-size: 0.8rem; color: var(--text); margin-bottom: 2px; }
+    .legend-info .dims { color: #fde047; font-family: monospace; font-weight: 700; font-size: 0.83rem; display: block; }
+    .legend-info p { color: var(--muted); font-size: 0.72rem; margin-top: 2px; }
 
     .metrics-bar {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
       gap: 8px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .metric-box {
       background: #071020;
       border: 1px solid #334155;
       border-top: 3px solid var(--accent);
-      padding: 8px 10px;
+      padding: 7px 9px;
       border-radius: 6px;
     }
-    .metric-box span { font-size: 0.7rem; color: var(--muted); display: block; }
-    .metric-box strong { font-size: 0.92rem; color: var(--text); }
+    .metric-box span { font-size: 0.69rem; color: var(--muted); display: block; }
+    .metric-box strong { font-size: 0.9rem; color: var(--text); }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       margin-top: 8px;
     }
     th, td {
       border: 1px solid #334155;
-      padding: 7px 9px;
+      padding: 6px 8px;
       text-align: left;
     }
     th { background: #071020; color: var(--accent); }
@@ -335,7 +322,7 @@
     .cm-highlight {
       color: #fde047;
       font-weight: 700;
-      font-size: 0.86rem;
+      font-size: 0.85rem;
       font-family: monospace;
     }
     .num-badge {
@@ -344,7 +331,7 @@
       border-radius: 999px;
       font-weight: 700;
       font-family: monospace;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       color: #fff;
     }
   </style>
@@ -353,37 +340,37 @@
 
 <header>
   <div>
-    <h1>EMPAQUETADOR COMPACTO 1:1 EN TABLERO MDF TRUPAN (244 × 183 CM) — FORMAS GEOMÉTRICAS REALES</h1>
-    <p>Escala 100% real (1 cm de pieza = 1 cm en la regla), empaquetado sin huecos desperdiciados, limpio por colores/números y con polígonos reales (triángulos, octágonos, hexágonos)</p>
+    <h1>SISTEMA CAD-CAM DE INGENIERÍA Y CARPINTERÍA v7.0 — COTAS REALES EN 3D + LADOS NUMERADOS (#1, #2, #3...)</h1>
+    <p>Cada corte del tablero tiene su número asignado directamente sobre el lado interior o exterior correspondiente de la maceta 3D, en la planta técnica y en el molde</p>
   </div>
-  <span class="board-badge">Tablero Trupan MDF 0.4 cm (4 mm) | 244 cm × 183 cm</span>
+  <span class="board-badge">Tablero MDF Trupan 0.4 cm (4 mm) | 244 cm × 183 cm</span>
 </header>
 
 <div class="workspace">
-  <!-- PANEL IZQUIERDO: CATÁLOGO Y PARÁMETROS -->
+  <!-- PANEL IZQUIERDO: CATÁLOGO DE 50 MODELOS Y MEDIDAS EN CM -->
   <div>
     <div class="panel">
       <h2>1. Escoge el Modelo de Maceta (50 Diseños)</h2>
-      <input type="text" id="search-model" class="filter-input" placeholder="Buscar (ej. octágono, triángulo, M-26, bonsái, patas...)" oninput="filterModels()" />
+      <input type="text" id="search-model" class="filter-input" placeholder="Buscar (ej. M-50, M-26, octágono, triángulo, patas...)" oninput="filterModels()" />
       <div class="preset-scroll" id="preset-container"></div>
 
-      <h2>2. Medidas de tu Maceta en Centímetros (cm)</h2>
+      <h2>2. Dimensiones en Centímetros (cm)</h2>
       <div class="form-grid">
         <div class="form-group">
-          <label><span>Ancho / Ø Int. (cm)</span> <strong id="lbl-wi">20.0 cm</strong></label>
-          <input type="number" id="in-wi" min="4.0" max="160.0" step="0.5" value="20.0" oninput="updateAll()" />
+          <label><span>Largo Hueco Int. (cm)</span> <strong id="lbl-wi">138.0 cm</strong></label>
+          <input type="number" id="in-wi" min="4.0" max="160.0" step="0.5" value="138.0" oninput="updateAll()" />
         </div>
         <div class="form-group">
-          <label><span>Largo Int. (cm)</span> <strong id="lbl-li">14.0 cm</strong></label>
-          <input type="number" id="in-li" min="4.0" max="160.0" step="0.5" value="14.0" oninput="updateAll()" />
+          <label><span>Ancho Hueco Int. (cm)</span> <strong id="lbl-li">53.0 cm</strong></label>
+          <input type="number" id="in-li" min="4.0" max="160.0" step="0.5" value="53.0" oninput="updateAll()" />
         </div>
         <div class="form-group">
-          <label><span>Altura Total (cm)</span> <strong id="lbl-h">6.5 cm</strong></label>
-          <input type="number" id="in-h" min="4.0" max="120.0" step="0.5" value="6.5" oninput="updateAll()" />
+          <label><span>Altura Total (cm)</span> <strong id="lbl-h">68.0 cm</strong></label>
+          <input type="number" id="in-h" min="4.0" max="120.0" step="0.5" value="68.0" oninput="updateAll()" />
         </div>
         <div class="form-group">
-          <label><span>Pared Concreto (cm)</span> <strong id="lbl-tc">1.5 cm</strong></label>
-          <input type="number" id="in-tc" min="0.8" max="8.0" step="0.1" value="1.5" oninput="updateAll()" />
+          <label><span>Muro Concreto (cm)</span> <strong id="lbl-tc">6.0 cm</strong></label>
+          <input type="number" id="in-tc" min="0.8" max="10.0" step="0.1" value="6.0" oninput="updateAll()" />
         </div>
         <div class="form-group">
           <label><span>Espesor Tablero MDF</span></label>
@@ -405,87 +392,93 @@
         <button class="action-btn warning" onclick="pinCurrentModelBelow()">+ Fijar Tabla Abajo</button>
         <button class="action-btn secondary" onclick="downloadCSV()">Descargar Tabla (Excel)</button>
         <button class="action-btn" onclick="downloadFirstBoardSVG()">Descargar Plano SVG</button>
-        <button class="action-btn outline" onclick="window.print()">Imprimir Guía</button>
+        <button class="action-btn outline" onclick="window.print()">Imprimir Planos</button>
       </div>
     </div>
   </div>
 
-  <!-- PANEL DERECHO: VISTA 3D + TABLERO COMPACTO 1:1 + LEYENDA POR COLORES -->
+  <!-- PANEL DERECHO: TRIPLE VISOR DE INGENIERÍA + TABLERO 1:1 COMPACTO -->
   <div>
-    <!-- IMAGEN 3D DE LA FORMA FINAL Y ESQUEMA DE ARMADO POR COLORES -->
-    <div class="preview-grid">
+    <!-- TRIPLE VISOR TÉCNICO: 1. MACETA 3D ACOTADA CON LADOS NUMERADOS | 2. PLANTA DE LADOS INTERIOR/EXTERIOR | 3. MOLDE 3D NUMERADO -->
+    <div class="eng-triple-grid">
+      <!-- PANEL 1: MACETA 3D PROPORCIONAL CON COTAS DIRECTAS EN ARISTAS Y NÚMEROS DE LADO -->
       <div class="preview-card">
         <div class="preview-header">
-          <span style="color:#38bdf8;" id="title-shape">1. IMAGEN 3D DE LA FORMA FINAL DE LA MACETA</span>
-          <label style="font-size:0.74rem; color:#34d399; cursor:pointer;">
-            <input type="checkbox" id="chk-plant" checked onchange="updateAll()" /> Ver con Planta
+          <span style="color:#38bdf8;" id="title-shape">1. MACETA 3D ACOTADA + NÚMERO DE CADA LADO</span>
+          <label style="font-size:0.72rem; color:#34d399; cursor:pointer;">
+            <input type="checkbox" id="chk-plant" checked onchange="updateAll()" /> Planta
           </label>
         </div>
-        <svg id="svg-final-shape" class="responsive-svg" style="min-width:100%;" viewBox="0 0 440 250" xmlns="http://www.w3.org/2000/svg"></svg>
+        <svg id="svg-final-shape" class="responsive-svg" viewBox="0 0 430 300" xmlns="http://www.w3.org/2000/svg"></svg>
       </div>
 
+      <!-- PANEL 2: MAPA EN PLANTA (VISTA SUPERIOR) VINCULANDO CADA LADO INTERIOR Y EXTERIOR CON SU NÚMERO DE CORTE -->
+      <div class="preview-card plan-card">
+        <div class="preview-header">
+          <span style="color:#34d399;">2. PLANTA TÉCNICA: LADOS EXTERIORES E INTERIORES</span>
+          <span style="font-size:0.7rem; color:#a7f3d0;">Ubicación de Piezas #1 a #10</span>
+        </div>
+        <svg id="svg-plan-map" class="responsive-svg" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+
+      <!-- PANEL 3: DESPIECE Y ARMADO 3D DEL MOLDE CON NÚMEROS Y MEDIDAS EN CADA CARA -->
       <div class="preview-card mold-card">
         <div class="preview-header">
-          <span style="color:#fbbf24;">2. GUÍA DE ARMADO POR COLORES Y NÚMEROS</span>
-          <span style="font-size:0.72rem; color:#fde68a;">Cada color coincide con el tablero</span>
+          <span style="color:#fbbf24;">3. MOLDE DE MADERA 3D CON PIEZAS NUMERADAS</span>
+          <span style="font-size:0.7rem; color:#fde68a;">Correspondencia 1 a 1 con Tabla</span>
         </div>
-        <svg id="svg-mold-3d" class="responsive-svg" style="min-width:100%;" viewBox="0 0 440 250" xmlns="http://www.w3.org/2000/svg"></svg>
+        <svg id="svg-mold-3d" class="responsive-svg" viewBox="0 0 430 300" xmlns="http://www.w3.org/2000/svg"></svg>
       </div>
     </div>
 
-    <!-- MÉTRICAS DE APROVECHAMIENTO COMPACTO -->
+    <!-- BARRA DE MÉTRICAS RÁPIDAS -->
     <div class="metrics-bar">
-      <div class="metric-box"><span>Medida Exterior Maceta</span><strong id="m-ext">-</strong></div>
-      <div class="metric-box"><span>Hueco Interior (Cavidad)</span><strong id="m-int">-</strong></div>
-      <div class="metric-box"><span>Rectángulo Mínimo Usado</span><strong id="m-bbox" style="color:#34d399;">-</strong></div>
-      <div class="metric-box"><span>Madera Libre Intacta</span><strong id="m-free">-</strong></div>
+      <div class="metric-box"><span>Exterior Maceta (L × A × H)</span><strong id="m-ext">-</strong></div>
+      <div class="metric-box"><span>Hueco Interior (L × A × Prof)</span><strong id="m-int">-</strong></div>
+      <div class="metric-box"><span>Espesor Muro / Fondo</span><strong id="m-wall" style="color:#38bdf8;">-</strong></div>
+      <div class="metric-box"><span>Bloque Compacto en Tabla</span><strong id="m-bbox" style="color:#34d399;">-</strong></div>
       <div class="metric-box"><span>Tableros 244×183 Requeridos</span><strong id="m-boards" style="color:#fde047;">-</strong></div>
     </div>
 
-    <!-- BARRA DE CONTROL DE ESCALA 1:1 (COMPLETA VS LUPA 1:1 SIN DEFORMAR) -->
+    <!-- BARRA DE ESTADO Y LUPA 1:1 -->
     <div id="board-status-banner" class="board-alert">
       <div id="board-status-text">
-        <strong>✅ EMPAQUETADO COMPACTO 1:1 ACTIVADO</strong>
+        <strong>✅ ESCALA REAL 1:1 COMPACTA</strong>
       </div>
       <div class="scale-toggle-bar">
         <button class="scale-btn active" id="btn-zoom-full" onclick="setBoardZoom('full')">
           Tabla Completa 244 × 183 cm (Escala 1:1)
         </button>
         <button class="scale-btn" id="btn-zoom-crop" onclick="setBoardZoom('crop')">
-          🔍 Lupa 1:1 a la Esquina de Corte (Ver Piezas de Cerca con Regla Exacta)
+          🔍 Lupa 1:1 a la Zona de Corte (Con Regla Exacta en CM)
         </button>
       </div>
     </div>
 
-    <!-- ZONA DONDE SE DIBUJAN EL TABLERO #1 (Y TABLERO #2, #3 SI SE NECESITAN) -->
+    <!-- TABLEROS DE CORTE (TABLA #1, TABLA #2...) -->
     <div id="boards-render-zone"></div>
 
-    <!-- LEYENDA DE COLORES, FORMAS Y MEDIDAS ABAJO DEL TABLERO -->
+    <!-- LEYENDA DE COLORES Y TABLA DE CORTE CON UBICACIÓN EN LA MACETA -->
     <div class="panel">
-      <h2 id="legend-title">3. Leyenda de Colores, Números y Medidas Exactas en Centímetros (cm)</h2>
-      <p style="font-size:0.8rem; color:var(--muted); margin-bottom:8px;">
-        Para no ocupar espacio dentro del área de corte del tablero, cada pieza lleva únicamente su **color** y su **número (`1`, `2`, `3`...)**. Aquí tienes qué significa cada color y cómo se arma:
-      </p>
+      <h2 id="legend-title">4. Leyenda de Colores, Lado Exacto de la Matera y Medidas de Corte en Centímetros</h2>
       <div class="legend-grid" id="color-legend-grid"></div>
 
-      <table id="cutlist-table" style="margin-top:14px;">
+      <table id="cutlist-table" style="margin-top:12px;">
         <thead>
           <tr>
-            <th>N° en Tabla</th>
-            <th>Color / Pieza</th>
-            <th>Función en el Molde</th>
-            <th>Forma de Corte</th>
-            <th>Cant.</th>
-            <th>Medida Exacta (Ancho × Alto en cm)</th>
-            <th>Posición Exacta en Tabla (X, Y en cm)</th>
-            <th>Instrucción de Armado</th>
+            <th>N° Corte</th>
+            <th>Código</th>
+            <th>Lado Exacto que Forma en la Matera (Interior / Exterior)</th>
+            <th>Forma Geométrica</th>
+            <th>Medida a Cortar en CM (Ancho × Alto)</th>
+            <th>Tabla y Coordenada (X, Y)</th>
+            <th>Instrucción de Carpintería</th>
           </tr>
         </thead>
         <tbody id="cutlist-body"></tbody>
       </table>
     </div>
 
-    <!-- ZONA PARA TABLAS FIJADAS DE OTROS MODELOS -->
     <div id="pinned-models-zone"></div>
   </div>
 </div>
@@ -553,11 +546,11 @@
 
   const BOARD_W = 244.0; // cm
   const BOARD_H = 183.0; // cm
-  const KERF_CM = 0.3;   // 3 mm de disco de corte
+  const KERF_CM = 0.3;   // 3 mm
 
-  // Empezamos en M-26 (el de la captura del usuario) o cualquier otro que seleccione
-  let activeModel = MODELS.find(x => x.id === 'M-26') || MODELS[0];
-  let boardZoomMode = 'full'; // 'full' (244x183 completo 1:1) o 'crop' (Lupa 1:1 al área ocupada)
+  // Iniciamos en M-50 (el modelo de la captura del usuario) para que vea de inmediato la corrección exacta
+  let activeModel = MODELS.find(x => x.id === 'M-50') || MODELS[0];
+  let boardZoomMode = 'full';
   let pinnedCount = 0;
 
   function initPresets(filterText = '') {
@@ -609,7 +602,7 @@
     updateAll();
   }
 
-  // GENERA TODAS LAS PIEZAS CON SU GEOMETRÍA REAL (RECTÁNGULO, OCTÁGONO, TRIÁNGULO, HEXÁGONO, TRAPECIO, CÍRCULO, ROMBO)
+  // GENERA LAS PIEZAS CON NUMERACIÓN FIJA DE INGENIERÍA SEGÚN EL LADO DE LA MATERA (#1, #2, #3...)
   function getPiecesForSpec(wi, li, h, tc, tw, geom, moldQty = 1) {
     const polyMap = {
       'tri_60': { sides: 3, bevel: 60.0, shapeName: 'Triángulo Equilátero (3 lados)' },
@@ -620,7 +613,7 @@
       'non_20': { sides: 9, bevel: 20.0, shapeName: 'Nonágono Regular (9 lados)' },
       'dec_18': { sides: 10, bevel: 18.0, shapeName: 'Decágono Regular (10 lados)' },
       'dodec_15': { sides: 12, bevel: 15.0, shapeName: 'Dodecágono Regular (12 lados)' },
-      'hexadec_1125': { sides: 16, bevel: 11.25, shapeName: 'Polígono 16 Lados (Casi Circular)' }
+      'hexadec_1125': { sides: 16, bevel: 11.25, shapeName: 'Polígono 16 Lados' }
     };
 
     let sides = 4, bevelDeg = 0, polyShapeLabel = 'Rectángulo a 90°';
@@ -636,225 +629,313 @@
     const moldW = we + 2 * tw;
     const moldL = le + 2 * tw;
 
-    const groups = [];
-    if (sides !== 4) {
-      // Polígono Regular (Triángulo, Pentágono, Hexágono, Octágono, etc.)
-      const tanHalf = Math.tan(Math.PI / sides);
-      // Para un triángulo equilátero u otro polígono circunscrito, calculamos el lado real y el cuadro envolvente del polígono
-      const extSide = parseFloat((moldW * tanHalf).toFixed(2));
-      const intSide = parseFloat((wi * tanHalf).toFixed(2));
-      const basePolyDiam = parseFloat((moldW + 1.2).toFixed(2));
-      const capPolyDiam = parseFloat(Math.max(2.2, wi - 2 * tw).toFixed(2));
+    // Lista individualizada de piezas con su Número Fijo (#1, #2, #3...) y el Lado Exacto que forman en la matera
+    const items = [];
+    let seq = 1;
 
-      groups.push({
-        code: 'EXT-DUELA',
-        name: `Duelas Exteriores (${sides} caras laterales)`,
-        qty: sides * moldQty,
-        w: extSide,
-        h: h,
-        shapeType: 'bevel_strip',
-        sides: sides,
-        shapeLabel: `Rectángulo con Bisel ${bevelDeg}°`,
-        color: '#d97706',
-        note: `Se unen borde con borde formando las ${sides} paredes exteriores`
-      });
-      groups.push({
-        code: 'BASE-POL',
-        name: `Base Inferior con Forma de ${polyShapeLabel.split(' ')[0]}`,
-        qty: 1 * moldQty,
-        w: basePolyDiam,
-        h: basePolyDiam,
-        shapeType: 'polygon',
-        sides: sides,
-        shapeLabel: polyShapeLabel,
-        color: '#0284c7',
-        note: `Cortar la silueta del ${polyShapeLabel.toLowerCase()} de ${basePolyDiam.toFixed(1)} cm con agujero central`
-      });
-      groups.push({
-        code: 'INT-DUELA',
-        name: `Duelas del Núcleo Interior (${sides} caras internas)`,
-        qty: sides * moldQty,
-        w: intSide,
-        h: hi,
-        shapeType: 'bevel_strip',
-        sides: sides,
-        shapeLabel: `Rectángulo con Bisel ${bevelDeg}°`,
-        color: '#059669',
-        note: `Se unen formando el núcleo interno de Ø ${wi.toFixed(1)} cm`
-      });
-      groups.push({
-        code: 'TAPA-POL',
-        name: `Tapas Internas con Forma de ${polyShapeLabel.split(' ')[0]}`,
-        qty: 2 * moldQty,
-        w: capPolyDiam,
-        h: capPolyDiam,
-        shapeType: 'polygon',
-        sides: sides,
-        shapeLabel: polyShapeLabel,
-        color: '#7c3aed',
-        note: `Van dentro del núcleo (arriba y abajo) para mantener la forma de ${sides} lados`
-      });
-    } else {
-      // Modelos de 4 lados (Rectangulares, Piramidales Trapeciales, Rombos, Cilindro Híbrido)
-      const intShort = parseFloat(Math.max(1.5, li - 2 * tw).toFixed(2));
-      const intCapW = parseFloat(Math.max(1.5, wi - 2 * tw).toFixed(2));
-      const isTrap = (geom === 'taper_sled');
-      const isDiamond = (geom === 'diamond_30_60');
+    for (let m = 1; m <= moldQty; m++) {
+      const mSuffix = moldQty > 1 ? ` (Molde ${m})` : '';
+      if (sides !== 4) {
+        const tanHalf = Math.tan(Math.PI / sides);
+        const extSide = parseFloat((moldW * tanHalf).toFixed(2));
+        const intSide = parseFloat((wi * tanHalf).toFixed(2));
+        const basePolyDiam = parseFloat((moldW + 1.2).toFixed(2));
+        const capPolyDiam = parseFloat(Math.max(2.2, wi - 2 * tw).toFixed(2));
 
-      groups.push({
-        code: 'EXT-A',
-        name: 'Paredes Exteriores Largas',
-        qty: 2 * moldQty,
-        w: parseFloat(moldW.toFixed(2)),
-        h: h,
-        shapeType: isTrap ? 'trapezoid' : 'rect',
-        sides: 4,
-        shapeLabel: isTrap ? 'Trapecio Isósceles (Inclinado 7°)' : 'Rectángulo a 90°',
-        color: '#d97706',
-        note: `Paredes exteriores frontal y trasera (${moldW.toFixed(1)} × ${h.toFixed(1)} cm)`
-      });
-      groups.push({
-        code: 'EXT-B',
-        name: 'Paredes Exteriores Cortas',
-        qty: 2 * moldQty,
-        w: parseFloat(le.toFixed(2)),
-        h: h,
-        shapeType: isTrap ? 'trapezoid' : 'rect',
-        sides: 4,
-        shapeLabel: isTrap ? 'Trapecio Isósceles (Inclinado 7°)' : 'Rectángulo a 90°',
-        color: '#ea580c',
-        note: `Paredes exteriores laterales que van entre EXT-A (${le.toFixed(1)} × ${h.toFixed(1)} cm)`
-      });
-      groups.push({
-        code: 'BASE-C',
-        name: isDiamond ? 'Base Inferior Romboidal' : 'Base Inferior del Molde',
-        qty: 1 * moldQty,
-        w: parseFloat(moldW.toFixed(2)),
-        h: parseFloat(moldL.toFixed(2)),
-        shapeType: isDiamond ? 'diamond' : 'rect_base',
-        sides: 4,
-        shapeLabel: isDiamond ? 'Rombo / Diamante (60°/120°)' : 'Rectángulo con Drenaje Central',
-        color: '#0284c7',
-        note: `Placa de fondo sobre la que se paran las paredes exteriores (${moldW.toFixed(1)} × ${moldL.toFixed(1)} cm)`
-      });
-
-      if (geom === 'hybrid_cyl') {
-        groups.push({
-          code: 'DISCO-CIL',
-          name: 'Discos Centradores Circulares para Núcleo',
-          qty: 2 * moldQty,
-          w: wi,
-          h: wi,
-          shapeType: 'circle',
-          sides: 32,
-          shapeLabel: `Círculo Ø ${wi.toFixed(1)} cm`,
-          color: '#059669',
-          note: `Círculos de MDF para fijar y centrar el tubo cilíndrico interior de Ø ${wi.toFixed(1)} cm`
+        for (let s = 1; s <= sides; s++) {
+          items.push({
+            num: seq++,
+            code: 'EXT-DUELA',
+            sideRole: `Lado Exterior #${s} de ${sides} (Pared Externa)${mSuffix}`,
+            w: extSide,
+            h: h,
+            origW: extSide,
+            origH: h,
+            shapeType: 'bevel_strip',
+            sides: sides,
+            shapeLabel: `Duela Bisel ${bevelDeg}°`,
+            color: '#d97706',
+            note: `Forma la cara exterior #${s} de la maceta poligonal (${extSide.toFixed(1)} × ${h.toFixed(1)} cm)`
+          });
+        }
+        items.push({
+          num: seq++,
+          code: 'BASE-POL',
+          sideRole: `Base Inferior Exterior (${polyShapeLabel.split(' ')[0]})${mSuffix}`,
+          w: basePolyDiam,
+          h: basePolyDiam,
+          origW: basePolyDiam,
+          origH: basePolyDiam,
+          shapeType: 'polygon',
+          sides: sides,
+          shapeLabel: polyShapeLabel,
+          color: '#0284c7',
+          note: `Sostiene por debajo las ${sides} duelas exteriores y lleva el drenaje central`
         });
+        for (let s = 1; s <= sides; s++) {
+          items.push({
+            num: seq++,
+            code: 'INT-DUELA',
+            sideRole: `Lado Interior #${s} de ${sides} (Hueco Interno)${mSuffix}`,
+            w: intSide,
+            h: hi,
+            origW: intSide,
+            origH: hi,
+            shapeType: 'bevel_strip',
+            sides: sides,
+            shapeLabel: `Duela Int Bisel ${bevelDeg}°`,
+            color: '#059669',
+            note: `Moldea la pared interna #${s} del hueco de la maceta (${intSide.toFixed(1)} × ${hi.toFixed(1)} cm)`
+          });
+        }
+        for (let t = 1; t <= 2; t++) {
+          items.push({
+            num: seq++,
+            code: 'TAPA-POL',
+            sideRole: `Tapa Interna #${t} del Núcleo (${polyShapeLabel.split(' ')[0]})${mSuffix}`,
+            w: capPolyDiam,
+            h: capPolyDiam,
+            origW: capPolyDiam,
+            origH: capPolyDiam,
+            shapeType: 'polygon',
+            sides: sides,
+            shapeLabel: polyShapeLabel,
+            color: '#7c3aed',
+            note: `Cierra y da rigidez al núcleo interior de ${sides} lados`
+          });
+        }
       } else {
-        groups.push({
-          code: 'INT-D',
-          name: 'Paredes Largas del Núcleo Interior',
-          qty: 2 * moldQty,
-          w: parseFloat(wi.toFixed(2)),
-          h: hi,
-          shapeType: isTrap ? 'trapezoid' : 'rect',
+        // 4 Lados (Rectangular / Cuadrado / Piramidal / Rombo)
+        const intShort = parseFloat(Math.max(1.5, li - 2 * tw).toFixed(2));
+        const intCapW = parseFloat(Math.max(1.5, wi - 2 * tw).toFixed(2));
+        const isTrap = (geom === 'taper_sled');
+        const isDiamond = (geom === 'diamond_30_60');
+        const wallShape = isTrap ? 'trapezoid' : 'rect';
+        const wallLabel = isTrap ? 'Trapecio Inclinado' : 'Rectángulo 90°';
+
+        // #1: Exterior Frontal Largo
+        items.push({
+          num: seq++,
+          code: 'EXT-A1',
+          sideRole: `Lado 1 Exterior: Pared Frontal Larga${mSuffix}`,
+          w: parseFloat(moldW.toFixed(2)),
+          h: h,
+          origW: parseFloat(moldW.toFixed(2)),
+          origH: h,
+          shapeType: wallShape,
           sides: 4,
-          shapeLabel: isTrap ? 'Trapecio Núcleo Interior' : 'Rectángulo a 90°',
-          color: '#059669',
-          note: `Forman el ancho del hueco interior de la maceta (${wi.toFixed(1)} × ${hi.toFixed(1)} cm)`
+          shapeLabel: wallLabel,
+          color: '#d97706',
+          note: `Moldea la cara frontal exterior de ${we.toFixed(1)} × ${h.toFixed(1)} cm (solapa cantos)`
         });
-        groups.push({
-          code: 'INT-E',
-          name: 'Paredes Cortas del Núcleo Interior',
-          qty: 2 * moldQty,
-          w: intShort,
-          h: hi,
-          shapeType: isTrap ? 'trapezoid' : 'rect',
+        // #2: Exterior Posterior Largo
+        items.push({
+          num: seq++,
+          code: 'EXT-A2',
+          sideRole: `Lado 2 Exterior: Pared Trasera Larga${mSuffix}`,
+          w: parseFloat(moldW.toFixed(2)),
+          h: h,
+          origW: parseFloat(moldW.toFixed(2)),
+          origH: h,
+          shapeType: wallShape,
           sides: 4,
-          shapeLabel: isTrap ? 'Trapecio Núcleo Interior' : 'Rectángulo a 90°',
-          color: '#10b981',
-          note: `Van entre las caras verdes INT-D (${intShort.toFixed(1)} × ${hi.toFixed(1)} cm)`
+          shapeLabel: wallLabel,
+          color: '#d97706',
+          note: `Moldea la cara trasera exterior de ${we.toFixed(1)} × ${h.toFixed(1)} cm (solapa cantos)`
         });
-        groups.push({
-          code: 'INT-F',
-          name: isDiamond ? 'Tapa Romboidal del Núcleo' : 'Tapa Inferior del Núcleo',
-          qty: 1 * moldQty,
-          w: intCapW,
-          h: intShort,
-          shapeType: isDiamond ? 'diamond' : 'rect',
+        // #3: Exterior Lateral Izquierdo Corto
+        items.push({
+          num: seq++,
+          code: 'EXT-B1',
+          sideRole: `Lado 3 Exterior: Lateral Izquierdo Corto${mSuffix}`,
+          w: parseFloat(le.toFixed(2)),
+          h: h,
+          origW: parseFloat(le.toFixed(2)),
+          origH: h,
+          shapeType: wallShape,
           sides: 4,
-          shapeLabel: isDiamond ? 'Rombo Interno' : 'Rectángulo a 90°',
-          color: '#7c3aed',
-          note: `Cierra la parte inferior del núcleo interno (${intCapW.toFixed(1)} × ${intShort.toFixed(1)} cm)`
+          shapeLabel: wallLabel,
+          color: '#ea580c',
+          note: `Moldea el costado exterior izquierdo de ${le.toFixed(1)} × ${h.toFixed(1)} cm (va entre #1 y #2)`
         });
+        // #4: Exterior Lateral Derecho Corto
+        items.push({
+          num: seq++,
+          code: 'EXT-B2',
+          sideRole: `Lado 4 Exterior: Lateral Derecho Corto${mSuffix}`,
+          w: parseFloat(le.toFixed(2)),
+          h: h,
+          origW: parseFloat(le.toFixed(2)),
+          origH: h,
+          shapeType: wallShape,
+          sides: 4,
+          shapeLabel: wallLabel,
+          color: '#ea580c',
+          note: `Moldea el costado exterior derecho de ${le.toFixed(1)} × ${h.toFixed(1)} cm (va entre #1 y #2)`
+        });
+        // #5: Base Inferior Exterior
+        items.push({
+          num: seq++,
+          code: 'BASE-C',
+          sideRole: `Lado 5 Base: Fondo Exterior del Molde${mSuffix}`,
+          w: parseFloat(moldW.toFixed(2)),
+          h: parseFloat(moldL.toFixed(2)),
+          origW: parseFloat(moldW.toFixed(2)),
+          origH: parseFloat(moldL.toFixed(2)),
+          shapeType: isDiamond ? 'diamond' : 'rect_base',
+          sides: 4,
+          shapeLabel: isDiamond ? 'Rombo Base' : 'Rectángulo Base + Drenaje',
+          color: '#0284c7',
+          note: `Piso inferior donde asientan #1, #2, #3 y #4 (${moldW.toFixed(1)} × ${moldL.toFixed(1)} cm)`
+        });
+
+        if (geom === 'hybrid_cyl') {
+          for (let d = 1; d <= 2; d++) {
+            items.push({
+              num: seq++,
+              code: `DISCO-${d}`,
+              sideRole: `Disco Centrador Circular #${d} (Hueco Ø ${wi.toFixed(1)} cm)${mSuffix}`,
+              w: wi,
+              h: wi,
+              origW: wi,
+              origH: wi,
+              shapeType: 'circle',
+              sides: 32,
+              shapeLabel: `Círculo Ø ${wi.toFixed(1)} cm`,
+              color: '#059669',
+              note: `Centra el tubo cilíndrico interior de Ø ${wi.toFixed(1)} × ${hi.toFixed(1)} cm`
+            });
+          }
+        } else {
+          // #6: Interior Frontal Largo (Cavidad)
+          items.push({
+            num: seq++,
+            code: 'INT-D1',
+            sideRole: `Lado 6 Interior: Pared Frontal del Hueco${mSuffix}`,
+            w: parseFloat(wi.toFixed(2)),
+            h: hi,
+            origW: parseFloat(wi.toFixed(2)),
+            origH: hi,
+            shapeType: wallShape,
+            sides: 4,
+            shapeLabel: wallLabel,
+            color: '#059669',
+            note: `Moldea la pared interna frontal de la cavidad (${wi.toFixed(1)} × ${hi.toFixed(1)} cm)`
+          });
+          // #7: Interior Posterior Largo (Cavidad)
+          items.push({
+            num: seq++,
+            code: 'INT-D2',
+            sideRole: `Lado 7 Interior: Pared Trasera del Hueco${mSuffix}`,
+            w: parseFloat(wi.toFixed(2)),
+            h: hi,
+            origW: parseFloat(wi.toFixed(2)),
+            origH: hi,
+            shapeType: wallShape,
+            sides: 4,
+            shapeLabel: wallLabel,
+            color: '#059669',
+            note: `Moldea la pared interna trasera de la cavidad (${wi.toFixed(1)} × ${hi.toFixed(1)} cm)`
+          });
+          // #8: Interior Lateral Izquierdo Corto (Cavidad)
+          items.push({
+            num: seq++,
+            code: 'INT-E1',
+            sideRole: `Lado 8 Interior: Lateral Izquierdo del Hueco${mSuffix}`,
+            w: intShort,
+            h: hi,
+            origW: intShort,
+            origH: hi,
+            shapeType: wallShape,
+            sides: 4,
+            shapeLabel: wallLabel,
+            color: '#10b981',
+            note: `Moldea el costado interno izquierdo de la cavidad (${intShort.toFixed(1)} × ${hi.toFixed(1)} cm, va entre #6 y #7)`
+          });
+          // #9: Interior Lateral Derecho Corto (Cavidad)
+          items.push({
+            num: seq++,
+            code: 'INT-E2',
+            sideRole: `Lado 9 Interior: Lateral Derecho del Hueco${mSuffix}`,
+            w: intShort,
+            h: hi,
+            origW: intShort,
+            origH: hi,
+            shapeType: wallShape,
+            sides: 4,
+            shapeLabel: wallLabel,
+            color: '#10b981',
+            note: `Moldea el costado interno derecho de la cavidad (${intShort.toFixed(1)} × ${hi.toFixed(1)} cm, va entre #6 y #7)`
+          });
+          // #10: Tapa Fondo del Núcleo Interior
+          items.push({
+            num: seq++,
+            code: 'INT-F',
+            sideRole: `Lado 10 Interior: Piso / Fondo del Hueco Interno${mSuffix}`,
+            w: intCapW,
+            h: intShort,
+            origW: intCapW,
+            origH: intShort,
+            shapeType: isDiamond ? 'diamond' : 'rect',
+            sides: 4,
+            shapeLabel: isDiamond ? 'Rombo Interno' : 'Rectángulo 90°',
+            color: '#7c3aed',
+            note: `Cierra el fondo del núcleo para dejar el espesor de piso de concreto de ${tc.toFixed(1)} cm`
+          });
+        }
+
+        if (geom === 'stepped' || geom === 'legged' || geom === 'shadow_gap' || geom === 'rim_lip' || geom === 'fluted' || geom === 'chamfer_45' || geom === 'louvre') {
+          for (let r = 1; r <= 4; r++) {
+            items.push({
+              num: seq++,
+              code: `REL-${r}`,
+              sideRole: `Inserto #${r} para Patas / Escalones / Relieve${mSuffix}`,
+              w: parseFloat(we.toFixed(2)),
+              h: 3.0,
+              origW: parseFloat(we.toFixed(2)),
+              origH: 3.0,
+              shapeType: 'rect',
+              sides: 4,
+              shapeLabel: 'Listón de Relieve',
+              color: '#db2777',
+              note: 'Se fija por dentro del molde para formar patas, escalones o biseles'
+            });
+          }
+        }
       }
 
-      if (geom === 'stepped' || geom === 'legged' || geom === 'shadow_gap' || geom === 'rim_lip' || geom === 'fluted' || geom === 'chamfer_45' || geom === 'louvre') {
-        groups.push({
-          code: 'REL-INS',
-          name: 'Listones para Patas / Escalones / Biseles',
-          qty: 4 * moldQty,
-          w: parseFloat(we.toFixed(2)),
-          h: 3.0,
+      // Puentes tensores superiores
+      for (let p = 1; p <= 4; p++) {
+        items.push({
+          num: seq++,
+          code: `PUENTE-${p}`,
+          sideRole: `Puente Superior / Costilla de Refuerzo #${p}${mSuffix}`,
+          w: parseFloat((moldW + 4.0).toFixed(2)),
+          h: 3.5,
+          origW: parseFloat((moldW + 4.0).toFixed(2)),
+          origH: 3.5,
           shapeType: 'rect',
           sides: 4,
-          shapeLabel: 'Listón Rectangular',
-          color: '#db2777',
-          note: 'Se ubican en el fondo o esquinas internas para moldear patas o relieves'
+          shapeLabel: 'Listón Tensor',
+          color: '#4f46e5',
+          note: `Cruza por arriba del molde para sostener el núcleo interior a ${tc.toFixed(1)} cm del fondo`
         });
       }
     }
 
-    groups.push({
-      code: 'PUENTE-G',
-      name: 'Puentes Superiores y Costillas de Refuerzo',
-      qty: 4 * moldQty,
-      w: parseFloat((moldW + 4.0).toFixed(2)),
-      h: 3.5,
-      shapeType: 'rect',
-      sides: 4,
-      shapeLabel: 'Listón Tensor',
-      color: '#4f46e5',
-      note: 'Cruzan por arriba para sostener el núcleo y refuerzan el MDF por fuera'
-    });
-
-    return { wi, li, we, le, h, hi, tc, tw, geom, sides, bevelDeg, moldW, moldL, moldQty, groups };
+    return { wi, li, we, le, h, hi, tc, tw, geom, sides, bevelDeg, moldW, moldL, moldQty, items };
   }
 
-  // ALGORITMO 2D BIN-PACKING (MAXRECTS / SKYLINE COMPACTO)
-  // Empaqueta cada pieza en los huecos libres (debajo del verde, al lado del azul, encima del morado) sin desperdiciar madera
+  // ALGORITMO 2D BIN-PACKING COMPACTO QUE MANTIENE EL NÚMERO FIJO (#1, #2, #3...) DE CADA LADO DE LA MATERA
   function packCompact2D(spec) {
-    // Expandimos cada pieza con su número correlativo (#1, #2, #3...)
-    const rawItems = [];
-    let seq = 1;
-    spec.groups.forEach((g, gIdx) => {
-      for (let i = 1; i <= g.qty; i++) {
-        let w = g.w, h = g.h;
-        if (w > BOARD_W && h <= BOARD_W) {
-          const tmp = w; w = h; h = tmp;
-        }
-        rawItems.push({
-          num: seq++,
-          groupIdx: gIdx,
-          code: g.code,
-          name: g.name,
-          w: w,
-          h: h,
-          origW: g.w,
-          origH: g.h,
-          shapeType: g.shapeType,
-          sides: g.sides,
-          shapeLabel: g.shapeLabel,
-          color: g.color,
-          note: g.note
-        });
+    // Ordenamos para empaquetar de mayor a menor tamaño, pero CONSERVANDO intacto el `item.num` (#1, #2, #3...)
+    const toPack = spec.items.map(it => {
+      let w = it.origW, h = it.origH;
+      if (w > BOARD_W && h <= BOARD_W) {
+        const tmp = w; w = h; h = tmp;
       }
-    });
-
-    // Ordenamos de mayor a menor altura (y luego ancho) para que las piezas grandes creen la estructura
-    // y las piezas medianas/pequeñas rellenen inmediatamente todos los huecos laterales e inferiores
-    const sorted = [...rawItems].sort((a, b) => {
+      return { ...it, w, h };
+    }).sort((a, b) => {
       if (Math.abs(b.h - a.h) > 0.4) return b.h - a.h;
       return b.w - a.w;
     });
@@ -873,24 +954,20 @@
 
     boards.push(openNewBoard(1));
 
-    sorted.forEach(item => {
+    toPack.forEach(item => {
       const reqW = Math.min(BOARD_W, item.w);
       const reqH = Math.min(BOARD_H, item.h);
       let placed = false;
 
       for (let b of boards) {
-        // Buscar el rectángulo libre que deje la pieza lo más arriba y a la izquierda posible
-        // Probamos también rotar 90° si es rectangular y encaja mejor en un hueco vacío
         let bestScore = Infinity;
         let bestRect = null;
         let bestRot = false;
 
         for (let fr of b.freeRects) {
-          // Orientación normal (reqW x reqH)
           if (reqW <= fr.w + 0.001 && reqH <= fr.h + 0.001) {
             const topY = fr.y + reqH;
             const rightX = fr.x + reqW;
-            // Priorizamos minimizar la altura total (topY) y pegarlo a la izquierda (fr.x)
             const score = topY * 1000 + fr.x * 2 + rightX * 0.5;
             if (score < bestScore) {
               bestScore = score;
@@ -898,11 +975,10 @@
               bestRot = false;
             }
           }
-          // Orientación rotada 90° (solo si no es polígono simétrico o si conviene para rellenar un hueco)
           if (item.shapeType !== 'trapezoid' && reqH <= fr.w + 0.001 && reqW <= fr.h + 0.001) {
             const topY = fr.y + reqW;
             const rightX = fr.x + reqH;
-            const score = topY * 1000 + fr.x * 2 + rightX * 0.5 + 15; // Pequeña preferencia por no rotar salvo que ahorre altura
+            const score = topY * 1000 + fr.x * 2 + rightX * 0.5 + 15;
             if (score < bestScore) {
               bestScore = score;
               bestRect = fr;
@@ -923,6 +999,7 @@
             y: py,
             w: finalW,
             h: finalH,
+            rotated: bestRot,
             boardNum: b.boardIndex
           };
           b.placedItems.push(placedObj);
@@ -930,11 +1007,9 @@
           if (px + finalW > b.maxXUsed) b.maxXUsed = px + finalW;
           if (py + finalH > b.maxYUsed) b.maxYUsed = py + finalH;
 
-          // Espacio ocupado incluyendo los 0.3 cm del disco de corte (kerf)
           const occRight = Math.min(BOARD_W, px + finalW + KERF_CM);
           const occBottom = Math.min(BOARD_H, py + finalH + KERF_CM);
 
-          // Dividir todos los rectángulos libres que se crucen con la pieza recién colocada (MaxRects Split)
           const nextFree = [];
           for (let fr of b.freeRects) {
             const frRight = fr.x + fr.w;
@@ -943,26 +1018,13 @@
             if (!intersects) {
               nextFree.push(fr);
             } else {
-              // Hueco libre a la izquierda
-              if (px > fr.x + 0.1) {
-                nextFree.push({ x: fr.x, y: fr.y, w: px - fr.x, h: fr.h });
-              }
-              // Hueco libre a la derecha
-              if (occRight < frRight - 0.1) {
-                nextFree.push({ x: occRight, y: fr.y, w: frRight - occRight, h: fr.h });
-              }
-              // Hueco libre arriba
-              if (py > fr.y + 0.1) {
-                nextFree.push({ x: fr.x, y: fr.y, w: fr.w, h: py - fr.y });
-              }
-              // Hueco libre abajo (debajo de las piezas más bajas, como las verdes)
-              if (occBottom < frBottom - 0.1) {
-                nextFree.push({ x: fr.x, y: occBottom, w: fr.w, h: frBottom - occBottom });
-              }
+              if (px > fr.x + 0.1) nextFree.push({ x: fr.x, y: fr.y, w: px - fr.x, h: fr.h });
+              if (occRight < frRight - 0.1) nextFree.push({ x: occRight, y: fr.y, w: frRight - occRight, h: fr.h });
+              if (py > fr.y + 0.1) nextFree.push({ x: fr.x, y: fr.y, w: fr.w, h: py - fr.y });
+              if (occBottom < frBottom - 0.1) nextFree.push({ x: fr.x, y: occBottom, w: fr.w, h: frBottom - occBottom });
             }
           }
 
-          // Limpiar rectángulos libres redundantes (contenidos dentro de otro mayor)
           b.freeRects = nextFree.filter((r1, i1) => {
             if (r1.w < 1.0 || r1.h < 1.0) return false;
             for (let i2 = 0; i2 < nextFree.length; i2++) {
@@ -981,7 +1043,6 @@
         }
       }
 
-      // Si no cupo en los tableros actuales, abrir automáticamente el siguiente Tablero (Tabla #2, #3...)
       if (!placed) {
         const nb = openNewBoard(boards.length + 1);
         const placedObj = {
@@ -990,6 +1051,7 @@
           y: 0,
           w: reqW,
           h: reqH,
+          rotated: false,
           boardNum: nb.boardIndex
         };
         nb.placedItems.push(placedObj);
@@ -1007,25 +1069,449 @@
       }
     });
 
-    // Reordenar números correlativos por posición visual (de arriba a abajo, izquierda a derecha)
-    let allPlaced = [];
-    boards.forEach(b => {
-      b.placedItems.sort((a, c) => (Math.abs(a.y - c.y) > 0.5 ? a.y - c.y : a.x - c.x));
-      b.placedItems.forEach(p => allPlaced.push(p));
-    });
-    allPlaced.forEach((p, idx) => { p.num = idx + 1; });
+    // Ordenar lista general por su número lógico (#1, #2, #3...)
+    const allPlaced = [];
+    boards.forEach(b => b.placedItems.forEach(p => allPlaced.push(p)));
+    allPlaced.sort((a, b) => a.num - b.num);
 
     return { boards, allPlaced };
   }
 
-  // DIBUJA LA FORMA GEOMÉTRICA REAL DE CADA PIEZA EN EL TABLERO (OCTÁGONO, TRIÁNGULO, HEXÁGONO, ROMBO, TRAPECIO, RECTÁNGULO)
+  // PANEL 1: DIBUJA LA MACETA 3D CON PROPORCIÓN REAL (LARGO vs ANCHO vs ALTO), COTAS EN ARISTAS Y NÚMEROS DE LADO (#1, #2, #3...)
+  function drawFinalShape3D(s) {
+    const svg = document.getElementById('svg-final-shape');
+    const showPlant = document.getElementById('chk-plant').checked;
+
+    // Proyección isométrica proporcional verdadera para distinguir Largo (s.we), Ancho (s.le) y Alto (s.h)
+    const cos30 = 0.866, sin30 = 0.5;
+    const maxHorizSpan = (s.we + s.le) * cos30;
+    const maxVertSpan = (s.we + s.le) * sin30 + s.h;
+    const sc = Math.min(225 / Math.max(maxHorizSpan, 1), 165 / Math.max(maxVertSpan, 1));
+
+    // Dimensiones isométricas en píxeles (con mínimo visual para que nunca colapse en modelos muy planos)
+    const Lpx = Math.max(48, s.we * sc); // Eje Frontal-Izquierdo (Largo Exterior)
+    const Wpx = Math.max(38, s.le * sc); // Eje Frontal-Derecho (Ancho Exterior)
+    const Hpx = Math.max(44, s.h * sc);  // Eje Vertical (Altura Total)
+
+    // Centro superior de la maceta desplazado para que quede centrada en el SVG 430x300
+    const ox = 215 + (Lpx - Wpx) * 0.35;
+    const oy = 115 - Hpx * 0.32;
+
+    function isoPt(u, v, z) {
+      // u va de 0 a Lpx (hacia abajo-izquierda), v va de 0 a Wpx (hacia abajo-derecha), z va de 0 a Hpx (hacia abajo)
+      return {
+        x: ox - u * cos30 + v * cos30,
+        y: oy + u * sin30 + v * sin30 + z
+      };
+    }
+
+    const pTopBack  = isoPt(0, 0, 0);
+    const pTopLeft  = isoPt(Lpx, 0, 0);
+    const pTopFront = isoPt(Lpx, Wpx, 0);
+    const pTopRight = isoPt(0, Wpx, 0);
+
+    const taperPx = (s.geom === 'taper_sled') ? Math.min(Lpx, Wpx) * 0.14 : 0;
+    const legPx = (s.geom === 'legged') ? 16 : 0;
+    const bodyH = Hpx - legPx;
+
+    const pBotLeft  = isoPt(Lpx - taperPx, taperPx, bodyH);
+    const pBotFront = isoPt(Lpx - taperPx, Wpx - taperPx, bodyH);
+    const pBotRight = isoPt(taperPx, Wpx - taperPx, bodyH);
+
+    // Espesor proporcional del muro en la boca superior
+    const wallRatioL = Math.min(0.32, Math.max(0.11, s.tc / s.we));
+    const wallRatioW = Math.min(0.32, Math.max(0.11, s.tc / s.le));
+    const tL = Lpx * wallRatioL;
+    const tW = Wpx * wallRatioW;
+
+    const iTopBack  = isoPt(tL, tW, 0);
+    const iTopLeft  = isoPt(Lpx - tL, tW, 0);
+    const iTopFront = isoPt(Lpx - tL, Wpx - tW, 0);
+    const iTopRight = isoPt(tL, Wpx - tW, 0);
+    const innerDepthPx = Math.min(36, Hpx * 0.45);
+    const iBotBack  = isoPt(tL, tW, innerDepthPx);
+
+    let bodySVG = '';
+    if (s.sides !== 4 || s.geom === 'hybrid_cyl') {
+      // Polígono / Cilindro 3D Acotado con Números de Duelas
+      const rx = Math.max(55, (Lpx + Wpx) * 0.38);
+      const ry = rx * 0.42;
+      const cx = 215, topY = 95, botY = topY + Hpx;
+      const nCols = s.geom === 'hybrid_cyl' ? 14 : Math.max(3, Math.min(7, Math.floor(s.sides / 2) + 1));
+      const colW = (rx * 2) / nCols;
+      const shades = ['#cbd5e1', '#94a3b8', '#64748b', '#475569', '#334155', '#475569', '#64748b'];
+      let facets = '';
+      for (let i = 0; i < nCols; i++) {
+        const x1 = (cx - rx) + i * colW, x2 = x1 + colW;
+        facets += `<polygon points="${x1},${topY} ${x2},${topY} ${x2},${botY} ${x1},${botY}" fill="${shades[i % shades.length]}" stroke="#475569" stroke-width="0.9"/>`;
+      }
+      const extEndNum = s.sides;
+      const baseNum = s.sides + 1;
+      const intStartNum = s.sides + 2;
+      const intEndNum = s.sides * 2 + 1;
+
+      bodySVG = `
+        <defs>
+          <marker id="arrRed" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#f43f5e" />
+          </marker>
+        </defs>
+        <ellipse cx="${cx}" cy="${botY + 6}" rx="${rx*1.04}" ry="${ry}" fill="rgba(0,0,0,0.45)"/>
+        ${facets}
+        <ellipse cx="${cx}" cy="${topY}" rx="${rx}" ry="${ry}" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+        <ellipse cx="${cx}" cy="${topY}" rx="${rx*0.74}" ry="${ry*0.74}" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
+
+        <!-- Cota Vertical de Altura (Izquierda) -->
+        <line x1="${cx - rx - 18}" y1="${topY}" x2="${cx - rx - 18}" y2="${botY}" stroke="#f43f5e" stroke-width="2" marker-start="url(#arrRed)" marker-end="url(#arrRed)"/>
+        <rect x="${cx - rx - 82}" y="${(topY+botY)/2 - 11}" width="60" height="20" fill="#091326" stroke="#f43f5e" rx="4"/>
+        <text x="${cx - rx - 52}" y="${(topY+botY)/2 + 3}" fill="#fde047" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">${s.h.toFixed(1)}cm</text>
+
+        <!-- Cota Inferior de Diámetro Exterior -->
+        <line x1="${cx - rx}" y1="${botY + ry + 14}" x2="${cx + rx}" y2="${botY + ry + 14}" stroke="#f43f5e" stroke-width="2" marker-start="url(#arrRed)" marker-end="url(#arrRed)"/>
+        <rect x="${cx - 58}" y="${botY + ry + 4}" width="116" height="20" fill="#091326" stroke="#f43f5e" rx="4"/>
+        <text x="${cx}" y="${botY + ry + 18}" fill="#fde047" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">Ø Ext: ${s.we.toFixed(1)} cm</text>
+
+        <!-- Cota de Espesor de Muro en el Borde Superior -->
+        <line x1="${cx + rx*0.74}" y1="${topY}" x2="${cx + rx}" y2="${topY}" stroke="#f43f5e" stroke-width="2.5"/>
+        <rect x="${cx + rx + 6}" y="${topY - 12}" width="92" height="20" fill="#091326" stroke="#f43f5e" rx="4"/>
+        <text x="${cx + rx + 52}" y="${topY + 2}" fill="#fde047" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Muro:${s.tc.toFixed(1)}cm</text>
+
+        <!-- Etiquetas de Números de Lado en Polígono -->
+        <rect x="${cx - 65}" y="${(topY+botY)/2 - 8}" width="130" height="22" fill="#d97706" stroke="#fff" stroke-width="1.5" rx="5"/>
+        <text x="${cx}" y="${(topY+botY)/2 + 7}" fill="#fff" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">Ext: #1 al #${extEndNum}</text>
+
+        <rect x="${cx - 62}" y="${topY - 10}" width="124" height="20" fill="#059669" stroke="#fff" stroke-width="1.5" rx="5"/>
+        <text x="${cx}" y="${topY + 4}" fill="#fff" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Int:#${intStartNum}-#${intEndNum} (Ø${s.wi.toFixed(1)})</text>
+
+        <rect x="${cx + rx - 10}" y="${botY - 16}" width="78" height="20" fill="#0284c7" stroke="#fff" stroke-width="1.5" rx="5"/>
+        <text x="${cx + rx + 29}" y="${botY - 2}" fill="#fff" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Base: #${baseNum}</text>
+      `;
+    } else {
+      // MACETA DE 4 LADOS (RECTANGULAR / CUADRADA / PIRAMIDAL) CON TODAS LAS COTAS Y NÚMEROS DE LADO (#1 a #10)
+      const faceLeftCenter = {
+        x: (pTopLeft.x + pTopFront.x + pBotFront.x + pBotLeft.x) / 4,
+        y: (pTopLeft.y + pTopFront.y + pBotFront.y + pBotLeft.y) / 4
+      };
+      const faceRightCenter = {
+        x: (pTopFront.x + pTopRight.x + pBotRight.x + pBotFront.x) / 4,
+        y: (pTopFront.y + pTopRight.y + pBotRight.y + pBotFront.y) / 4
+      };
+
+      // Punto en el labio superior derecho para marcar el espesor del muro (como el trazo rojo del usuario)
+      const rimInnerMid = { x: (iTopFront.x + iTopRight.x) / 2, y: (iTopFront.y + iTopRight.y) / 2 };
+      const rimOuterMid = { x: (pTopFront.x + pTopRight.x) / 2, y: (pTopFront.y + pTopRight.y) / 2 };
+
+      bodySVG = `
+        <defs>
+          <marker id="arrRed" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#f43f5e" />
+          </marker>
+        </defs>
+
+        <!-- Paredes Internas de la Cavidad (Hueco Interior) -->
+        <polygon points="${iTopBack.x},${iTopBack.y} ${iTopLeft.x},${iTopLeft.y} ${iTopLeft.x},${iTopLeft.y+innerDepthPx} ${iBotBack.x},${iBotBack.y}" fill="#1e293b" stroke="#475569"/>
+        <polygon points="${iTopBack.x},${iTopBack.y} ${iTopRight.x},${iTopRight.y} ${iTopRight.x},${iTopRight.y+innerDepthPx} ${iBotBack.x},${iBotBack.y}" fill="#0f172a" stroke="#475569"/>
+
+        <!-- Cara Exterior Frontal-Izquierda (Lado #1: Largo Exterior We) -->
+        <polygon points="${pTopLeft.x},${pTopLeft.y} ${pTopFront.x},${pTopFront.y} ${pBotFront.x},${pBotFront.y} ${pBotLeft.x},${pBotLeft.y}" fill="#94a3b8" stroke="#e2e8f0" stroke-width="1.6"/>
+
+        <!-- Cara Exterior Frontal-Derecha (Lado #4: Ancho Exterior Le) -->
+        <polygon points="${pTopFront.x},${pTopFront.y} ${pTopRight.x},${pTopRight.y} ${pBotRight.x},${pBotRight.y} ${pBotFront.x},${pBotFront.y}" fill="#64748b" stroke="#cbd5e1" stroke-width="1.6"/>
+
+        <!-- Borde / Labio Superior (Espesor de Muro de Concreto tc) -->
+        <polygon points="${pTopBack.x},${pTopBack.y} ${pTopRight.x},${pTopRight.y} ${pTopFront.x},${pTopFront.y} ${pTopLeft.x},${pTopLeft.y} ${iTopLeft.x},${iTopLeft.y} ${iTopFront.x},${iTopFront.y} ${iTopRight.x},${iTopRight.y} ${iTopBack.x},${iTopBack.y}" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.4" fill-rule="evenodd"/>
+
+        <!-- 1. COTA ROJA VERTICAL DE ALTURA (Arista Izquierda, donde marcaste la línea vertical roja) -->
+        <line x1="${pTopLeft.x - 14}" y1="${pTopLeft.y}" x2="${pBotLeft.x - 14}" y2="${pBotLeft.y}" stroke="#f43f5e" stroke-width="2.2" marker-start="url(#arrRed)" marker-end="url(#arrRed)"/>
+        <line x1="${pTopLeft.x - 20}" y1="${pTopLeft.y}" x2="${pTopLeft.x - 4}" y2="${pTopLeft.y}" stroke="#f43f5e" stroke-width="1.2"/>
+        <line x1="${pBotLeft.x - 20}" y1="${pBotLeft.y}" x2="${pBotLeft.x - 4}" y2="${pBotLeft.y}" stroke="#f43f5e" stroke-width="1.2"/>
+        <rect x="${pTopLeft.x - 86}" y="${(pTopLeft.y + pBotLeft.y)/2 - 11}" width="68" height="22" fill="#091326" stroke="#f43f5e" stroke-width="1.5" rx="4"/>
+        <text x="${pTopLeft.x - 52}" y="${(pTopLeft.y + pBotLeft.y)/2 + 4}" fill="#fde047" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">${s.h.toFixed(1)} cm</text>
+
+        <!-- 2. COTA ROJA EN EL BORDE INFERIOR IZQUIERDO (Largo Exterior We, donde marcaste abajo) -->
+        <line x1="${pBotLeft.x - 8}" y1="${pBotLeft.y + 12}" x2="${pBotFront.x - 8}" y2="${pBotFront.y + 12}" stroke="#f43f5e" stroke-width="2.2" marker-start="url(#arrRed)" marker-end="url(#arrRed)"/>
+        <rect x="${(pBotLeft.x + pBotFront.x)/2 - 58}" y="${(pBotLeft.y + pBotFront.y)/2 + 10}" width="92" height="20" fill="#091326" stroke="#f43f5e" stroke-width="1.5" rx="4"/>
+        <text x="${(pBotLeft.x + pBotFront.x)/2 - 12}" y="${(pBotLeft.y + pBotFront.y)/2 + 24}" fill="#fde047" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">${s.we.toFixed(1)} cm</text>
+
+        <!-- 3. COTA ROJA EN EL BORDE INFERIOR DERECHO (Ancho Exterior Le) -->
+        <line x1="${pBotFront.x + 8}" y1="${pBotFront.y + 12}" x2="${pBotRight.x + 8}" y2="${pBotRight.y + 12}" stroke="#f43f5e" stroke-width="2.2" marker-start="url(#arrRed)" marker-end="url(#arrRed)"/>
+        <rect x="${(pBotFront.x + pBotRight.x)/2 - 20}" y="${(pBotFront.y + pBotRight.y)/2 + 10}" width="86" height="20" fill="#091326" stroke="#f43f5e" stroke-width="1.5" rx="4"/>
+        <text x="${(pBotFront.x + pBotRight.x)/2 + 23}" y="${(pBotFront.y + pBotRight.y)/2 + 24}" fill="#fde047" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">${s.le.toFixed(1)} cm</text>
+
+        <!-- 4. COTA ROJA DE ESPESOR DE MURO EN EL BORDE DEL LABIO (Donde hiciste la marca roja pequeña) -->
+        <line x1="${rimInnerMid.x}" y1="${rimInnerMid.y}" x2="${rimOuterMid.x}" y2="${rimOuterMid.y}" stroke="#f43f5e" stroke-width="3.5"/>
+        <line x1="${rimOuterMid.x}" y1="${rimOuterMid.y}" x2="${rimOuterMid.x + 28}" y2="${rimOuterMid.y - 16}" stroke="#f43f5e" stroke-width="1.5"/>
+        <rect x="${rimOuterMid.x + 22}" y="${rimOuterMid.y - 32}" width="98" height="20" fill="#091326" stroke="#f43f5e" stroke-width="1.5" rx="4"/>
+        <text x="${rimOuterMid.x + 71}" y="${rimOuterMid.y - 18}" fill="#fde047" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">Muro: ${s.tc.toFixed(1)}cm</text>
+
+        <!-- INSIGNIAS NUMERADAS DE LOS LADOS DIRECTAMENTE SOBRE LA MACETA -->
+        <!-- Lado #1: Frontal Exterior -->
+        <rect x="${faceLeftCenter.x - 42}" y="${faceLeftCenter.y - 16}" width="84" height="32" fill="rgba(217, 119, 6, 0.92)" stroke="#fff" stroke-width="1.5" rx="5"/>
+        <text x="${faceLeftCenter.x}" y="${faceLeftCenter.y - 2}" fill="#fff" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">Lado Ext #1</text>
+        <text x="${faceLeftCenter.x}" y="${faceLeftCenter.y + 11}" fill="#fef08a" font-family="monospace" font-size="9.2" font-weight="bold" text-anchor="middle">${s.moldW.toFixed(1)}×${s.h.toFixed(1)}</text>
+
+        <!-- Lado #4: Lateral Derecho Exterior -->
+        <rect x="${faceRightCenter.x - 38}" y="${faceRightCenter.y - 16}" width="76" height="32" fill="rgba(234, 88, 12, 0.92)" stroke="#fff" stroke-width="1.5" rx="5"/>
+        <text x="${faceRightCenter.x}" y="${faceRightCenter.y - 2}" fill="#fff" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">Lat Ext #4</text>
+        <text x="${faceRightCenter.x}" y="${faceRightCenter.y + 11}" fill="#fef08a" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">${s.le.toFixed(1)}×${s.h.toFixed(1)}</text>
+
+        <!-- Lados Traseros Exteriores #2 y #3 (Indicador superior izquierdo) -->
+        <line x1="${(pTopBack.x + pTopLeft.x)/2}" y1="${(pTopBack.y + pTopLeft.y)/2}" x2="${(pTopBack.x + pTopLeft.x)/2 - 22}" y2="${(pTopBack.y + pTopLeft.y)/2 - 22}" stroke="#fbbf24" stroke-width="1.5"/>
+        <rect x="8" y="8" width="142" height="36" fill="rgba(15, 23, 42, 0.92)" stroke="#fbbf24" rx="5"/>
+        <text x="15" y="23" fill="#fbbf24" font-family="monospace" font-size="9.5" font-weight="bold">Atrás Ext: #2 (${s.moldW.toFixed(1)}cm)</text>
+        <text x="15" y="37" fill="#fdba74" font-family="monospace" font-size="9.5" font-weight="bold">Izq Ext:   #3 (${s.le.toFixed(1)}cm)</text>
+
+        <!-- Hueco Interior (Lados Internos #6, #7, #8, #9 y Fondo #10) -->
+        <line x1="${iTopBack.x + 12}" y1="${iTopBack.y + 14}" x2="${iTopBack.x + 42}" y2="${iTopBack.y - 24}" stroke="#10b981" stroke-width="1.8"/>
+        <rect x="242" y="8" width="180" height="38" fill="rgba(6, 78, 59, 0.94)" stroke="#34d399" rx="5"/>
+        <text x="250" y="23" fill="#fff" font-family="monospace" font-size="9.5" font-weight="bold">Hueco Int (#6,#7,#8,#9):</text>
+        <text x="250" y="38" fill="#fde047" font-family="monospace" font-size="9.8" font-weight="bold">${s.wi.toFixed(1)} × ${s.li.toFixed(1)} × ${s.hi.toFixed(1)} cm</text>
+
+        <!-- Base #5 y Piso Interno #10 -->
+        <rect x="275" y="262" width="148" height="32" fill="rgba(2, 132, 199, 0.9)" stroke="#fff" rx="5"/>
+        <text x="349" y="276" fill="#fff" font-family="monospace" font-size="9.3" font-weight="bold" text-anchor="middle">Base Ext #5 (${s.moldW.toFixed(1)}×${s.moldL.toFixed(1)})</text>
+        <text x="349" y="289" fill="#e0f2fe" font-family="monospace" font-size="8.8" text-anchor="middle">Piso Hueco #10 (Fondo ${s.tc.toFixed(1)}cm)</text>
+      `;
+
+      if (showPlant) {
+        const pcx = (iTopBack.x + iTopFront.x) / 2;
+        const pcy = (iTopBack.y + iTopFront.y) / 2;
+        bodySVG += `
+          <g>
+            <path d="M ${pcx} ${pcy} C ${pcx-20} ${pcy-28}, ${pcx-34} ${pcy-10}, ${pcx-8} ${pcy} Z" fill="#16a34a" stroke="#86efac"/>
+            <path d="M ${pcx} ${pcy} C ${pcx+20} ${pcy-28}, ${pcx+34} ${pcy-10}, ${pcx+8} ${pcy} Z" fill="#15803d" stroke="#86efac"/>
+            <path d="M ${pcx} ${pcy-2} C ${pcx-12} ${pcy-38}, ${pcx+12} ${pcy-38}, ${pcx} ${pcy-2} Z" fill="#22c55e" stroke="#bbf7d0"/>
+          </g>
+        `;
+      }
+    }
+
+    svg.innerHTML = bodySVG;
+  }
+
+  // PANEL 2: MAPA EN PLANTA (VISTA SUPERIOR TÉCNICA) CON EL NÚMERO Y LA MEDIDA EN CM DE CADA LADO INTERIOR Y EXTERIOR
+  function drawPlanSideMap(s) {
+    const svg = document.getElementById('svg-plan-map');
+    const cx = 200, cy = 152;
+
+    if (s.sides !== 4) {
+      const rExt = 92, rInt = 60;
+      const n = s.sides;
+      const tanHalf = Math.tan(Math.PI / n);
+      const extSide = (s.moldW * tanHalf).toFixed(1);
+      const intSide = (s.wi * tanHalf).toFixed(1);
+
+      let extPts = [], intPts = [], labels = '';
+      for (let i = 0; i < n; i++) {
+        const a = (i * 2 * Math.PI / n) - Math.PI / 2;
+        extPts.push(`${(cx + rExt * Math.cos(a)).toFixed(1)},${(cy + rExt * Math.sin(a)).toFixed(1)}`);
+        intPts.push(`${(cx + rInt * Math.cos(a)).toFixed(1)},${(cy + rInt * Math.sin(a)).toFixed(1)}`);
+
+        // Punto medio de cada cara para poner su número (#1..#N exterior y #N+2.. interior)
+        const aNext = ((i + 1) * 2 * Math.PI / n) - Math.PI / 2;
+        const aMid = (a + aNext) / 2;
+        const ex = cx + (rExt + 18) * Math.cos(aMid);
+        const ey = cy + (rExt + 18) * Math.sin(aMid);
+        const ix = cx + (rInt - 16) * Math.cos(aMid);
+        const iy = cy + (rInt - 16) * Math.sin(aMid);
+
+        labels += `
+          <circle cx="${ex}" cy="${ey}" r="10" fill="#d97706" stroke="#fff" stroke-width="1.2"/>
+          <text x="${ex}" y="${ey + 3.5}" fill="#fff" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">#${i+1}</text>
+          ${n <= 10 ? `
+            <circle cx="${ix}" cy="${iy}" r="9" fill="#059669" stroke="#fff" stroke-width="1"/>
+            <text x="${ix}" y="${iy + 3}" fill="#fff" font-family="monospace" font-size="8.5" font-weight="bold" text-anchor="middle">#${n + 1 + i + 1}</text>
+          ` : ''}
+        `;
+      }
+
+      svg.innerHTML = `
+        <polygon points="${extPts.join(' ')}" fill="rgba(148,163,184,0.35)" stroke="#fbbf24" stroke-width="4"/>
+        <polygon points="${intPts.join(' ')}" fill="#071020" stroke="#10b981" stroke-width="3.5"/>
+        <circle cx="${cx}" cy="${cy}" r="7" fill="#0284c7" stroke="#fff" stroke-width="1.5"/>
+        ${labels}
+        <text x="${cx}" y="${cy - 8}" fill="#7dd3fc" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Base #${n+1}</text>
+        <text x="${cx}" y="${cy + 14}" fill="#c4b5fd" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Tapa #${2*n+2}</text>
+        <rect x="10" y="264" width="380" height="28" fill="#091326" stroke="#334155" rx="4"/>
+        <text x="200" y="282" fill="#fde047" font-family="monospace" font-size="9.8" font-weight="bold" text-anchor="middle">
+          Cada lado Ext (#1-#${n}): ${extSide} cm | Cada lado Int: ${intSide} cm | Muro: ${s.tc.toFixed(1)} cm
+        </text>
+      `;
+    } else {
+      // PLANTA TÉCNICA DE 4 LADOS PROPORCIONAL CON LOS NÚMEROS #1 A #10 EN CADA PARED
+      const ratio = s.we / Math.max(s.le, 1);
+      const outerW = Math.min(250, Math.max(125, 165 * Math.min(1.55, Math.max(0.75, ratio))));
+      const outerH = Math.min(175, Math.max(95, outerW / Math.min(1.9, Math.max(0.75, ratio))));
+      const innerW = outerW * 0.66;
+      const innerH = outerH * 0.62;
+
+      const x0 = cx - outerW / 2, y0 = cy - outerH / 2;
+      const xi = cx - innerW / 2, yi = cy - innerH / 2;
+      const intShort = Math.max(1.5, s.li - 2 * s.tw);
+
+      svg.innerHTML = `
+        <!-- Relleno de Concreto entre Paredes Exteriores (#1-#4) y Paredes Interiores (#6-#9) -->
+        <rect x="${x0}" y="${y0}" width="${outerW}" height="${outerH}" fill="rgba(148,163,184,0.38)" stroke="#d97706" stroke-width="6"/>
+        <!-- Líneas de Paredes Cortas Exteriores #3 y #4 -->
+        <line x1="${x0}" y1="${y0}" x2="${x0}" y2="${y0 + outerH}" stroke="#ea580c" stroke-width="6"/>
+        <line x1="${x0 + outerW}" y1="${y0}" x2="${x0 + outerW}" y2="${y0 + outerH}" stroke="#ea580c" stroke-width="6"/>
+
+        <!-- Hueco Interior (Núcleo #6, #7, #8, #9) -->
+        <rect x="${xi}" y="${yi}" width="${innerW}" height="${innerH}" fill="#071020" stroke="#059669" stroke-width="5"/>
+        <line x1="${xi}" y1="${yi}" x2="${xi}" y2="${yi + innerH}" stroke="#10b981" stroke-width="5"/>
+        <line x1="${xi + innerW}" y1="${yi}" x2="${xi + innerW}" y2="${yi + innerH}" stroke="#10b981" stroke-width="5"/>
+
+        <!-- Orificio Central de Drenaje + Base #5 + Fondo Núcleo #10 -->
+        <circle cx="${cx}" cy="${cy}" r="7" fill="#0284c7" stroke="#fff" stroke-width="1.5"/>
+        <text x="${cx}" y="${cy - 11}" fill="#7dd3fc" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Base Ext #5 (${s.moldW.toFixed(1)}×${s.moldL.toFixed(1)})</text>
+        <text x="${cx}" y="${cy + 18}" fill="#c4b5fd" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Fondo Int #10 (${(s.wi-2*s.tw).toFixed(1)}×${intShort.toFixed(1)})</text>
+
+        <!-- ETIQUETAS EXTERIORES (#1 Frontal Abajo, #2 Posterior Arriba, #3 Izq, #4 Der) -->
+        <!-- #2 Arriba (Posterior Exterior) -->
+        <rect x="${cx - 78}" y="${y0 - 26}" width="156" height="20" fill="#d97706" stroke="#fff" rx="4"/>
+        <text x="${cx}" y="${y0 - 12}" fill="#fff" font-family="monospace" font-size="9.8" font-weight="bold" text-anchor="middle">#2 Ext Atrás: ${s.moldW.toFixed(1)}×${s.h.toFixed(1)}cm</text>
+
+        <!-- #1 Abajo (Frontal Exterior) -->
+        <rect x="${cx - 78}" y="${y0 + outerH + 6}" width="156" height="20" fill="#d97706" stroke="#fff" rx="4"/>
+        <text x="${cx}" y="${y0 + outerH + 20}" fill="#fff" font-family="monospace" font-size="9.8" font-weight="bold" text-anchor="middle">#1 Ext Frente: ${s.moldW.toFixed(1)}×${s.h.toFixed(1)}cm</text>
+
+        <!-- #3 Izquierda (Lateral Izq Exterior) -->
+        <rect x="4" y="${cy - 18}" width="66" height="36" fill="#ea580c" stroke="#fff" rx="4"/>
+        <text x="37" y="${cy - 3}" fill="#fff" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">#3 Izq Ext</text>
+        <text x="37" y="${cy + 11}" fill="#fef08a" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">${s.le.toFixed(1)}×${s.h.toFixed(1)}</text>
+
+        <!-- #4 Derecha (Lateral Der Exterior) -->
+        <rect x="330" y="${cy - 18}" width="66" height="36" fill="#ea580c" stroke="#fff" rx="4"/>
+        <text x="363" y="${cy - 3}" fill="#fff" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">#4 Der Ext</text>
+        <text x="363" y="${cy + 11}" fill="#fef08a" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">${s.le.toFixed(1)}×${s.h.toFixed(1)}</text>
+
+        <!-- ETIQUETAS INTERIORES DEL HUECO (#6 Frente Int, #7 Atrás Int, #8 Izq Int, #9 Der Int) -->
+        <rect x="${cx - 64}" y="${yi + 4}" width="128" height="17" fill="#059669" rx="3"/>
+        <text x="${cx}" y="${yi + 16}" fill="#fff" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">#7 Int Atrás: ${s.wi.toFixed(1)}×${s.hi.toFixed(1)}cm</text>
+
+        <rect x="${cx - 64}" y="${yi + innerH - 21}" width="128" height="17" fill="#059669" rx="3"/>
+        <text x="${cx}" y="${yi + innerH - 9}" fill="#fff" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">#6 Int Frente: ${s.wi.toFixed(1)}×${s.hi.toFixed(1)}cm</text>
+
+        <rect x="${xi + 4}" y="${cy - 9}" width="46" height="18" fill="#10b981" rx="3"/>
+        <text x="${xi + 27}" y="${cy + 3}" fill="#052e16" font-family="monospace" font-size="8.8" font-weight="bold" text-anchor="middle">#8:${intShort.toFixed(1)}</text>
+
+        <rect x="${xi + innerW - 50}" y="${cy - 9}" width="46" height="18" fill="#10b981" rx="3"/>
+        <text x="${xi + innerW - 27}" y="${cy + 3}" fill="#052e16" font-family="monospace" font-size="8.8" font-weight="bold" text-anchor="middle">#9:${intShort.toFixed(1)}</text>
+
+        <!-- Cota de Espesor de Muro entre Exterior e Interior -->
+        <line x1="${x0 + outerW}" y1="${y0 + 18}" x2="${xi + innerW}" y2="${y0 + 18}" stroke="#f43f5e" stroke-width="2.5"/>
+        <text x="200" y="292" fill="#34d399" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">
+          Muro Concreto (Espacio entre Naranja y Verde) = ${s.tc.toFixed(1)} cm
+        </text>
+      `;
+    }
+  }
+
+  // PANEL 3: MOLDE DE MADERA 3D CON LAS PIEZAS NUMERADAS (#1 a #14) Y MEDIDAS EN CM
+  function drawMold3D(s) {
+    const svg = document.getElementById('svg-mold-3d');
+    const cos30 = 0.866, sin30 = 0.5;
+    const maxHorizSpan = (s.moldW + s.moldL) * cos30;
+    const maxVertSpan = (s.moldW + s.moldL) * sin30 + s.h;
+    const sc = Math.min(220 / Math.max(maxHorizSpan, 1), 155 / Math.max(maxVertSpan, 1));
+
+    const Lpx = Math.max(52, s.moldW * sc);
+    const Wpx = Math.max(40, s.moldL * sc);
+    const Hpx = Math.max(46, s.h * sc);
+
+    const ox = 215 + (Lpx - Wpx) * 0.35;
+    const oy = 110 - Hpx * 0.32;
+
+    function isoPt(u, v, z) {
+      return {
+        x: ox - u * cos30 + v * cos30,
+        y: oy + u * sin30 + v * sin30 + z
+      };
+    }
+
+    const pTopBack  = isoPt(0, 0, 0);
+    const pTopLeft  = isoPt(Lpx, 0, 0);
+    const pTopFront = isoPt(Lpx, Wpx, 0);
+    const pTopRight = isoPt(0, Wpx, 0);
+
+    const pBotBack  = isoPt(0, 0, Hpx);
+    const pBotLeft  = isoPt(Lpx, 0, Hpx);
+    const pBotFront = isoPt(Lpx, Wpx, Hpx);
+    const pBotRight = isoPt(0, Wpx, Hpx);
+
+    // Base #5 sobresaliendo ligeramente para que se vea clara
+    const bBack  = isoPt(-6, -6, Hpx + 4);
+    const bLeft  = isoPt(Lpx + 6, -6, Hpx + 4);
+    const bFront = isoPt(Lpx + 6, Wpx + 6, Hpx + 4);
+    const bRight = isoPt(-6, Wpx + 6, Hpx + 4);
+
+    // Núcleo verde interior (#6, #7, #8, #9)
+    const tL = Lpx * 0.22, tW = Wpx * 0.22;
+    const iTopBack  = isoPt(tL, tW, 0);
+    const iTopLeft  = isoPt(Lpx - tL, tW, 0);
+    const iTopFront = isoPt(Lpx - tL, Wpx - tW, 0);
+    const iTopRight = isoPt(tL, Wpx - tW, 0);
+
+    // Puente superior (#11-#14)
+    const brLeft1  = isoPt(Lpx * 0.5 - 6, -8, -4);
+    const brRight1 = isoPt(Lpx * 0.5 - 6, Wpx + 8, -4);
+    const brRight2 = isoPt(Lpx * 0.5 + 6, Wpx + 8, -4);
+    const brLeft2  = isoPt(Lpx * 0.5 + 6, -8, -4);
+
+    const fLeftMid  = { x: (pTopLeft.x + pBotFront.x)/2, y: (pTopLeft.y + pBotFront.y)/2 };
+    const fRightMid = { x: (pTopFront.x + pBotRight.x)/2, y: (pTopFront.y + pBotRight.y)/2 };
+
+    svg.innerHTML = `
+      <!-- Base Azul #5 -->
+      <polygon points="${bBack.x},${bBack.y} ${bRight.x},${bRight.y} ${bFront.x},${bFront.y} ${bLeft.x},${bLeft.y}" fill="#0284c7" stroke="#bae6fd" stroke-width="1.8"/>
+
+      <!-- Paredes Exteriores Traseras #2 y #3 (Sombreadas) -->
+      <polygon points="${pTopBack.x},${pTopBack.y} ${pTopLeft.x},${pTopLeft.y} ${pBotLeft.x},${pBotLeft.y} ${pBotBack.x},${pBotBack.y}" fill="rgba(180,83,9,0.5)" stroke="#fde68a" stroke-dasharray="3,2"/>
+      <polygon points="${pTopBack.x},${pTopBack.y} ${pTopRight.x},${pTopRight.y} ${pBotRight.x},${pBotRight.y} ${pBotBack.x},${pBotBack.y}" fill="rgba(180,83,9,0.5)" stroke="#fde68a" stroke-dasharray="3,2"/>
+
+      <!-- Pared Exterior Frontal-Izquierda #1 (Naranja) -->
+      <polygon points="${pTopLeft.x},${pTopLeft.y} ${pTopFront.x},${pTopFront.y} ${pBotFront.x},${pBotFront.y} ${pBotLeft.x},${pBotLeft.y}" fill="rgba(217, 119, 6, 0.86)" stroke="#fef08a" stroke-width="1.8"/>
+
+      <!-- Pared Exterior Lateral-Derecha #4 (Naranja Oscuro) -->
+      <polygon points="${pTopFront.x},${pTopFront.y} ${pTopRight.x},${pTopRight.y} ${pBotRight.x},${pBotRight.y} ${pBotFront.x},${pBotFront.y}" fill="rgba(234, 88, 12, 0.88)" stroke="#fef08a" stroke-width="1.8"/>
+
+      <!-- Núcleo Verde Interior (#6, #7, #8, #9 y Fondo #10) -->
+      <polygon points="${iTopBack.x},${iTopBack.y} ${iTopRight.x},${iTopRight.y} ${iTopFront.x},${iTopFront.y} ${iTopLeft.x},${iTopLeft.y}" fill="#059669" stroke="#a7f3d0" stroke-width="2"/>
+
+      <!-- Puente Tensor Superior (#11-#14) -->
+      <polygon points="${brLeft1.x},${brLeft1.y} ${brRight1.x},${brRight1.y} ${brRight2.x},${brRight2.y} ${brLeft2.x},${brLeft2.y}" fill="#4f46e5" stroke="#c7d2fe" stroke-width="1.5"/>
+
+      <!-- Etiquetas con Número de Corte y Medida sobre el Molde -->
+      <circle cx="${fLeftMid.x}" cy="${fLeftMid.y - 6}" r="12" fill="#091326" stroke="#fff" stroke-width="1.5"/>
+      <text x="${fLeftMid.x}" y="${fLeftMid.y - 2}" fill="#fde047" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">#1</text>
+      <text x="${fLeftMid.x}" y="${fLeftMid.y + 16}" fill="#fff" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">${s.moldW.toFixed(1)}×${s.h.toFixed(1)}cm</text>
+
+      <circle cx="${fRightMid.x}" cy="${fRightMid.y - 6}" r="12" fill="#091326" stroke="#fff" stroke-width="1.5"/>
+      <text x="${fRightMid.x}" y="${fRightMid.y - 2}" fill="#fde047" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">#4</text>
+      <text x="${fRightMid.x}" y="${fRightMid.y + 16}" fill="#fff" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">${s.le.toFixed(1)}×${s.h.toFixed(1)}cm</text>
+
+      <!-- Etiqueta Núcleo Verde (#6 a #10) -->
+      <rect x="${ox - 58}" y="${oy - 26}" width="116" height="20" fill="#059669" stroke="#fff" rx="4"/>
+      <text x="${ox}" y="${oy - 12}" fill="#fff" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Núcleo: #6 a #10</text>
+
+      <!-- Etiqueta Puente Superior (#11+) -->
+      <rect x="10" y="10" width="175" height="36" fill="rgba(15,23,42,0.92)" stroke="#4f46e5" rx="5"/>
+      <text x="18" y="25" fill="#a5b4fc" font-family="monospace" font-size="9.5" font-weight="bold">Puentes Arriba: #11-#14</text>
+      <text x="18" y="39" fill="#fde047" font-family="monospace" font-size="9.2">${(s.moldW+4).toFixed(1)} × 3.5 cm (x4)</text>
+
+      <!-- Etiqueta Base Azul #5 -->
+      <rect x="115" y="264" width="200" height="26" fill="rgba(2,132,199,0.92)" stroke="#fff" rx="5"/>
+      <text x="215" y="281" fill="#fff" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">Base Azul #5: ${s.moldW.toFixed(1)} × ${s.moldL.toFixed(1)} cm</text>
+    `;
+  }
+
+  // DIBUJA CADA PIEZA SOBRE EL TABLERO 244 × 183 CM A ESCALA 1:1 CON SU NÚMERO (#1, #2...) Y SU MEDIDA EN CM
   function renderPieceShapeOnBoard(it, rx, ry, rw, rh) {
     const cx = rx + rw / 2;
     const cy = ry + rh / 2;
     let shapeSVG = '';
 
     if (it.shapeType === 'polygon') {
-      // Cuadro guía punteado del recorte + Polígono real (Triángulo, Pentágono, Hexágono, Octágono, etc.)
       const n = it.sides || 6;
       const pts = [];
       const rotOffset = n === 3 ? -Math.PI / 2 : n === 8 ? Math.PI / 8 : -Math.PI / 2;
@@ -1038,23 +1524,20 @@
       shapeSVG = `
         <rect x="${rx}" y="${ry}" width="${rw}" height="${rh}" fill="rgba(0,0,0,0.12)" stroke="${it.color}" stroke-width="1" stroke-dasharray="3,2"/>
         <polygon points="${pts.join(' ')}" fill="${it.color}" fill-opacity="0.92" stroke="#ffffff" stroke-width="1.6"/>
-        ${it.code.includes('BASE') ? `<circle cx="${cx}" cy="${cy}" r="${Math.max(2.5, Math.min(rw,rh)*0.08)}" fill="#071020" stroke="#fff" stroke-width="1"/>` : ''}
+        ${it.code.includes('BASE') ? `<circle cx="${cx}" cy="${cy}" r="${Math.max(2.5, Math.min(rw,rh)*0.07)}" fill="#071020" stroke="#fff" stroke-width="1"/>` : ''}
       `;
     } else if (it.shapeType === 'diamond') {
-      // Rombo / Diamante real
       const pts = `${cx},${ry+1} ${rx+rw-1},${cy} ${cx},${ry+rh-1} ${rx+1},${cy}`;
       shapeSVG = `
         <rect x="${rx}" y="${ry}" width="${rw}" height="${rh}" fill="rgba(0,0,0,0.12)" stroke="${it.color}" stroke-width="1" stroke-dasharray="3,2"/>
         <polygon points="${pts}" fill="${it.color}" fill-opacity="0.92" stroke="#ffffff" stroke-width="1.6"/>
       `;
     } else if (it.shapeType === 'circle') {
-      // Disco circular real
       shapeSVG = `
         <rect x="${rx}" y="${ry}" width="${rw}" height="${rh}" fill="rgba(0,0,0,0.12)" stroke="${it.color}" stroke-width="1" stroke-dasharray="3,2"/>
         <ellipse cx="${cx}" cy="${cy}" rx="${rw*0.48}" ry="${rh*0.48}" fill="${it.color}" fill-opacity="0.92" stroke="#ffffff" stroke-width="1.6"/>
       `;
     } else if (it.shapeType === 'trapezoid') {
-      // Trapecio real para moldes piramidales
       const inset = rw * 0.14;
       const pts = `${rx+1},${ry+1} ${rx+rw-1},${ry+1} ${rx+rw-inset},${ry+rh-1} ${rx+inset},${ry+rh-1}`;
       shapeSVG = `
@@ -1062,33 +1545,35 @@
         <polygon points="${pts}" fill="${it.color}" fill-opacity="0.92" stroke="#ffffff" stroke-width="1.6"/>
       `;
     } else {
-      // Rectángulo limpio a escala exacta 1:1
       shapeSVG = `
         <rect x="${rx}" y="${ry}" width="${rw}" height="${rh}" fill="${it.color}" fill-opacity="0.9" stroke="#ffffff" stroke-width="1.4"/>
-        ${it.shapeType === 'rect_base' ? `<circle cx="${cx}" cy="${cy}" r="${Math.max(2.5, Math.min(rw,rh)*0.08)}" fill="#071020" stroke="#fff" stroke-width="1.2"/>` : ''}
+        ${it.shapeType === 'rect_base' ? `<circle cx="${cx}" cy="${cy - (rh > 42 ? 12 : 0)}" r="${Math.max(2.5, Math.min(rw,rh)*0.06)}" fill="#071020" stroke="#fff" stroke-width="1.2"/>` : ''}
       `;
     }
 
-    // Solo ponemos el número limpio (#1, #2...) en el centro para no saturar el área de corte
     const minSide = Math.min(rw, rh);
-    const fontSize = Math.max(7.5, Math.min(13, minSide * 0.42));
-    const badgeR = Math.max(5.5, Math.min(11, minSide * 0.34));
+    const showDimsInside = rw >= 46 && rh >= 26;
+    const fontSize = Math.max(7.5, Math.min(13, minSide * 0.38));
 
     return `
       <g>
-        <title>Pieza #${it.num} (${it.code}): ${it.origW.toFixed(1)} × ${it.origH.toFixed(1)} cm — ${it.shapeLabel}</title>
+        <title>Pieza #${it.num} (${it.sideRole}): ${it.origW.toFixed(1)} × ${it.origH.toFixed(1)} cm</title>
         ${shapeSVG}
-        ${minSide >= 9 ? `<circle cx="${cx}" cy="${cy}" r="${badgeR}" fill="rgba(7, 16, 32, 0.78)" stroke="#fff" stroke-width="0.8"/>` : ''}
-        <text x="${cx}" y="${cy + fontSize * 0.34}" fill="#ffffff" font-family="monospace" font-size="${fontSize}" font-weight="bold" text-anchor="middle">${it.num}</text>
+        ${showDimsInside ? `
+          <rect x="${cx - Math.min(rw*0.44, 44)}" y="${cy - 13}" width="${Math.min(rw*0.88, 88)}" height="26" fill="rgba(7,16,32,0.82)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8" rx="4"/>
+          <text x="${cx}" y="${cy - 1}" fill="#ffffff" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">#${it.num}</text>
+          <text x="${cx}" y="${cy + 10}" fill="#fde047" font-family="monospace" font-size="8.8" font-weight="bold" text-anchor="middle">${it.w.toFixed(1)}×${it.h.toFixed(1)}cm</text>
+        ` : `
+          ${minSide >= 9 ? `<circle cx="${cx}" cy="${cy}" r="${Math.max(5.5, Math.min(10.5, minSide*0.34))}" fill="rgba(7,16,32,0.82)" stroke="#fff" stroke-width="0.8"/>` : ''}
+          <text x="${cx}" y="${cy + fontSize * 0.34}" fill="#ffffff" font-family="monospace" font-size="${fontSize}" font-weight="bold" text-anchor="middle">${it.num}</text>
+        `}
       </g>
     `;
   }
 
-  // RENDERIZA CADA TABLERO DE 244 × 183 CM CON ESCALA REAL 1:1 UNIFORME (1 CM X = 1 CM Y = 1 CM REGLA)
+  // RENDERIZA EL TABLERO 244 × 183 CM A ESCALA 1:1 ESTRICTA
   function renderBoardSVG(board, totalBoards, spec) {
     const ox = 54, oy = 38;
-    // En Modo Completo vemos los 244 × 183 cm completos a escala 1:1 uniforme.
-    // En Modo Lupa 1:1 recortamos la vista a la esquina usada (con un margen limpio) manteniendo 1:1 exacto con la regla.
     const visW_cm = boardZoomMode === 'crop'
       ? Math.min(BOARD_W, Math.max(60, Math.ceil((board.maxXUsed + 15) / 10) * 10))
       : BOARD_W;
@@ -1096,13 +1581,11 @@
       ? Math.min(BOARD_H, Math.max(40, Math.ceil((board.maxYUsed + 15) / 10) * 10))
       : BOARD_H;
 
-    // Factor de escala UNIFORME (1 cm horizontal mide exactamente los mismos píxeles que 1 cm vertical)
     const sc = Math.min(860 / visW_cm, 620 / visH_cm);
     const drawW = visW_cm * sc;
     const drawH = visH_cm * sc;
     const svgTotalH = Math.round(drawH + 68);
 
-    // Reglas graduadas exactas en centímetros
     const stepCm = visW_cm <= 90 ? 5 : visW_cm <= 150 ? 10 : 20;
     let rulers = '';
     for (let x = 0; x <= visW_cm; x += stepCm) {
@@ -1129,7 +1612,6 @@
       rulers += `<text x="${ox - 10}" y="${oy + drawH + 4}" fill="#fbbf24" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">183cm</text>`;
     }
 
-    // Dibujar todas las piezas en sus coordenadas exactas 1:1 dentro del tablero
     const piecesSVG = board.placedItems.map(it => {
       const rx = ox + it.x * sc;
       const ry = oy + it.y * sc;
@@ -1138,7 +1620,6 @@
       return renderPieceShapeOnBoard(it, rx, ry, rw, rh);
     }).join('');
 
-    // Rectángulo envolvente rojo punteado del bloque compacto usado (muestra el corte guillotina exterior)
     const boundW = board.maxXUsed * sc;
     const boundH = board.maxYUsed * sc;
     const freeRightCm = (BOARD_W - board.maxXUsed).toFixed(1);
@@ -1148,21 +1629,16 @@
       <div class="board-sheet-box">
         <div class="preview-header" style="color:#fde68a;">
           <span>TABLERO #${board.boardIndex} DE ${totalBoards} — MDF TRUPAN 244 × 183 CM (ESPESOR ${spec.tw.toFixed(1)} CM) — MODELO ${activeModel.id} (${activeModel.name})</span>
-          <span style="color:#34d399;">BLOQUE COMPACTO USADO: ${board.maxXUsed.toFixed(1)} CM ANCHO × ${board.maxYUsed.toFixed(1)} CM ALTO</span>
+          <span style="color:#34d399;">BLOQUE COMPACTO USADO: ${board.maxXUsed.toFixed(1)} CM × ${board.maxYUsed.toFixed(1)} CM</span>
         </div>
         <svg class="responsive-svg board-svg-item" viewBox="0 0 950 ${svgTotalH}" xmlns="http://www.w3.org/2000/svg">
-          <!-- Tablero MDF Trupan -->
           <rect x="${ox}" y="${oy}" width="${drawW}" height="${drawH}" fill="#d8c398" stroke="#f59e0b" stroke-width="3"/>
           ${rulers}
           ${piecesSVG}
-
-          <!-- Líneas rojas del bloque compacto mínimo utilizado -->
           <rect x="${ox}" y="${oy}" width="${boundW}" height="${boundH}" fill="none" stroke="#f43f5e" stroke-width="2" stroke-dasharray="6,4"/>
-
-          <!-- Cota del bloque compacto y madera libre intacta -->
-          <rect x="${ox + 8}" y="${oy + Math.min(drawH - 34, boundH + 8)}" width="${Math.min(drawW - 16, 610)}" height="24" fill="rgba(7, 16, 32, 0.9)" rx="4"/>
+          <rect x="${ox + 8}" y="${oy + Math.min(drawH - 34, boundH + 8)}" width="${Math.min(drawW - 16, 630)}" height="24" fill="rgba(7, 16, 32, 0.9)" rx="4"/>
           <text x="${ox + 16}" y="${oy + Math.min(drawH - 18, boundH + 24)}" fill="#34d399" font-family="monospace" font-size="10.5" font-weight="bold">
-            BLOQUE COMPACTO: ${board.maxXUsed.toFixed(1)} × ${board.maxYUsed.toFixed(1)} cm | LIBRE A LA DERECHA: ${freeRightCm} cm | LIBRE ABAJO: 244 × ${freeBottomCm} cm
+            BLOQUE COMPACTO: ${board.maxXUsed.toFixed(1)} × ${board.maxYUsed.toFixed(1)} cm | LIBRE DERECHA: ${freeRightCm} cm | LIBRE ABAJO: 244 × ${freeBottomCm} cm
           </text>
         </svg>
       </div>
@@ -1188,8 +1664,8 @@
     const numBoards = packed.boards.length;
     const b0 = packed.boards[0];
 
-    document.getElementById('title-shape').textContent = `1. FORMA FINAL DE LA MACETA: ${activeModel.id} (${activeModel.name})`;
-    document.getElementById('legend-title').textContent = `3. Leyenda por Colores y Números para ${activeModel.id} (${activeModel.name})`;
+    document.getElementById('title-shape').textContent = `1. MACETA 3D ACOTADA: ${activeModel.id} (${activeModel.name})`;
+    document.getElementById('legend-title').textContent = `4. Correspondencia Exacta de Números (#1 a #${packed.allPlaced.length}), Lados de la Matera y Medidas en CM`;
 
     let totalArea = 0;
     packed.boards.forEach(b => { totalArea += b.areaUsed; });
@@ -1197,162 +1673,43 @@
 
     document.getElementById('m-ext').textContent = `${spec.we.toFixed(1)} × ${spec.le.toFixed(1)} × ${spec.h.toFixed(1)} cm`;
     document.getElementById('m-int').textContent = `${spec.wi.toFixed(1)} × ${spec.li.toFixed(1)} × ${spec.hi.toFixed(1)} cm`;
+    document.getElementById('m-wall').textContent = `Muro: ${spec.tc.toFixed(1)} cm | Fondo: ${spec.tc.toFixed(1)} cm`;
     document.getElementById('m-bbox').textContent = `${b0.maxXUsed.toFixed(1)} × ${b0.maxYUsed.toFixed(1)} cm`;
-    document.getElementById('m-free').textContent = `244 × ${(BOARD_H - b0.maxYUsed).toFixed(1)} cm libres`;
     document.getElementById('m-boards').textContent = numBoards === 1
-      ? `1 Tabla (Usa ${pctBoard}% del área)`
+      ? `1 Tabla (Usa ${pctBoard}%)`
       : `${numBoards} Tablas de 244×183 cm`;
 
     const banner = document.getElementById('board-status-banner');
     const bannerTxt = document.getElementById('board-status-text');
     if (numBoards === 1) {
       banner.className = 'board-alert';
-      bannerTxt.innerHTML = `<strong>✅ ESCALA 1:1 COMPACTA (${activeModel.id}):</strong> Las ${packed.allPlaced.length} piezas ocupan un bloque compacto de <strong>${b0.maxXUsed.toFixed(1)} × ${b0.maxYUsed.toFixed(1)} cm</strong> sin salirse de la tabla.`;
+      bannerTxt.innerHTML = `<strong>✅ ESCALA 1:1 COMPACTA (${activeModel.id}):</strong> Cada número en el tablero (<strong>#1 al #${packed.allPlaced.length}</strong>) coincide con su lado exacto en la maceta 3D y en la planta técnica.`;
     } else {
       banner.className = 'board-alert multi';
-      bannerTxt.innerHTML = `<strong>⚠️ SE NECESITAN ${numBoards} TABLAS DE 244 × 183 CM:</strong> Abajo se muestran las ${numBoards} tablas empaquetadas al máximo sin desperdicio.`;
+      bannerTxt.innerHTML = `<strong>⚠️ SE NECESITAN ${numBoards} TABLAS DE 244 × 183 CM PARA ESTE MOLDE:</strong> Abajo tienes las ${numBoards} tablas con todas las piezas numeradas (#1 al #${packed.allPlaced.length}).`;
     }
 
     drawFinalShape3D(spec);
-    drawMold3D(spec, packed);
+    drawPlanSideMap(spec);
+    drawMold3D(spec);
 
     document.getElementById('boards-render-zone').innerHTML = packed.boards
       .map(b => renderBoardSVG(b, numBoards, spec))
       .join('');
 
-    renderLegendAndTable(packed, spec);
+    renderLegendAndTable(packed);
   }
 
-  // DIBUJA LA IMAGEN 3D DE LA FORMA FINAL DE LA MACETA
-  function drawFinalShape3D(s) {
-    const svg = document.getElementById('svg-final-shape');
-    const showPlant = document.getElementById('chk-plant').checked;
-    const cx = 215, cy = 138;
-
-    const ratioWH = s.we / Math.max(s.h, 1);
-    const potH = Math.min(120, Math.max(54, 98 / Math.max(0.55, Math.min(1.6, ratioWH * 0.7))));
-    const potW = Math.min(182, Math.max(72, potH * Math.min(2.1, Math.max(0.65, ratioWH))));
-    const depthY = Math.min(30, potW * 0.24);
-
-    const topY = cy - potH * 0.42;
-    const botY = topY + potH;
-    const taper = (s.geom === 'taper_sled') ? potW * 0.16 : 0;
-    const legH = (s.geom === 'legged') ? 18 : 0;
-    const bodyBotY = botY - legH;
-
-    let plantSVG = '';
-    if (showPlant) {
-      plantSVG = `
-        <g>
-          <ellipse cx="${cx}" cy="${topY - 4}" rx="${potW*0.32}" ry="${depthY*0.55}" fill="#422006"/>
-          <path d="M ${cx} ${topY-6} C ${cx-28} ${topY-38}, ${cx-44} ${topY-15}, ${cx-14} ${topY-4} Z" fill="#16a34a" stroke="#86efac"/>
-          <path d="M ${cx} ${topY-6} C ${cx+28} ${topY-38}, ${cx+44} ${topY-15}, ${cx+14} ${topY-4} Z" fill="#15803d" stroke="#86efac"/>
-          <path d="M ${cx} ${topY-8} C ${cx-16} ${topY-52}, ${cx+16} ${topY-52}, ${cx} ${topY-8} Z" fill="#22c55e" stroke="#bbf7d0"/>
-        </g>
-      `;
-    }
-
-    let bodySVG = '';
-    if (s.sides !== 4 || s.geom === 'hybrid_cyl') {
-      const nCols = s.geom === 'hybrid_cyl' ? 16 : Math.max(3, Math.min(7, Math.floor(s.sides / 2) + 1));
-      const colW = potW / nCols;
-      const shades = ['#cbd5e1', '#94a3b8', '#64748b', '#475569', '#334155', '#475569', '#64748b'];
-      let facets = '';
-      for (let i = 0; i < nCols; i++) {
-        const x1 = (cx - potW/2) + i * colW, x2 = x1 + colW;
-        facets += `<polygon points="${x1},${topY} ${x2},${topY} ${x2},${bodyBotY} ${x1},${bodyBotY}" fill="${shades[i % shades.length]}" stroke="#475569" stroke-width="0.8"/>`;
-      }
-      bodySVG = `
-        <ellipse cx="${cx}" cy="${botY + 6}" rx="${potW*0.54}" ry="${depthY*0.7}" fill="rgba(0,0,0,0.45)"/>
-        ${facets}
-        <ellipse cx="${cx}" cy="${topY}" rx="${potW/2}" ry="${depthY}" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
-        <ellipse cx="${cx}" cy="${topY}" rx="${potW*0.38}" ry="${depthY*0.74}" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
-      `;
-    } else {
-      const lx = cx - potW/2, rx = cx + potW/2;
-      const bLx = lx + taper, bRx = rx - taper;
-      let extraDecor = '';
-      if (s.geom === 'fluted') {
-        for (let x = lx + 8; x < cx - 4; x += 9) extraDecor += `<line x1="${x}" y1="${topY + depthY*0.5}" x2="${x}" y2="${bodyBotY + depthY*0.4}" stroke="#475569" stroke-width="2.5"/>`;
-        for (let x = cx + 6; x < rx - 6; x += 9) extraDecor += `<line x1="${x}" y1="${topY + depthY*0.5}" x2="${x}" y2="${bodyBotY + depthY*0.4}" stroke="#334155" stroke-width="2.5"/>`;
-      }
-      if (s.geom === 'stepped') {
-        extraDecor += `
-          <polygon points="${cx},${topY+depthY} ${rx},${topY} ${rx},${topY+22} ${cx+18},${topY+depthY+15}" fill="#475569" stroke="#e2e8f0"/>
-          <polygon points="${cx+18},${topY+depthY+15} ${rx},${topY+22} ${rx},${topY+44} ${cx+34},${topY+depthY+30}" fill="#334155" stroke="#e2e8f0"/>
-        `;
-      }
-      if (s.geom === 'legged') {
-        extraDecor += `
-          <polygon points="${bLx},${bodyBotY} ${bLx+18},${bodyBotY+6} ${bLx+18},${botY+6} ${bLx},${botY}" fill="#64748b" stroke="#cbd5e1"/>
-          <polygon points="${cx-10},${bodyBotY+depthY*0.8} ${cx+10},${bodyBotY+depthY*0.8} ${cx+10},${botY+depthY*0.8} ${cx-10},${botY+depthY*0.8}" fill="#475569" stroke="#cbd5e1"/>
-          <polygon points="${bRx-18},${bodyBotY+6} ${bRx},${bodyBotY} ${bRx},${botY} ${bRx-18},${botY+6}" fill="#334155" stroke="#cbd5e1"/>
-        `;
-      }
-      bodySVG = `
-        <ellipse cx="${cx}" cy="${botY + depthY*0.6 + 6}" rx="${potW*0.55}" ry="${depthY*0.65}" fill="rgba(0,0,0,0.45)"/>
-        <polygon points="${lx},${topY} ${cx},${topY + depthY} ${cx},${bodyBotY + depthY} ${bLx},${bodyBotY}" fill="#94a3b8" stroke="#e2e8f0" stroke-width="1.5"/>
-        <polygon points="${cx},${topY + depthY} ${rx},${topY} ${bRx},${bodyBotY} ${cx},${bodyBotY + depthY}" fill="#64748b" stroke="#cbd5e1" stroke-width="1.5"/>
-        ${extraDecor}
-        <polygon points="${cx},${topY - depthY} ${rx},${topY} ${cx},${topY + depthY} ${lx},${topY}" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/>
-        <polygon points="${cx},${topY - depthY*0.72} ${cx + potW*0.36},${topY} ${cx},${topY + depthY*0.72} ${cx - potW*0.36},${topY}" fill="#1e293b" stroke="#475569" stroke-width="1.2"/>
-      `;
-    }
-
-    svg.innerHTML = `
-      ${bodySVG}
-      ${plantSVG}
-      <rect x="10" y="10" width="175" height="58" fill="rgba(15,23,42,0.88)" stroke="#38bdf8" rx="6"/>
-      <text x="18" y="26" fill="#38bdf8" font-family="monospace" font-size="10" font-weight="bold">MACETA FINAL (${s.sides} LADOS):</text>
-      <text x="18" y="42" fill="#fff" font-family="monospace" font-size="9.6">• Exterior: ${s.we.toFixed(1)}×${s.le.toFixed(1)} cm</text>
-      <text x="18" y="57" fill="#fde047" font-family="monospace" font-size="9.6" font-weight="bold">• Hueco Int: ${s.wi.toFixed(1)}×${s.li.toFixed(1)} cm</text>
-      <rect x="275" y="194" width="155" height="46" fill="rgba(15,23,42,0.88)" stroke="#10b981" rx="6"/>
-      <text x="285" y="212" fill="#34d399" font-family="monospace" font-size="9.6" font-weight="bold">Altura Total: ${s.h.toFixed(1)} cm</text>
-      <text x="285" y="229" fill="#e2e8f0" font-family="monospace" font-size="9.6">Muro Concreto: ${s.tc.toFixed(1)} cm</text>
-    `;
-  }
-
-  // DIBUJA EL ESQUEMA DE ARMADO VINCULADO POR COLORES Y NÚMEROS
-  function drawMold3D(s, packed) {
-    const svg = document.getElementById('svg-mold-3d');
-    const cx = 220, cy = 135, w = 145, h = 92, d = 25;
-    const topY = cy - h * 0.4, botY = topY + h;
-
-    svg.innerHTML = `
-      <!-- Base Azul -->
-      <polygon points="${cx},${botY - d - 8} ${cx + w*0.62},${botY} ${cx},${botY + d + 8} ${cx - w*0.62},${botY}" fill="#0284c7" stroke="#bae6fd" stroke-width="1.5"/>
-      <!-- Paredes Naranjas -->
-      <polygon points="${cx - w/2},${topY} ${cx},${topY + d} ${cx},${botY + d} ${cx - w/2},${botY}" fill="rgba(217, 119, 6, 0.85)" stroke="#fef08a" stroke-width="1.8"/>
-      <polygon points="${cx},${topY + d} ${cx + w/2},${topY} ${cx + w/2},${botY} ${cx},${botY + d}" fill="rgba(234, 88, 12, 0.88)" stroke="#fef08a" stroke-width="1.8"/>
-      <!-- Costillas Índigo -->
-      <polygon points="${cx - w/2 - 5},${cy} ${cx},${cy + d + 2} ${cx + w/2 + 5},${cy} ${cx + w/2 + 5},${cy + 11} ${cx},${cy + d + 13} ${cx - w/2 - 5},${cy + 11}" fill="#4f46e5" stroke="#bae6fd"/>
-      <!-- Boca y Núcleo Verde -->
-      <polygon points="${cx},${topY - d} ${cx + w/2},${topY} ${cx},${topY + d} ${cx - w/2},${topY}" fill="rgba(148,163,184,0.5)" stroke="#fff" stroke-width="1.5"/>
-      <polygon points="${cx},${topY - d*0.65} ${cx + w*0.32},${topY} ${cx},${topY + d*0.65} ${cx - w*0.32},${topY}" fill="#059669" stroke="#a7f3d0" stroke-width="2"/>
-
-      <rect x="10" y="10" width="205" height="60" fill="rgba(15,23,42,0.9)" stroke="#fbbf24" rx="6"/>
-      <text x="18" y="26" fill="#fbbf24" font-family="monospace" font-size="9.8" font-weight="bold">REGLA DE ARMADO POR COLOR:</text>
-      <text x="18" y="42" fill="#fdba74" font-family="monospace" font-size="9.3">1° Azul: Poner Base en mesa plana</text>
-      <text x="18" y="57" fill="#fde047" font-family="monospace" font-size="9.3">2° Naranja: Parar paredes alrededor</text>
-
-      <rect x="225" y="190" width="205" height="52" fill="rgba(15,23,42,0.9)" stroke="#38bdf8" rx="6"/>
-      <text x="233" y="207" fill="#6ee7b7" font-family="monospace" font-size="9.3">3° Verde + Morado: Armar núcleo int.</text>
-      <text x="233" y="222" fill="#f472b6" font-family="monospace" font-size="9.3">4° Rosado: Pegar insertos/patas</text>
-      <text x="233" y="236" fill="#a5b4fc" font-family="monospace" font-size="9.3">5° Índigo: Cruzar puentes arriba</text>
-    `;
-  }
-
-  // GENERA LAS TARJETAS DE LEYENDA DE COLORES Y LA TABLA CON LOS NÚMEROS CORRELATIVOS
-  function renderLegendAndTable(packed, spec) {
+  function renderLegendAndTable(packed) {
     const legendGrid = document.getElementById('color-legend-grid');
-    // Agrupar números asignados a cada grupo de color
+    // Tarjetas resumen agrupadas por rol/código
     const groupMap = new Map();
     packed.allPlaced.forEach(p => {
-      const k = p.code;
-      if (!groupMap.has(k)) {
-        groupMap.set(k, {
-          code: p.code,
-          name: p.name,
+      const baseCode = p.code.replace(/[0-9]+$/, '');
+      if (!groupMap.has(baseCode)) {
+        groupMap.set(baseCode, {
+          baseCode,
+          sideRole: p.sideRole.replace(/#[0-9]+/, ''),
           color: p.color,
           origW: p.origW,
           origH: p.origH,
@@ -1361,35 +1718,29 @@
           nums: []
         });
       }
-      groupMap.get(k).nums.push(p.num);
+      groupMap.get(baseCode).nums.push(`#${p.num}`);
     });
 
-    legendGrid.innerHTML = Array.from(groupMap.values()).map(g => {
-      const numRange = g.nums.length === 1
-        ? `#${g.nums[0]}`
-        : `#${g.nums[0]} al #${g.nums[g.nums.length - 1]}`;
-      return `
-        <div class="legend-card" style="border-left: 4px solid ${g.color};">
-          <div class="color-swatch" style="background:${g.color};">${g.nums[0]}</div>
-          <div class="legend-info">
-            <h4>Piezas ${numRange} (${g.nums.length}x) — ${g.name}</h4>
-            <span class="dims">${g.origW.toFixed(1)} cm × ${g.origH.toFixed(1)} cm (${g.shapeLabel})</span>
-            <p>${g.note}</p>
-          </div>
+    legendGrid.innerHTML = Array.from(groupMap.values()).map(g => `
+      <div class="legend-card" style="border-left: 4px solid ${g.color};">
+        <div class="color-swatch" style="background:${g.color};">${g.nums[0]}</div>
+        <div class="legend-info">
+          <h4>Cortes ${g.nums.join(', ')}</h4>
+          <span class="dims">${g.origW.toFixed(1)} cm × ${g.origH.toFixed(1)} cm (${g.shapeLabel})</span>
+          <p>${g.note}</p>
         </div>
-      `;
-    }).join('');
+      </div>
+    `).join('');
 
     const tbody = document.getElementById('cutlist-body');
     tbody.innerHTML = packed.allPlaced.map(p => `
       <tr>
         <td><span class="num-badge" style="background:${p.color};">#${p.num}</span></td>
         <td><strong>${p.code}</strong></td>
-        <td>${p.name}</td>
+        <td><strong>${p.sideRole}</strong></td>
         <td>${p.shapeLabel}</td>
-        <td><strong>1 pza</strong></td>
         <td><span class="cm-highlight">${p.origW.toFixed(1)} cm × ${p.origH.toFixed(1)} cm</span></td>
-        <td>Tabla #${p.boardNum} → X: ${p.x.toFixed(1)} cm, Y: ${p.y.toFixed(1)} cm</td>
+        <td>Tabla #${p.boardNum} → (X: ${p.x.toFixed(1)} cm, Y: ${p.y.toFixed(1)} cm)</td>
         <td>${p.note}</td>
       </tr>
     `).join('');
@@ -1421,7 +1772,7 @@
     const blob = new Blob([source], { type: 'image/svg+xml;charset=utf-8' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = `tablero_compacto_1a1_${activeModel.id}.svg`;
+    a.download = `plano_tablero_${activeModel.id}.svg`;
     a.click();
   }
 
@@ -1435,12 +1786,12 @@
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = `cortes_compactos_cm_${activeModel.id}.csv`;
+    a.download = `planilla_carpinteria_${activeModel.id}.csv`;
     a.click();
   }
 
   initPresets();
-  selectModel('M-26');
+  selectModel('M-50');
 </script>
 </body>
 </html>
