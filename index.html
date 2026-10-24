@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Optimizador de Corte Tablero MDF Trupan 4 mm (244 × 183 cm) + Forma Final 3D</title>
+  <title>Cortes Organizados en Tablero MDF 244×183 cm (Multi-Tablero Automático + Forma 3D)</title>
   <style>
     :root {
       --bg: #070d19;
@@ -13,8 +13,8 @@
       --accent2: #f59e0b;
       --success: #10b981;
       --danger: #f43f5e;
-      --mdf-bg: #d6c399;
-      --mdf-stroke: #8c6d3b;
+      --mdf-bg: #d8c398;
+      --mdf-used: #cab07c;
       --text: #f8fafc;
       --muted: #94a3b8;
     }
@@ -39,10 +39,10 @@
       flex-wrap: wrap;
       gap: 10px;
     }
-    header h1 { font-size: 1.25rem; color: var(--accent); }
+    header h1 { font-size: 1.22rem; color: var(--accent); }
     header p { color: var(--muted); font-size: 0.84rem; }
     .board-badge {
-      background: rgba(214, 195, 153, 0.18);
+      background: rgba(245, 158, 11, 0.18);
       color: #fde68a;
       border: 1px solid #f59e0b;
       padding: 6px 14px;
@@ -53,7 +53,7 @@
 
     .workspace {
       display: grid;
-      grid-template-columns: 370px 1fr;
+      grid-template-columns: 375px 1fr;
       gap: 16px;
     }
     @media (max-width: 1150px) {
@@ -67,7 +67,7 @@
       margin-bottom: 14px;
     }
     .panel h2 {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--accent2);
       margin-bottom: 8px;
       border-bottom: 1px solid #334155;
@@ -93,7 +93,7 @@
       margin: 7px 0 3px 0;
     }
     .preset-scroll {
-      max-height: 360px;
+      max-height: 350px;
       overflow-y: auto;
       padding-right: 4px;
       margin-bottom: 10px;
@@ -116,7 +116,7 @@
     }
     .preset-btn:hover, .preset-btn.active {
       border-color: var(--accent2);
-      background: rgba(245, 158, 11, 0.2);
+      background: rgba(245, 158, 11, 0.22);
     }
     .preset-btn strong { color: var(--accent2); display: block; font-size: 0.75rem; }
     .preset-btn span { color: var(--muted); font-size: 0.68rem; }
@@ -137,7 +137,7 @@
     }
     .form-group input, .form-group select {
       width: 100%;
-      padding: 5px 8px;
+      padding: 6px 8px;
       background: #050a14;
       border: 1px solid #475569;
       color: var(--text);
@@ -161,18 +161,19 @@
       cursor: pointer;
     }
     .action-btn.secondary { background: var(--success); color: #052e16; }
+    .action-btn.warning { background: var(--accent2); color: #050a14; }
     .action-btn.outline {
       background: transparent;
       color: var(--accent2);
       border: 1px solid var(--accent2);
     }
 
-    /* Top Preview Grid: Final Shape 3D + Mold 3D */
+    /* Top Preview Grid */
     .preview-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     @media (max-width: 900px) {
       .preview-grid { grid-template-columns: 1fr; }
@@ -183,9 +184,7 @@
       border-radius: 10px;
       padding: 12px;
     }
-    .preview-card.mold-card {
-      border-color: var(--accent2);
-    }
+    .preview-card.mold-card { border-color: var(--accent2); }
     .preview-header {
       display: flex;
       justify-content: space-between;
@@ -195,42 +194,67 @@
       margin-bottom: 8px;
       font-size: 0.8rem;
       font-weight: 700;
+      flex-wrap: wrap;
+      gap: 6px;
     }
 
-    /* Mode Selector for 244x183 Board */
-    .mode-bar {
+    /* Status Alert Banner for Number of Boards */
+    .board-alert {
+      background: rgba(16, 185, 129, 0.14);
+      border: 1px solid #10b981;
+      border-left: 5px solid #10b981;
+      color: #d1fae5;
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.85rem;
+    }
+    .board-alert.multi {
+      background: rgba(245, 158, 11, 0.16);
+      border-color: #f59e0b;
+      border-left-color: #f59e0b;
+      color: #fef3c7;
+    }
+
+    .scale-toggle-bar {
       display: flex;
       gap: 8px;
-      margin-bottom: 10px;
+      align-items: center;
       flex-wrap: wrap;
     }
-    .mode-btn {
+    .scale-btn {
       background: #071020;
       color: var(--text);
-      border: 1px solid #334155;
-      padding: 8px 12px;
+      border: 1px solid #475569;
+      padding: 6px 11px;
       border-radius: 6px;
       cursor: pointer;
+      font-size: 0.76rem;
       font-weight: 600;
-      font-size: 0.78rem;
     }
-    .mode-btn.active, .mode-btn:hover {
+    .scale-btn.active {
       background: var(--accent2);
       color: #050a14;
       border-color: var(--accent2);
     }
 
-    .board-container {
+    .board-sheet-box {
       background: #041222;
       border: 2px solid var(--accent2);
       border-radius: 10px;
       padding: 12px;
       overflow-x: auto;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
     svg.responsive-svg {
       width: 100%;
       height: auto;
+      min-width: 820px;
       display: block;
     }
 
@@ -238,7 +262,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 8px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .metric-box {
       background: #071020;
@@ -269,148 +293,151 @@
       font-size: 0.88rem;
       font-family: monospace;
     }
+    .board-tag {
+      background: rgba(56, 189, 248, 0.2);
+      color: #7dd3fc;
+      border: 1px solid #38bdf8;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-weight: 700;
+      font-size: 0.74rem;
+    }
   </style>
 </head>
 <body>
 
 <header>
   <div>
-    <h1>CORTES EN CENTÍMETROS SOBRE TABLERO MDF TRUPAN 4 MM (244 × 183 CM) + FORMA FINAL 3D</h1>
-    <p>Selecciona cualquier modelo para ver la Imagen 3D de la Maceta Final, el Molde Armado y cómo cortar cada pieza en centímetros sobre tu tablero</p>
+    <h1>VISUALIZADOR DE CORTES EN TABLERO MDF TRUPAN (244 × 183 CM) — MULTI-TABLERO AUTOMÁTICO</h1>
+    <p>Cada modelo muestra sus cortes organizados y acotados en centímetros dentro de la tabla. Si requiere más madera, genera automáticamente la Tabla #2, #3...</p>
   </div>
-  <span class="board-badge">Tablero: Trupan MDF 0.4 cm (4 mm) | 244 cm × 183 cm</span>
+  <span class="board-badge">Tablero Trupan MDF 4 mm (0.4 cm) | 244 cm × 183 cm</span>
 </header>
 
 <div class="workspace">
-  <!-- COLUMNA IZQUIERDA: 50 MODELOS Y AJUSTES EN CM -->
+  <!-- PANEL IZQUIERDO: SELECCIÓN DE MODELO Y MEDIDAS EN CM -->
   <div>
     <div class="panel">
-      <h2>1. Elige el Modelo de Maceta (50 Diseños)</h2>
-      <input type="text" id="search-model" class="filter-input" placeholder="Buscar modelo (ej. M-01, hexágono, 4 cm, patas, bonsái...)" oninput="filterModels()" />
+      <h2>1. Escoge el Modelo de Maceta (50 Modelos)</h2>
+      <input type="text" id="search-model" class="filter-input" placeholder="Buscar modelo (ej. M-01, M-33, M-47, hexágono, patas...)" oninput="filterModels()" />
       <div class="preset-scroll" id="preset-container"></div>
 
       <h2>2. Medidas de tu Maceta en Centímetros (cm)</h2>
       <div class="form-grid">
         <div class="form-group">
           <label><span>Ancho / Ø Int. (cm)</span> <strong id="lbl-wi">4.0 cm</strong></label>
-          <input type="number" id="in-wi" min="4.0" max="140.0" step="0.5" value="4.0" oninput="updateAll()" />
+          <input type="number" id="in-wi" min="4.0" max="160.0" step="0.5" value="4.0" oninput="updateAll()" />
         </div>
         <div class="form-group">
           <label><span>Largo Int. (cm)</span> <strong id="lbl-li">4.0 cm</strong></label>
-          <input type="number" id="in-li" min="4.0" max="140.0" step="0.5" value="4.0" oninput="updateAll()" />
+          <input type="number" id="in-li" min="4.0" max="160.0" step="0.5" value="4.0" oninput="updateAll()" />
         </div>
         <div class="form-group">
           <label><span>Altura Total (cm)</span> <strong id="lbl-h">6.0 cm</strong></label>
-          <input type="number" id="in-h" min="4.0" max="100.0" step="0.5" value="6.0" oninput="updateAll()" />
+          <input type="number" id="in-h" min="4.0" max="120.0" step="0.5" value="6.0" oninput="updateAll()" />
         </div>
         <div class="form-group">
           <label><span>Pared Concreto (cm)</span> <strong id="lbl-tc">1.0 cm</strong></label>
-          <input type="number" id="in-tc" min="0.8" max="6.0" step="0.1" value="1.0" oninput="updateAll()" />
+          <input type="number" id="in-tc" min="0.8" max="8.0" step="0.1" value="1.0" oninput="updateAll()" />
         </div>
-        <div class="form-group full">
-          <label><span>Espesor del Tablero (Trupan 4 mm = 0.4 cm)</span></label>
+        <div class="form-group">
+          <label><span>Espesor Tablero MDF</span></label>
           <select id="in-tw" onchange="updateAll()">
-            <option value="0.4" selected>0.4 cm (Tablero MDF Trupan 4 mm de tu imagen)</option>
-            <option value="0.9">0.9 cm (MDF 9 mm o Doble Capa 4+4 mm)</option>
-            <option value="1.2">1.2 cm (MDF / Triplex 12 mm)</option>
+            <option value="0.4" selected>0.4 cm (Trupan 4 mm)</option>
+            <option value="0.9">0.9 cm (MDF 9 mm)</option>
+            <option value="1.2">1.2 cm (MDF 12 mm)</option>
             <option value="1.5">1.5 cm (Melamina 15 mm)</option>
-            <option value="1.8">1.8 cm (Contrachapado 18 mm)</option>
+            <option value="1.8">1.8 cm (Triplex 18 mm)</option>
           </select>
+        </div>
+        <div class="form-group">
+          <label><span>Cant. Moldes a Cortar</span> <strong id="lbl-qty">1 molde</strong></label>
+          <input type="number" id="in-qty" min="1" max="30" step="1" value="1" oninput="updateAll()" />
         </div>
       </div>
 
       <div class="btn-row">
-        <button class="action-btn" onclick="downloadBoardSVG()">Descargar Plano 244×183 SVG</button>
-        <button class="action-btn secondary" onclick="downloadCSV()">Descargar Tabla en CM (Excel)</button>
-        <button class="action-btn outline" onclick="downloadShapeSVG()">Descargar Imagen Forma 3D</button>
-        <button class="action-btn outline" onclick="window.print()">Imprimir Guía de Cortes</button>
+        <button class="action-btn warning" onclick="pinCurrentModelBelow()">+ Fijar este Molde Abajo</button>
+        <button class="action-btn secondary" onclick="downloadCSV()">Descargar Cortes (Excel)</button>
+        <button class="action-btn" onclick="downloadFirstBoardSVG()">Descargar Plano SVG</button>
+        <button class="action-btn outline" onclick="window.print()">Imprimir Tablas de Corte</button>
       </div>
     </div>
   </div>
 
-  <!-- COLUMNA DERECHA: IMAGEN DE LA FORMA FINAL + PLANO DEL TABLERO 244x183 CM + TABLA EN CM -->
+  <!-- PANEL DERECHO: FORMA 3D + TABLEROS DE CORTE (1, 2 O MÁS TABLAS AUTOMÁTICAS) -->
   <div>
-    <!-- SECCIÓN A: IMAGEN DE LA FORMA FINAL DE LA MACETA + VISTA DEL MOLDE -->
+    <!-- VISTA 3D DE LA FORMA FINAL Y DEL MOLDE -->
     <div class="preview-grid">
       <div class="preview-card">
         <div class="preview-header">
-          <span style="color:#38bdf8;" id="title-shape">1. IMAGEN DE LA FORMA FINAL DE LA MACETA (CONCRETO)</span>
+          <span style="color:#38bdf8;" id="title-shape">1. IMAGEN DE LA FORMA FINAL DE LA MACETA</span>
           <label style="font-size:0.74rem; color:#34d399; cursor:pointer;">
             <input type="checkbox" id="chk-plant" checked onchange="updateAll()" /> Ver con Planta
           </label>
         </div>
-        <svg id="svg-final-shape" class="responsive-svg" viewBox="0 0 440 270" xmlns="http://www.w3.org/2000/svg"></svg>
+        <svg id="svg-final-shape" class="responsive-svg" style="min-width:100%;" viewBox="0 0 440 260" xmlns="http://www.w3.org/2000/svg"></svg>
       </div>
 
       <div class="preview-card mold-card">
         <div class="preview-header">
-          <span style="color:#fbbf24;">2. CÓMO SE ARMA EL MOLDE CON LOS CORTES DE MDF (0.4 CM)</span>
-          <span style="font-size:0.72rem; color:#fde68a;">Caja Exterior + Núcleo + Costillas</span>
+          <span style="color:#fbbf24;">2. ARMADO DEL MOLDE CON LOS CORTES DE LA TABLA</span>
+          <span style="font-size:0.72rem; color:#fde68a;">Medidas en Centímetros (cm)</span>
         </div>
-        <svg id="svg-mold-3d" class="responsive-svg" viewBox="0 0 440 270" xmlns="http://www.w3.org/2000/svg"></svg>
+        <svg id="svg-mold-3d" class="responsive-svg" style="min-width:100%;" viewBox="0 0 440 260" xmlns="http://www.w3.org/2000/svg"></svg>
       </div>
     </div>
 
-    <!-- BARRA DE RESUMEN RÁPIDO EN CM -->
+    <!-- RESUMEN DE MEDIDAS Y CANTIDAD DE TABLAS REQUERIDAS -->
     <div class="metrics-bar">
       <div class="metric-box"><span>Medida Exterior Maceta</span><strong id="m-ext">-</strong></div>
       <div class="metric-box"><span>Hueco Interior (Cavidad)</span><strong id="m-int">-</strong></div>
-      <div class="metric-box"><span>Área Usada por 1 Molde</span><strong id="m-used">-</strong></div>
-      <div class="metric-box"><span>Moldes que Caben en 244×183</span><strong id="m-fit">-</strong></div>
-      <div class="metric-box"><span>Tablero Libre Restante</span><strong id="m-free">-</strong></div>
+      <div class="metric-box"><span>Total Piezas a Cortar</span><strong id="m-pieces">-</strong></div>
+      <div class="metric-box"><span>Área Total Requerida</span><strong id="m-used">-</strong></div>
+      <div class="metric-box"><span>Tableros 244×183 Necesarios</span><strong id="m-boards" style="color:#fde047;">-</strong></div>
     </div>
 
-    <!-- SECCIÓN B: PLANO DE CORTE SOBRE EL TABLERO TRUPAN DE 244 CM X 183 CM -->
-    <div class="mode-bar">
-      <button class="mode-btn active" onclick="setBoardMode('single', this)">
-        Modo 1: Cortar 1 Molde de este Modelo en el Tablero (244 × 183 cm)
-      </button>
-      <button class="mode-btn" onclick="setBoardMode('multi', this)">
-        Modo 2: Llenar el Tablero con Varios Moldes de este Modelo
-      </button>
-      <button class="mode-btn" onclick="setBoardMode('combo', this)">
-        Modo 3: Kit Multiformas (12 Modelos Diferentes en tu Tablero de 244 × 183 cm)
-      </button>
-    </div>
-
-    <div class="board-container">
-      <div class="preview-header" style="color:#fde68a;">
-        <span id="board-title">PLANO DE CORTE SOBRE TABLERO MDF TRUPAN DE 244 CM × 183 CM (ESPESOR 0.4 CM)</span>
-        <span>TODAS LAS MEDIDAS ESTÁN EN CENTÍMETROS (CM)</span>
+    <!-- BANNER DE ESTADO Y SELECTOR DE VISTA EN LA TABLA -->
+    <div id="board-status-banner" class="board-alert">
+      <div id="board-status-text">
+        <strong>✅ ESTE MOLDE ALCANZA EN 1 SOLA TABLA DE 244 × 183 CM</strong>
       </div>
-      <svg id="svg-board-244" class="responsive-svg" viewBox="0 0 960 560" xmlns="http://www.w3.org/2000/svg"></svg>
-    </div>
-
-    <!-- SECCIÓN C: ZOOM DE FAJA DE CORTE (1:1 LEGIBLE EN CENTÍMETROS) -->
-    <div class="board-container" style="border-color:#38bdf8;">
-      <div class="preview-header" style="color:#38bdf8;">
-        <span id="zoom-title">ZOOM DE TIRA DE CORTE (MEDIDAS AMPLIADAS EN CENTÍMETROS PARA EL MODELO SELECCIONADO)</span>
-        <span>LÍNEAS ROJAS PUNTEADAS = POR DÓNDE PASAR LA SIERRA O BISTURÍ PESADO</span>
+      <div class="scale-toggle-bar">
+        <button class="scale-btn active" id="btn-view-org" onclick="setViewStyle('organized')">
+          Vista de Cortes Organizados y Grandes en la Tabla (Recomendado)
+        </button>
+        <button class="scale-btn" id="btn-view-real" onclick="setViewStyle('real')">
+          Vista Proporción Estricta 1:1 (244 × 183 cm)
+        </button>
       </div>
-      <svg id="svg-strip-zoom" class="responsive-svg" viewBox="0 0 960 220" xmlns="http://www.w3.org/2000/svg"></svg>
     </div>
 
-    <!-- SECCIÓN D: TABLA DE CORTES EN CENTÍMETROS -->
+    <!-- CONTENEDOR DINÁMICO DONDE SALEN 1, 2 O MÁS TABLEROS SEGÚN SE NECESITE -->
+    <div id="boards-render-zone"></div>
+
+    <!-- TABLA DETALLADA DE CORTES EN CENTÍMETROS -->
     <div class="panel">
-      <h2>3. Lista Exacta de Cortes en Centímetros (cm) para el Modelo Seleccionado</h2>
-      <p style="font-size:0.8rem; color:var(--muted); margin-bottom:6px;">
-        Todas las medidas ya incluyen el ajuste exacto para el espesor de tu tablero (**0.4 cm**). Corta primero una faja del ancho indicado y luego divídela en estos tramos:
-      </p>
+      <h2 id="table-title">3. Cuadro de Cortes Exactos en Centímetros (cm) Ubicados en la Tabla</h2>
       <table id="cutlist-table">
         <thead>
           <tr>
-            <th>Orden</th>
+            <th>Tabla Asignada</th>
+            <th>Faja / Fila</th>
             <th>Código Pieza</th>
             <th>Parte del Molde</th>
             <th>Cantidad</th>
-            <th>Medida a Cortar en CM (Ancho × Alto)</th>
-            <th>Ángulo en Bordes</th>
-            <th>Cómo se Arma en el Molde</th>
+            <th>Medida Exacta a Cortar (Ancho × Alto en cm)</th>
+            <th>Ángulo / Bisel</th>
+            <th>Explicación de Armado</th>
           </tr>
         </thead>
         <tbody id="cutlist-body"></tbody>
       </table>
     </div>
+
+    <!-- ZONA DE MODELOS FIJADOS ABAJO (PARA COMPARAR VARIOS MODELOS CADA UNO CON SU TABLA) -->
+    <div id="pinned-models-zone"></div>
   </div>
 </div>
 
@@ -460,27 +487,28 @@
     { id:'M-37', fam:'3. Bonsái, Pailas y Jardineras', name:'Jardinera Balcón 60 cm', desc:'55×16 cm Int | Alto 20.0 cm', wi:55.0, li:16.0, h:20.0, tc:2.5, geom:'rect_butt' },
     { id:'M-38', fam:'3. Bonsái, Pailas y Jardineras', name:'Jardinera Ventana 80 cm', desc:'75×15 cm Int | Alto 18.0 cm', wi:75.0, li:15.0, h:18.0, tc:2.5, geom:'rect_butt' },
 
-    // FAMILIA 4: GRANDES FORMATOS (M-39 a M-50)
-    { id:'M-39', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Octágono de Patio 35 cm', desc:'Ø 35 cm Int | Alto 35.0 cm', wi:35.0, li:35.0, h:35.0, tc:3.0, geom:'oct_225' },
-    { id:'M-40', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Maceta Facetada 3D', desc:'30×30 cm Int | Alto 35.0 cm', wi:30.0, li:30.0, h:35.0, tc:3.0, geom:'chamfer_45' },
-    { id:'M-41', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Obelisco Piramidal Alto', desc:'32×32 cm Int | Alto 70.0 cm', wi:32.0, li:32.0, h:70.0, tc:3.0, geom:'taper_sled' },
-    { id:'M-42', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Cilindro Patio 16 Duelas', desc:'Ø 45 cm Int | Alto 45.0 cm', wi:45.0, li:45.0, h:45.0, tc:3.0, geom:'hexadec_1125' },
-    { id:'M-43', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Torre Alta 60×60×80 cm', desc:'50×50 cm Int | Alto 80.0 cm', wi:50.0, li:50.0, h:80.0, tc:5.0, geom:'rect_butt' },
-    { id:'M-44', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Columna Hexagonal 90 cm', desc:'Ø 40 cm Int | Alto 90.0 cm', wi:40.0, li:40.0, h:90.0, tc:4.0, geom:'hex_30' },
-    { id:'M-45', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Jardinera Esquinera 80 cm', desc:'70×70 cm Int | Alto 40.0 cm', wi:70.0, li:70.0, h:40.0, tc:5.0, geom:'shadow_gap' },
-    { id:'M-46', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Jardinera Envolvente 90 cm', desc:'80×60 cm Int | Alto 40.0 cm', wi:80.0, li:60.0, h:40.0, tc:5.0, geom:'rect_butt' },
-    { id:'M-47', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Cubo Monumental 80×80 cm', desc:'68×68 cm Int | Alto 80.0 cm', wi:68.0, li:68.0, h:80.0, tc:6.0, geom:'chamfer_45' },
-    { id:'M-48', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Divisor Urbano 100 cm', desc:'90×28 cm Int | Alto 45.0 cm', wi:90.0, li:28.0, h:45.0, tc:5.0, geom:'rect_butt' },
-    { id:'M-49', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Banca Jardinera 120 cm', desc:'108×38 cm Int | Alto 50.0 cm', wi:108.0, li:38.0, h:50.0, tc:6.0, geom:'rim_lip' },
-    { id:'M-50', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Corredor Urbano 150 cm', desc:'138×33 cm Int | Alto 45.0 cm', wi:138.0, li:33.0, h:45.0, tc:6.0, geom:'rect_butt' }
+    // FAMILIA 4: GRANDES FORMATOS Y MULTI-TABLERO (M-39 a M-50)
+    { id:'M-39', fam:'4. Grandes Formatos (1 a 3 Tableros)', name:'Octágono de Patio 35 cm', desc:'Ø 35 cm Int | Alto 35.0 cm', wi:35.0, li:35.0, h:35.0, tc:3.0, geom:'oct_225' },
+    { id:'M-40', fam:'4. Grandes Formatos (1 a 3 Tableros)', name:'Maceta Facetada 3D', desc:'30×30 cm Int | Alto 35.0 cm', wi:30.0, li:30.0, h:35.0, tc:3.0, geom:'chamfer_45' },
+    { id:'M-41', fam:'4. Grandes Formatos (1 a 3 Tableros)', name:'Obelisco Piramidal Alto', desc:'32×32 cm Int | Alto 70.0 cm', wi:32.0, li:32.0, h:70.0, tc:3.0, geom:'taper_sled' },
+    { id:'M-42', fam:'4. Grandes Formatos (1 a 3 Tableros)', name:'Cilindro Patio 16 Duelas', desc:'Ø 45 cm Int | Alto 45.0 cm', wi:45.0, li:45.0, h:45.0, tc:3.0, geom:'hexadec_1125' },
+    { id:'M-43', fam:'4. Grandes Formatos (1 a 3 Tableros)', name:'Torre Alta 60×60×80 cm', desc:'50×50 cm Int | Alto 80.0 cm', wi:50.0, li:50.0, h:80.0, tc:5.0, geom:'rect_butt' },
+    { id:'M-44', fam:'4. Grandes Formatos (1 a 3 Tableros)', name:'Columna Hexagonal 90 cm', desc:'Ø 40 cm Int | Alto 90.0 cm', wi:40.0, li:40.0, h:90.0, tc:4.0, geom:'hex_30' },
+    { id:'M-45', fam:'4. Grandes Formatos (1 a 3 Tableros)', name:'Jardinera Esquinera 80 cm', desc:'70×70 cm Int | Alto 40.0 cm', wi:70.0, li:70.0, h:40.0, tc:5.0, geom:'shadow_gap' },
+    { id:'M-46', fam:'4. Grandes Formatos (1 a 3 Tableros)', name:'Jardinera Envolvente 90 cm', desc:'80×60 cm Int | Alto 45.0 cm', wi:80.0, li:60.0, h:45.0, tc:5.0, geom:'rect_butt' },
+    { id:'M-47', fam:'4. Grandes Formatos (1 a 3 Tableros)', name:'Cubo Monumental 80×80×80', desc:'68×68 cm Int | Usa 2 Tablas', wi:68.0, li:68.0, h:80.0, tc:6.0, geom:'chamfer_45' },
+    { id:'M-48', fam:'4. Grandes Formatos (1 a 3 Tableros)', name:'Divisor Urbano 110×55 cm', desc:'98×43 cm Int | Usa 2 Tablas', wi:98.0, li:43.0, h:60.0, tc:6.0, geom:'rect_butt' },
+    { id:'M-49', fam:'4. Grandes Formatos (1 a 3 Tableros)', name:'Banca Jardinera 125×60 cm', desc:'113×48 cm Int | Usa 2 Tablas', wi:113.0, li:48.0, h:65.0, tc:6.0, geom:'rim_lip' },
+    { id:'M-50', fam:'4. Grandes Formatos (1 a 3 Tableros)', name:'Corredor Urbano 150×65 cm', desc:'138×53 cm Int | Usa 2 Tablas', wi:138.0, li:53.0, h:68.0, tc:6.0, geom:'rect_butt' }
   ];
 
-  const BOARD_W = 244.0; // cm (Largo del tablero Trupan)
-  const BOARD_H = 183.0; // cm (Ancho del tablero Trupan)
-  const KERF_CM = 0.3;   // 3 mm de disco de sierra
+  const BOARD_W = 244.0; // cm
+  const BOARD_H = 183.0; // cm
+  const KERF_CM = 0.3;   // 3 mm por corte de sierra
 
   let activeModel = MODELS[0];
-  let boardMode = 'single'; // 'single', 'multi', 'combo'
+  let viewStyle = 'organized'; // 'organized' (bloques grandes legibles en tabla) o 'real' (escala estricta 1:1)
+  let pinnedCount = 0;
 
   function initPresets(filterText = '') {
     const container = document.getElementById('preset-container');
@@ -524,14 +552,15 @@
     updateAll();
   }
 
-  function setBoardMode(mode, btn) {
-    boardMode = mode;
-    document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+  function setViewStyle(style) {
+    viewStyle = style;
+    document.getElementById('btn-view-org').classList.toggle('active', style === 'organized');
+    document.getElementById('btn-view-real').classList.toggle('active', style === 'real');
     updateAll();
   }
 
-  function getPiecesForSpec(wi, li, h, tc, tw, geom) {
+  // GENERA LAS PIEZAS EXACTAS EN CENTÍMETROS PARA EL MOLDE
+  function getPiecesForSpec(wi, li, h, tc, tw, geom, moldQty = 1) {
     const polyMap = {
       'tri_60': { sides: 3, bevel: 60.0 },
       'pent_36': { sides: 5, bevel: 36.0 },
@@ -556,42 +585,336 @@
     const moldW = we + 2 * tw;
     const moldL = le + 2 * tw;
 
-    const pieces = [];
+    const groups = [];
     if (sides !== 4) {
       const tanHalf = Math.tan(Math.PI / sides);
       const extSide = parseFloat((moldW * tanHalf).toFixed(2));
       const intSide = parseFloat((wi * tanHalf).toFixed(2));
       const capW = parseFloat(Math.max(2.0, wi - 2 * tw).toFixed(2));
 
-      pieces.push({ code:'EXT-DUELA', name:`Duelas Exteriores (${sides} lados)`, qty:sides, w:extSide, h:h, angle:`Bisel ${bevelDeg}°`, color:'#d97706', note:`Cortar ${sides} tablas iguales de ${extSide.toFixed(1)} × ${h.toFixed(1)} cm` });
-      pieces.push({ code:'BASE-C', name:'Base Inferior del Molde', qty:1, w:parseFloat((moldW+1.2).toFixed(2)), h:parseFloat((moldW+1.2).toFixed(2)), angle:'Recto 90°', color:'#0284c7', note:'Placa base donde asienta el molde exterior (perforar drenaje central)' });
-      pieces.push({ code:'INT-DUELA', name:`Duelas Núcleo Interior (${sides} lados)`, qty:sides, w:intSide, h:hi, angle:`Bisel ${bevelDeg}°`, color:'#059669', note:`Forman el hueco interior de Ø ${wi.toFixed(1)} cm` });
-      pieces.push({ code:'TAPA-INT', name:'Tapas Internas del Núcleo', qty:2, w:capW, h:capW, angle:`Polígono ${sides} lados`, color:'#7c3aed', note:'Dan firmeza interna al núcleo de MDF de 0.4 cm' });
+      groups.push({ code:'EXT-DUELA', groupTitle:'Faja Paredes Exteriores', name:`Duelas Exteriores (${sides} lados)`, qty:sides * moldQty, w:extSide, h:h, angle:`Bisel ${bevelDeg}°`, color:'#d97706', note:`Cortar ${sides} tablas de ${extSide.toFixed(1)} × ${h.toFixed(1)} cm por molde` });
+      groups.push({ code:'INT-DUELA', groupTitle:'Faja Núcleo Interior', name:`Duelas Núcleo Interior (${sides} lados)`, qty:sides * moldQty, w:intSide, h:hi, angle:`Bisel ${bevelDeg}°`, color:'#059669', note:`Forman la cavidad interna de Ø ${wi.toFixed(1)} cm` });
+      groups.push({ code:'BASE-C', groupTitle:'Faja Base y Tapas', name:'Placa Base Inferior del Molde', qty:1 * moldQty, w:parseFloat((moldW+1.2).toFixed(2)), h:parseFloat((moldW+1.2).toFixed(2)), angle:'Recto 90°', color:'#0284c7', note:'Placa base inferior con perforación central de drenaje' });
+      groups.push({ code:'TAPA-INT', groupTitle:'Faja Base y Tapas', name:'Tapas Internas del Núcleo', qty:2 * moldQty, w:capW, h:capW, angle:`Polígono ${sides} lados`, color:'#7c3aed', note:'Dan rigidez interna al núcleo de MDF' });
     } else {
       const intShort = parseFloat(Math.max(1.5, li - 2 * tw).toFixed(2));
       const intCapW = parseFloat(Math.max(1.5, wi - 2 * tw).toFixed(2));
 
-      pieces.push({ code:'EXT-A', name:'Paredes Exteriores Largas (x2)', qty:2, w:parseFloat(moldW.toFixed(2)), h:h, angle:geom==='taper_sled'?'Trapecio 7°':'Recto 90°', color:'#d97706', note:`Abrazan por fuera a EXT-B (${we.toFixed(1)} + ${(2*tw).toFixed(1)} cm de espesor MDF)` });
-      pieces.push({ code:'EXT-B', name:'Paredes Exteriores Cortas (x2)', qty:2, w:parseFloat(le.toFixed(2)), h:h, angle:geom==='taper_sled'?'Trapecio 7°':'Recto 90°', color:'#ea580c', note:`Van entre las dos paredes EXT-A` });
-      pieces.push({ code:'BASE-C', name:'Base Inferior del Molde (x1)', qty:1, w:parseFloat(moldW.toFixed(2)), h:parseFloat(moldL.toFixed(2)), angle:'Recto 90°', color:'#0284c7', note:`Mide el ancho y largo total exterior del molde (${moldW.toFixed(1)} × ${moldL.toFixed(1)} cm)` });
+      groups.push({ code:'EXT-A', groupTitle:'Faja 1: Paredes Exteriores', name:'Pared Exterior Larga', qty:2 * moldQty, w:parseFloat(moldW.toFixed(2)), h:h, angle:geom==='taper_sled'?'Trapecio 7°':'Recto 90°', color:'#d97706', note:`Solapa a EXT-B (${we.toFixed(1)} + ${(2*tw).toFixed(1)} cm de espesor MDF)` });
+      groups.push({ code:'EXT-B', groupTitle:'Faja 1: Paredes Exteriores', name:'Pared Exterior Corta', qty:2 * moldQty, w:parseFloat(le.toFixed(2)), h:h, angle:geom==='taper_sled'?'Trapecio 7°':'Recto 90°', color:'#ea580c', note:`Va entre las dos paredes largas EXT-A` });
 
       if (geom === 'hybrid_cyl') {
-        pieces.push({ code:'TAPA-PVC', name:'Centrador para Tubo PVC Interior', qty:2, w:wi, h:wi, angle:'Redondo / Cuadrado', color:'#059669', note:`Centra el tubo PVC de Ø ${wi.toFixed(1)} cm que forma el hueco` });
+        groups.push({ code:'TAPA-PVC', groupTitle:'Faja 2: Núcleo Interior', name:'Centrador Tubo PVC Interior', qty:2 * moldQty, w:wi, h:wi, angle:'Recto 90°', color:'#059669', note:`Centra el tubo PVC de Ø ${wi.toFixed(1)} cm` });
       } else {
-        pieces.push({ code:'INT-D', name:'Caras Largas Núcleo Interior (x2)', qty:2, w:parseFloat(wi.toFixed(2)), h:hi, angle:'Recto 90°', color:'#059669', note:`Dan el ancho exacto del hueco interior (${wi.toFixed(1)} cm)` });
-        pieces.push({ code:'INT-E', name:'Caras Cortas Núcleo Interior (x2)', qty:2, w:intShort, h:hi, angle:'Recto 90°', color:'#10b981', note:`Van entre INT-D (${li.toFixed(1)} - ${(2*tw).toFixed(1)} cm = ${intShort.toFixed(1)} cm)` });
-        pieces.push({ code:'INT-F', name:'Tapa Fondo del Núcleo Interior (x1)', qty:1, w:intCapW, h:intShort, angle:'Recto 90°', color:'#7c3aed', note:`Cierra el núcleo por abajo (${intCapW.toFixed(1)} × ${intShort.toFixed(1)} cm)` });
+        groups.push({ code:'INT-D', groupTitle:'Faja 2: Núcleo Interior', name:'Cara Larga Núcleo Interior', qty:2 * moldQty, w:parseFloat(wi.toFixed(2)), h:hi, angle:'Recto 90°', color:'#059669', note:`Define el ancho del hueco interior (${wi.toFixed(1)} cm)` });
+        groups.push({ code:'INT-E', groupTitle:'Faja 2: Núcleo Interior', name:'Cara Corta Núcleo Interior', qty:2 * moldQty, w:intShort, h:hi, angle:'Recto 90°', color:'#10b981', note:`Va dentro de INT-D (${li.toFixed(1)} - ${(2*tw).toFixed(1)} cm = ${intShort.toFixed(1)} cm)` });
+      }
+
+      groups.push({ code:'BASE-C', groupTitle:'Faja 3: Bases y Tapas', name:'Base Inferior del Molde', qty:1 * moldQty, w:parseFloat(moldW.toFixed(2)), h:parseFloat(moldL.toFixed(2)), angle:'Recto 90°', color:'#0284c7', note:`Cierra el fondo exterior del molde (${moldW.toFixed(1)} × ${moldL.toFixed(1)} cm)` });
+
+      if (geom !== 'hybrid_cyl') {
+        groups.push({ code:'INT-F', groupTitle:'Faja 3: Bases y Tapas', name:'Tapa Inferior del Núcleo', qty:1 * moldQty, w:intCapW, h:intShort, angle:'Recto 90°', color:'#7c3aed', note:`Tapa el fondo del núcleo interior (${intCapW.toFixed(1)} × ${intShort.toFixed(1)} cm)` });
       }
 
       if (geom === 'stepped' || geom === 'legged' || geom === 'shadow_gap' || geom === 'rim_lip' || geom === 'fluted' || geom === 'chamfer_45' || geom === 'louvre') {
-        pieces.push({ code:'REL-INS', name:'Tiras de Relieve / Patas / Escalones', qty:4, w:parseFloat(we.toFixed(2)), h:3.0, angle:'Recto 90° / 45°', color:'#db2777', note:'Se pegan por dentro del molde para crear las patas, escalones o biseles' });
+        groups.push({ code:'REL-INS', groupTitle:'Faja 4: Insertos y Costillas', name:'Listón de Patas / Relieve / Escalón', qty:4 * moldQty, w:parseFloat(we.toFixed(2)), h:3.0, angle:'Recto 90° / 45°', color:'#db2777', note:'Moldea las patas, escalones o biseles internos' });
       }
     }
 
-    // Puente superior y costillas de refuerzo para MDF 0.4 cm
-    pieces.push({ code:'PUENTE-G', name:'Puentes Superiores + Costillas de Refuerzo', qty:4, w:parseFloat((moldW + 4.0).toFixed(2)), h:3.5, angle:'Recto 90°', color:'#4f46e5', note:'Sostienen el núcleo desde arriba y refuerzan el MDF de 0.4 cm por fuera' });
+    groups.push({ code:'PUENTE-G', groupTitle:'Faja 4: Insertos y Costillas', name:'Puente Superior y Costilla MDF', qty:4 * moldQty, w:parseFloat((moldW + 4.0).toFixed(2)), h:3.5, angle:'Recto 90°', color:'#4f46e5', note:'Sostiene el núcleo y refuerza las paredes de MDF de 0.4 cm' });
 
-    return { wi, li, we, le, h, hi, tc, tw, geom, sides, bevelDeg, moldW, moldL, pieces };
+    return { wi, li, we, le, h, hi, tc, tw, geom, sides, bevelDeg, moldW, moldL, moldQty, groups };
+  }
+
+  // ALGORITMO MULTI-TABLERO (DISTRIBUYE EN TABLERO #1, TABLERO #2, TABLERO #3... DE 244 × 183 CM)
+  function packIntoMultipleBoards(spec) {
+    // Expandimos las piezas organizadas por su grupo/faja para que queden ordenadas como en un plano de carpintería
+    const allItems = [];
+    spec.groups.forEach(g => {
+      for (let i = 1; i <= g.qty; i++) {
+        let w = g.w, h = g.h;
+        let rotated = false;
+        // Si una pieza es más ancha que 244 cm pero su alto sí cabe, rotarla
+        if (w > BOARD_W && h <= BOARD_W) {
+          const tmp = w; w = h; h = tmp; rotated = true;
+        }
+        allItems.push({
+          code: g.code,
+          numLabel: `${g.code} #${i}`,
+          partName: g.name,
+          groupTitle: g.groupTitle,
+          w: w,
+          h: h,
+          origW: g.w,
+          origH: g.h,
+          rotated: rotated,
+          angle: g.angle,
+          color: g.color,
+          note: g.note
+        });
+      }
+    });
+
+    // Empaquetado por Fajas Horizontales (Shelves) en múltiples tableros de 244 × 183 cm
+    const boards = [];
+    function createNewBoard(index) {
+      return {
+        boardIndex: index,
+        shelves: [], // Cada faja tiene { y, h, curX, groupTitle, items: [] }
+        usedH: 0,
+        areaUsed: 0
+      };
+    }
+
+    let currentBoard = createNewBoard(1);
+    boards.push(currentBoard);
+
+    allItems.forEach(item => {
+      let placed = false;
+
+      // 1. Intentar colocar en una faja existente del mismo grupo o altura compatible en los tableros abiertos
+      for (let b of boards) {
+        for (let sh of b.shelves) {
+          // Agrupar piezas del mismo grupo o de altura similar para que el corte horizontal sea limpio
+          const heightDiff = Math.abs(sh.h - item.h);
+          if (item.h <= sh.h && (sh.groupTitle === item.groupTitle || heightDiff <= 2.0) && (sh.curX + item.w <= BOARD_W)) {
+            item.x = sh.curX;
+            item.y = sh.y;
+            item.boardNum = b.boardIndex;
+            item.shelfNum = sh.shelfNum;
+            sh.items.push(item);
+            sh.curX += item.w + KERF_CM;
+            b.areaUsed += item.w * item.h;
+            placed = true;
+            break;
+          }
+        }
+        if (placed) break;
+      }
+
+      // 2. Si no cupo en las fajas abiertas, abrir una nueva faja horizontal en el tablero que tenga altura disponible
+      if (!placed) {
+        for (let b of boards) {
+          const nextY = b.usedH === 0 ? 0 : (b.usedH + KERF_CM);
+          if (nextY + item.h <= BOARD_H) {
+            const newShelf = {
+              shelfNum: b.shelves.length + 1,
+              groupTitle: item.groupTitle,
+              y: nextY,
+              h: item.h,
+              curX: item.w + KERF_CM,
+              items: []
+            };
+            item.x = 0;
+            item.y = nextY;
+            item.boardNum = b.boardIndex;
+            item.shelfNum = newShelf.shelfNum;
+            newShelf.items.push(item);
+            b.shelves.push(newShelf);
+            b.usedH = nextY + item.h;
+            b.areaUsed += item.w * item.h;
+            placed = true;
+            break;
+          }
+        }
+      }
+
+      // 3. Si tampoco cabe una nueva faja en los tableros actuales, CREAR UN NUEVO TABLERO (Tablero #2, #3...)
+      if (!placed) {
+        const newB = createNewBoard(boards.length + 1);
+        const newShelf = {
+          shelfNum: 1,
+          groupTitle: item.groupTitle,
+          y: 0,
+          h: item.h,
+          curX: item.w + KERF_CM,
+          items: []
+        };
+        item.x = 0;
+        item.y = 0;
+        item.boardNum = newB.boardIndex;
+        item.shelfNum = 1;
+        newShelf.items.push(item);
+        newB.shelves.push(newShelf);
+        newB.usedH = item.h;
+        newB.areaUsed += item.w * item.h;
+        boards.push(newB);
+      }
+    });
+
+    return { boards, allItems };
+  }
+
+  // GENERA EL SVG DE UN TABLERO DE 244 × 183 CM CON CORTES GRANDES Y ORGANIZADOS
+  function renderSingleBoardSVG(board, totalBoards, spec, styleMode) {
+    const ox = 56, oy = 42;
+    const drawW = 860, drawH = 490; // Área del tablero en el SVG
+    const realScX = drawW / BOARD_W; // 3.524 px/cm
+    const realScY = drawH / BOARD_H; // 2.677 px/cm
+
+    // Reglas graduadas de 0 a 244 cm y de 0 a 183 cm
+    let rulers = '';
+    for (let x = 0; x <= 240; x += 20) {
+      const px = ox + x * realScX;
+      rulers += `
+        <line x1="${px}" y1="${oy - 7}" x2="${px}" y2="${oy}" stroke="#fde68a" stroke-width="1.5"/>
+        <text x="${px}" y="${oy - 11}" fill="#fde68a" font-family="monospace" font-size="9.5" text-anchor="middle">${x}cm</text>
+      `;
+    }
+    rulers += `<text x="${ox + drawW}" y="${oy - 11}" fill="#fbbf24" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">244cm</text>`;
+
+    for (let y = 0; y <= 180; y += 20) {
+      const py = oy + y * realScY;
+      rulers += `
+        <line x1="${ox - 7}" y1="${py}" x2="${ox}" y2="${py}" stroke="#fde68a" stroke-width="1.5"/>
+        <text x="${ox - 10}" y="${py + 3}" fill="#fde68a" font-family="monospace" font-size="9.5" text-anchor="end">${y}cm</text>
+      `;
+    }
+    rulers += `<text x="${ox - 10}" y="${oy + drawH + 4}" fill="#fbbf24" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">183cm</text>`;
+
+    const freeHeightCm = Math.max(0, BOARD_H - board.usedH);
+    let maxShelfRightCm = 0;
+    board.shelves.forEach(sh => { if (sh.curX > maxShelfRightCm) maxShelfRightCm = sh.curX; });
+    const freeWidthRightCm = Math.max(0, BOARD_W - maxShelfRightCm);
+
+    let piecesSVG = '';
+
+    if (styleMode === 'organized') {
+      // MODO ORGANIZADO Y LEGIBLE EN TABLA:
+      // Distribuye las fajas de corte con un factor de ampliación automática cuando el molde es pequeño/mediano,
+      // de modo que los cortes ocupen visualmente el tablero y cada pieza muestre su nombre, cota de ancho, cota de alto y línea de corte.
+      const numShelves = board.shelves.length;
+      const availVisualH = Math.min(drawH - 68, Math.max(board.usedH * realScY, numShelves * 92));
+      const shelfVisH = availVisualH / Math.max(1, numShelves);
+
+      let curVisY = oy + 6;
+      board.shelves.forEach((sh, sIdx) => {
+        const nItems = sh.items.length;
+        const totalShelfCm = sh.curX;
+        // Factor horizontal adaptativo para que las piezas se vean grandes y claras dentro de la faja
+        const targetRowWidthPx = Math.min(drawW - 24, Math.max(totalShelfCm * realScX, nItems * 128));
+        let curVisX = ox + 8;
+        let accCmX = 0;
+
+        // Etiqueta superior de la Faja Horizontal
+        const yStartCm = sh.y.toFixed(1);
+        const yEndCm = (sh.y + sh.h).toFixed(1);
+        piecesSVG += `
+          <rect x="${ox + 4}" y="${curVisY}" width="${drawW - 8}" height="${shelfVisH - 8}" fill="rgba(15,23,42,0.16)" stroke="rgba(180,83,9,0.45)" stroke-dasharray="4,3" rx="4"/>
+          <rect x="${ox + 8}" y="${curVisY + 3}" width="440" height="17" fill="#091326" rx="3"/>
+          <text x="${ox + 14}" y="${curVisY + 15}" fill="#fde047" font-family="monospace" font-size="10" font-weight="bold">
+            FAJA HORIZONTAL #${sh.shelfNum} (${sh.groupTitle}) — ALTO DE FAJA A CORTAR: ${sh.h.toFixed(1)} CM (De Y=${yStartCm} a ${yEndCm} cm)
+          </text>
+        `;
+
+        const boxTopY = curVisY + 23;
+        const boxH = Math.max(44, shelfVisH - 36);
+
+        sh.items.forEach((it, idx) => {
+          const propW = (it.w / Math.max(totalShelfCm, 1)) * targetRowWidthPx;
+          const boxW = Math.max(92, Math.min(drawW - (curVisX - ox) - 14, propW));
+          accCmX += it.w;
+
+          // Si es la base, mostrar el círculo del agujero de drenaje central
+          const drainCircle = it.code.includes('BASE')
+            ? `<circle cx="${curVisX + boxW/2}" cy="${boxTopY + boxH/2}" r="7" fill="#091326" stroke="#38bdf8" stroke-width="2"/>`
+            : '';
+
+          piecesSVG += `
+            <g>
+              <!-- Pieza de MDF -->
+              <rect x="${curVisX}" y="${boxTopY}" width="${boxW}" height="${boxH}" fill="${it.color}" fill-opacity="0.88" stroke="#fff" stroke-width="1.8" rx="3"/>
+              ${drainCircle}
+              <!-- Nombre de la pieza -->
+              <text x="${curVisX + boxW/2}" y="${boxTopY + boxH*0.34}" fill="#fff" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">${it.numLabel}</text>
+              <!-- Medida exacta en centímetros en grande -->
+              <rect x="${curVisX + 6}" y="${boxTopY + boxH*0.44}" width="${boxW - 12}" height="18" fill="rgba(0,0,0,0.45)" rx="3"/>
+              <text x="${curVisX + boxW/2}" y="${boxTopY + boxH*0.44 + 13}" fill="#fde047" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">${it.w.toFixed(1)} × ${it.h.toFixed(1)} cm</text>
+              <!-- Cota de ángulo o función abajo -->
+              <text x="${curVisX + boxW/2}" y="${boxTopY + boxH - 5}" fill="#e0f2fe" font-family="monospace" font-size="9" text-anchor="middle">${it.angle}</text>
+
+              <!-- Línea roja vertical de corte a la derecha de la pieza -->
+              <line x1="${curVisX + boxW + 3}" y1="${boxTopY - 3}" x2="${curVisX + boxW + 3}" y2="${boxTopY + boxH + 3}" stroke="#f43f5e" stroke-width="2.2" stroke-dasharray="4,2"/>
+            </g>
+          `;
+          curVisX += boxW + 6;
+        });
+
+        // Mostrar cuánto mide el sobrante derecho de esta faja
+        const remStripCm = Math.max(0, BOARD_W - sh.curX).toFixed(1);
+        if (curVisX < ox + drawW - 95) {
+          piecesSVG += `
+            <text x="${curVisX + 10}" y="${boxTopY + boxH/2 + 4}" fill="#451a03" font-family="monospace" font-size="10" font-weight="bold">
+              ← Sobrante de faja: ${remStripCm} × ${sh.h.toFixed(1)} cm
+            </text>
+          `;
+        }
+
+        // Línea roja de corte guillotina horizontal al final de la faja
+        const cutY = curVisY + shelfVisH - 4;
+        piecesSVG += `
+          <line x1="${ox}" y1="${cutY}" x2="${ox + drawW}" y2="${cutY}" stroke="#f43f5e" stroke-width="2" stroke-dasharray="7,4"/>
+        `;
+        curVisY += shelfVisH;
+      });
+
+      // Zona inferior de madera libre en este tablero
+      const bottomBoxY = curVisY + 4;
+      const bottomBoxH = Math.max(36, (oy + drawH) - bottomBoxY - 6);
+      piecesSVG += `
+        <rect x="${ox + 12}" y="${bottomBoxY}" width="${drawW - 24}" height="${bottomBoxH}" fill="rgba(6, 78, 59, 0.18)" stroke="#059669" stroke-width="1.8" stroke-dasharray="6,4" rx="6"/>
+        <text x="${ox + drawW/2}" y="${bottomBoxY + bottomBoxH/2 - 2}" fill="#064e3b" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">
+          MADERA USADA EN ESTA TABLA: 244.0 cm × ${board.usedH.toFixed(1)} cm de alto
+        </text>
+        <text x="${ox + drawW/2}" y="${bottomBoxY + bottomBoxH/2 + 15}" fill="#047857" font-family="monospace" font-size="11.5" font-weight="bold" text-anchor="middle">
+          SOBRANTE LIBRE DE ESTA TABLA #${board.boardIndex}: ${BOARD_W.toFixed(1)} cm de largo × ${freeHeightCm.toFixed(1)} cm de alto
+        </text>
+      `;
+    } else {
+      // MODO PROPORCIÓN ESTRICTA 1:1 SOBRE 244 × 183 CM
+      board.shelves.forEach(sh => {
+        sh.items.forEach(it => {
+          const rx = ox + it.x * realScX;
+          const ry = oy + it.y * realScY;
+          const rw = Math.max(5, it.w * realScX);
+          const rh = Math.max(5, it.h * realScY);
+          piecesSVG += `
+            <g>
+              <rect x="${rx}" y="${ry}" width="${rw}" height="${rh}" fill="${it.color}" fill-opacity="0.88" stroke="#fff" stroke-width="1"/>
+              ${rw >= 38 && rh >= 18 ? `
+                <text x="${rx + rw/2}" y="${ry + rh/2 - 2}" fill="#fff" font-family="monospace" font-size="8.5" font-weight="bold" text-anchor="middle">${it.numLabel}</text>
+                <text x="${rx + rw/2}" y="${ry + rh/2 + 8}" fill="#fde047" font-family="monospace" font-size="8" text-anchor="middle">${it.w.toFixed(1)}×${it.h.toFixed(1)}cm</text>
+              ` : ''}
+            </g>
+          `;
+        });
+        const cutY = oy + (sh.y + sh.h) * realScY;
+        piecesSVG += `<line x1="${ox}" y1="${cutY}" x2="${ox + drawW}" y2="${cutY}" stroke="#f43f5e" stroke-width="1.8" stroke-dasharray="6,4"/>`;
+      });
+
+      const finalCutY = oy + Math.min(BOARD_H, board.usedH) * realScY;
+      piecesSVG += `
+        <rect x="${ox + 15}" y="${finalCutY + 8}" width="520" height="24" fill="#091326" rx="4"/>
+        <text x="${ox + 25}" y="${finalCutY + 24}" fill="#34d399" font-family="monospace" font-size="11" font-weight="bold">
+          ↑ CORTE A ${board.usedH.toFixed(1)} CM | SOBRANTE LIBRE: 244.0 × ${freeHeightCm.toFixed(1)} CM
+        </text>
+      `;
+    }
+
+    return `
+      <div class="board-sheet-box">
+        <div class="preview-header" style="color:#fde68a;">
+          <span>TABLERO #${board.boardIndex} DE ${totalBoards} — MDF TRUPAN 244 CM × 183 CM (ESPESOR ${spec.tw.toFixed(1)} CM) — MODELO ${activeModel.id} (${activeModel.name})</span>
+          <span style="color:#34d399;">ALTO USADO: ${board.usedH.toFixed(1)} CM DE 183 CM | SOBRANTE: 244 × ${freeHeightCm.toFixed(1)} CM</span>
+        </div>
+        <svg class="responsive-svg board-svg-item" viewBox="0 0 950 555" xmlns="http://www.w3.org/2000/svg">
+          <!-- Fondo color MDF Trupan -->
+          <rect x="${ox}" y="${oy}" width="${drawW}" height="${drawH}" fill="#d8c398" stroke="#f59e0b" stroke-width="3"/>
+          ${rulers}
+          ${piecesSVG}
+        </svg>
+      </div>
+    `;
   }
 
   function updateAll() {
@@ -600,39 +923,70 @@
     const h = Math.max(4.0, parseFloat(document.getElementById('in-h').value) || 6.0);
     const tc = Math.max(0.8, parseFloat(document.getElementById('in-tc').value) || 1.0);
     const tw = parseFloat(document.getElementById('in-tw').value) || 0.4;
+    const moldQty = Math.max(1, parseInt(document.getElementById('in-qty').value) || 1);
 
     document.getElementById('lbl-wi').textContent = wi.toFixed(1) + ' cm';
     document.getElementById('lbl-li').textContent = li.toFixed(1) + ' cm';
     document.getElementById('lbl-h').textContent = h.toFixed(1) + ' cm';
     document.getElementById('lbl-tc').textContent = tc.toFixed(1) + ' cm';
+    document.getElementById('lbl-qty').textContent = moldQty + (moldQty === 1 ? ' molde' : ' moldes');
 
-    const spec = getPiecesForSpec(wi, li, h, tc, tw, activeModel.geom);
+    const spec = getPiecesForSpec(wi, li, h, tc, tw, activeModel.geom, moldQty);
+    const packed = packIntoMultipleBoards(spec);
+    const numBoards = packed.boards.length;
 
     document.getElementById('title-shape').textContent = `1. FORMA FINAL DE LA MACETA: ${activeModel.id} (${activeModel.name})`;
+    document.getElementById('table-title').textContent = `3. Cuadro de Cortes Exactos en Centímetros (cm) para ${activeModel.id} (${activeModel.name})`;
 
+    // Actualizar métricas superiores
+    let totalArea = 0;
+    packed.boards.forEach(b => { totalArea += b.areaUsed; });
+    const pctBoard = ((totalArea / (BOARD_W * BOARD_H)) * 100).toFixed(1);
+
+    document.getElementById('m-ext').textContent = `${spec.we.toFixed(1)} × ${spec.le.toFixed(1)} × ${spec.h.toFixed(1)} cm`;
+    document.getElementById('m-int').textContent = `${spec.wi.toFixed(1)} × ${spec.li.toFixed(1)} × ${spec.hi.toFixed(1)} cm`;
+    document.getElementById('m-pieces').textContent = `${packed.allItems.length} piezas en total`;
+    document.getElementById('m-used').textContent = `${Math.round(totalArea)} cm² (${pctBoard}% de 1 tabla)`;
+    document.getElementById('m-boards').textContent = numBoards === 1
+      ? `1 Tabla (Sobra ${(100 - Math.min(99, parseFloat(pctBoard))).toFixed(1)}%)`
+      : `${numBoards} Tablas de 244×183 cm`;
+
+    // Actualizar banner de aviso de 1 o múltiples tablas
+    const banner = document.getElementById('board-status-banner');
+    const bannerTxt = document.getElementById('board-status-text');
+    if (numBoards === 1) {
+      banner.className = 'board-alert';
+      bannerTxt.innerHTML = `<strong>✅ ESTE MOLDE (${activeModel.id}) ALCANZA EN 1 SOLA TABLA DE 244 × 183 CM</strong> — Solo usa ${packed.boards[0].usedH.toFixed(1)} cm de alto de los 183 cm.`;
+    } else {
+      banner.className = 'board-alert multi';
+      bannerTxt.innerHTML = `<strong>⚠️ SE NECESITAN ${numBoards} TABLAS DE 244 × 183 CM PARA CORTAR ESTE MOLDE</strong> — Abajo tienes dibujadas las ${numBoards} tablas con las medidas exactas de cada corte.`;
+    }
+
+    // Dibujar forma 3D, molde 3D, todas las tablas necesarias y la planilla de cortes
     drawFinalShape3D(spec);
     drawMold3D(spec);
-    drawBoard244x183(spec);
-    drawStripZoom(spec);
-    renderTableCM(spec);
+
+    const renderZone = document.getElementById('boards-render-zone');
+    renderZone.innerHTML = packed.boards.map(b => renderSingleBoardSVG(b, numBoards, spec, viewStyle)).join('');
+
+    renderCutListTable(packed, spec);
   }
 
-  // DIBUJA LA IMAGEN 3D ILUSTRADA DE LA FORMA FINAL DE LA MACETA
+  // DIBUJA LA IMAGEN 3D DE LA FORMA FINAL DE LA MACETA
   function drawFinalShape3D(s) {
     const svg = document.getElementById('svg-final-shape');
     const showPlant = document.getElementById('chk-plant').checked;
-    const cx = 215, cy = 148;
+    const cx = 215, cy = 142;
 
-    // Escala visual armónica según proporción ancho/alto real de la maceta
     const ratioWH = s.we / Math.max(s.h, 1);
-    const potH = Math.min(130, Math.max(58, 105 / Math.max(0.55, Math.min(1.6, ratioWH * 0.7))));
-    const potW = Math.min(190, Math.max(76, potH * Math.min(2.1, Math.max(0.65, ratioWH))));
-    const depthY = Math.min(34, potW * 0.24);
+    const potH = Math.min(125, Math.max(56, 102 / Math.max(0.55, Math.min(1.6, ratioWH * 0.7))));
+    const potW = Math.min(185, Math.max(74, potH * Math.min(2.1, Math.max(0.65, ratioWH))));
+    const depthY = Math.min(32, potW * 0.24);
 
     const topY = cy - potH * 0.42;
     const botY = topY + potH;
     const taper = (s.geom === 'taper_sled') ? potW * 0.16 : 0;
-    const legH = (s.geom === 'legged') ? 20 : 0;
+    const legH = (s.geom === 'legged') ? 18 : 0;
     const bodyBotY = botY - legH;
 
     let plantSVG = '';
@@ -640,27 +994,22 @@
       plantSVG = `
         <g>
           <ellipse cx="${cx}" cy="${topY - 4}" rx="${potW*0.32}" ry="${depthY*0.55}" fill="#422006"/>
-          <path d="M ${cx} ${topY-6} C ${cx-28} ${topY-42}, ${cx-48} ${topY-18}, ${cx-14} ${topY-4} Z" fill="#16a34a" stroke="#86efac" stroke-width="1"/>
-          <path d="M ${cx} ${topY-6} C ${cx+28} ${topY-42}, ${cx+48} ${topY-18}, ${cx+14} ${topY-4} Z" fill="#15803d" stroke="#86efac" stroke-width="1"/>
-          <path d="M ${cx} ${topY-8} C ${cx-18} ${topY-58}, ${cx+18} ${topY-58}, ${cx} ${topY-8} Z" fill="#22c55e" stroke="#bbf7d0" stroke-width="1.2"/>
-          <path d="M ${cx-8} ${topY-6} C ${cx-38} ${topY-26}, ${cx-42} ${topY-2}, ${cx-10} ${topY-2} Z" fill="#4ade80" stroke="#dcfce7" stroke-width="0.8"/>
-          <path d="M ${cx+8} ${topY-6} C ${cx+38} ${topY-26}, ${cx+42} ${topY-2}, ${cx+10} ${topY-2} Z" fill="#22c55e" stroke="#dcfce7" stroke-width="0.8"/>
+          <path d="M ${cx} ${topY-6} C ${cx-28} ${topY-40}, ${cx-46} ${topY-16}, ${cx-14} ${topY-4} Z" fill="#16a34a" stroke="#86efac"/>
+          <path d="M ${cx} ${topY-6} C ${cx+28} ${topY-40}, ${cx+46} ${topY-16}, ${cx+14} ${topY-4} Z" fill="#15803d" stroke="#86efac"/>
+          <path d="M ${cx} ${topY-8} C ${cx-18} ${topY-55}, ${cx+18} ${topY-55}, ${cx} ${topY-8} Z" fill="#22c55e" stroke="#bbf7d0"/>
         </g>
       `;
     }
 
     let bodySVG = '';
     if (s.sides !== 4 || s.geom === 'hybrid_cyl') {
-      // Poligonal facetado (3, 5, 6, 7, 8, 9, 10, 12, 16 lados) o cilíndrico
       const nCols = s.geom === 'hybrid_cyl' ? 16 : Math.max(3, Math.min(7, Math.floor(s.sides / 2) + 1));
       const colW = potW / nCols;
       const shades = ['#cbd5e1', '#94a3b8', '#64748b', '#475569', '#334155', '#475569', '#64748b'];
       let facets = '';
       for (let i = 0; i < nCols; i++) {
-        const x1 = (cx - potW/2) + i * colW;
-        const x2 = x1 + colW;
-        const sh = shades[i % shades.length];
-        facets += `<polygon points="${x1},${topY} ${x2},${topY} ${x2},${bodyBotY} ${x1},${bodyBotY}" fill="${sh}" stroke="#475569" stroke-width="0.8"/>`;
+        const x1 = (cx - potW/2) + i * colW, x2 = x1 + colW;
+        facets += `<polygon points="${x1},${topY} ${x2},${topY} ${x2},${bodyBotY} ${x1},${bodyBotY}" fill="${shades[i % shades.length]}" stroke="#475569" stroke-width="0.8"/>`;
       }
       bodySVG = `
         <ellipse cx="${cx}" cy="${botY + 6}" rx="${potW*0.54}" ry="${depthY*0.7}" fill="rgba(0,0,0,0.45)"/>
@@ -669,24 +1018,12 @@
         <ellipse cx="${cx}" cy="${topY}" rx="${potW*0.38}" ry="${depthY*0.74}" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
       `;
     } else {
-      // Prisma Isométrico (Cuadrado, Rectangular, Piramidal, Escalonado, Acanalado, con Patas, Shadow Gap)
       const lx = cx - potW/2, rx = cx + potW/2;
       const bLx = lx + taper, bRx = rx - taper;
-
       let extraDecor = '';
       if (s.geom === 'fluted') {
-        for (let x = lx + 8; x < cx - 4; x += 9) {
-          extraDecor += `<line x1="${x}" y1="${topY + depthY*0.5}" x2="${x}" y2="${bodyBotY + depthY*0.4}" stroke="#475569" stroke-width="2.5"/>`;
-        }
-        for (let x = cx + 6; x < rx - 6; x += 9) {
-          extraDecor += `<line x1="${x}" y1="${topY + depthY*0.5}" x2="${x}" y2="${bodyBotY + depthY*0.4}" stroke="#334155" stroke-width="2.5"/>`;
-        }
-      }
-      if (s.geom === 'louvre' || s.geom === 'board_formed') {
-        for (let y = topY + 22; y < bodyBotY; y += 16) {
-          extraDecor += `<line x1="${lx}" y1="${y}" x2="${cx}" y2="${y + depthY*0.6}" stroke="#334155" stroke-width="2"/>`;
-          extraDecor += `<line x1="${cx}" y1="${y + depthY*0.6}" x2="${rx}" y2="${y}" stroke="#1e293b" stroke-width="2"/>`;
-        }
+        for (let x = lx + 8; x < cx - 4; x += 9) extraDecor += `<line x1="${x}" y1="${topY + depthY*0.5}" x2="${x}" y2="${bodyBotY + depthY*0.4}" stroke="#475569" stroke-width="2.5"/>`;
+        for (let x = cx + 6; x < rx - 6; x += 9) extraDecor += `<line x1="${x}" y1="${topY + depthY*0.5}" x2="${x}" y2="${bodyBotY + depthY*0.4}" stroke="#334155" stroke-width="2.5"/>`;
       }
       if (s.geom === 'stepped') {
         extraDecor += `
@@ -701,27 +1038,12 @@
           <polygon points="${bRx-18},${bodyBotY+6} ${bRx},${bodyBotY} ${bRx},${botY} ${bRx-18},${botY+6}" fill="#334155" stroke="#cbd5e1"/>
         `;
       }
-      if (s.geom === 'shadow_gap') {
-        extraDecor += `<polygon points="${bLx+10},${bodyBotY-8} ${cx},${bodyBotY+depthY-8} ${bRx-10},${bodyBotY-8} ${bRx-10},${bodyBotY+6} ${cx},${bodyBotY+depthY+6} ${bLx+10},${bodyBotY+6}" fill="#0f172a"/>`;
-      }
-      if (s.geom === 'rim_lip') {
-        extraDecor += `
-          <polygon points="${lx-5},${topY} ${cx},${topY+depthY+3} ${cx},${topY+depthY+18} ${lx-5},${topY+15}" fill="#cbd5e1" stroke="#475569"/>
-          <polygon points="${cx},${topY+depthY+3} ${rx+5},${topY} ${rx+5},${topY+15} ${cx},${topY+depthY+18}" fill="#94a3b8" stroke="#475569"/>
-        `;
-      }
-
       bodySVG = `
-        <!-- Sombra de piso -->
         <ellipse cx="${cx}" cy="${botY + depthY*0.6 + 6}" rx="${potW*0.55}" ry="${depthY*0.65}" fill="rgba(0,0,0,0.45)"/>
-        <!-- Cara Izquierda iluminada -->
         <polygon points="${lx},${topY} ${cx},${topY + depthY} ${cx},${bodyBotY + depthY} ${bLx},${bodyBotY}" fill="#94a3b8" stroke="#e2e8f0" stroke-width="1.5"/>
-        <!-- Cara Derecha sombreada -->
         <polygon points="${cx},${topY + depthY} ${rx},${topY} ${bRx},${bodyBotY} ${cx},${bodyBotY + depthY}" fill="#64748b" stroke="#cbd5e1" stroke-width="1.5"/>
         ${extraDecor}
-        <!-- Borde Superior (Espesor del concreto) -->
         <polygon points="${cx},${topY - depthY} ${rx},${topY} ${cx},${topY + depthY} ${lx},${topY}" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/>
-        <!-- Cavidad Interior Oscura -->
         <polygon points="${cx},${topY - depthY*0.72} ${cx + potW*0.36},${topY} ${cx},${topY + depthY*0.72} ${cx - potW*0.36},${topY}" fill="#1e293b" stroke="#475569" stroke-width="1.2"/>
       `;
     }
@@ -729,275 +1051,101 @@
     svg.innerHTML = `
       ${bodySVG}
       ${plantSVG}
-      <!-- Etiquetas de medidas reales en cm sobre la imagen 3D -->
-      <rect x="10" y="10" width="168" height="62" fill="rgba(15,23,42,0.85)" stroke="#38bdf8" rx="6"/>
-      <text x="18" y="28" fill="#38bdf8" font-family="monospace" font-size="10.5" font-weight="bold">MEDIDAS MACETA FINAL:</text>
-      <text x="18" y="44" fill="#fff" font-family="monospace" font-size="10">• Exterior: ${s.we.toFixed(1)}×${s.le.toFixed(1)} cm</text>
-      <text x="18" y="60" fill="#fde047" font-family="monospace" font-size="10" font-weight="bold">• Hueco Int: ${s.wi.toFixed(1)}×${s.li.toFixed(1)} cm</text>
-
-      <rect x="275" y="208" width="155" height="50" fill="rgba(15,23,42,0.85)" stroke="#10b981" rx="6"/>
-      <text x="285" y="226" fill="#34d399" font-family="monospace" font-size="10" font-weight="bold">Altura Total: ${s.h.toFixed(1)} cm</text>
-      <text x="285" y="244" fill="#e2e8f0" font-family="monospace" font-size="10">Pared Concreto: ${s.tc.toFixed(1)} cm</text>
+      <rect x="10" y="10" width="175" height="60" fill="rgba(15,23,42,0.88)" stroke="#38bdf8" rx="6"/>
+      <text x="18" y="27" fill="#38bdf8" font-family="monospace" font-size="10" font-weight="bold">MACETA FINAL CONCRETO:</text>
+      <text x="18" y="43" fill="#fff" font-family="monospace" font-size="9.8">• Exterior: ${s.we.toFixed(1)}×${s.le.toFixed(1)} cm</text>
+      <text x="18" y="59" fill="#fde047" font-family="monospace" font-size="9.8" font-weight="bold">• Hueco Int: ${s.wi.toFixed(1)}×${s.li.toFixed(1)} cm</text>
+      <rect x="275" y="202" width="155" height="48" fill="rgba(15,23,42,0.88)" stroke="#10b981" rx="6"/>
+      <text x="285" y="220" fill="#34d399" font-family="monospace" font-size="9.8" font-weight="bold">Altura Total: ${s.h.toFixed(1)} cm</text>
+      <text x="285" y="238" fill="#e2e8f0" font-family="monospace" font-size="9.8">Muro Concreto: ${s.tc.toFixed(1)} cm</text>
     `;
   }
 
-  // DIBUJA EL MOLDE ARMADO EN MDF DE 0.4 CM
+  // DIBUJA EL MOLDE ARMADO EN 3D
   function drawMold3D(s) {
     const svg = document.getElementById('svg-mold-3d');
-    const cx = 220, cy = 145;
-    const w = 150, h = 100, d = 28;
+    const cx = 220, cy = 140, w = 148, h = 96, d = 26;
     const topY = cy - h * 0.4, botY = topY + h;
 
     svg.innerHTML = `
-      <!-- Base Inferior MDF BASE-C -->
-      <polygon points="${cx},${botY - d - 8} ${cx + w*0.62},${botY} ${cx},${botY + d + 8} ${cx - w*0.62},${botY}" fill="#b45309" stroke="#fde68a" stroke-width="1.5"/>
-      <!-- Caja Exterior MDF EXT-A y EXT-B -->
-      <polygon points="${cx - w/2},${topY} ${cx},${topY + d} ${cx},${botY + d} ${cx - w/2},${botY}" fill="rgba(217, 119, 6, 0.78)" stroke="#fef08a" stroke-width="1.8"/>
-      <polygon points="${cx},${topY + d} ${cx + w/2},${topY} ${cx + w/2},${botY} ${cx},${botY + d}" fill="rgba(180, 83, 9, 0.85)" stroke="#fef08a" stroke-width="1.8"/>
-      <!-- Costilla Exterior de Refuerzo COST-R a media altura -->
-      <polygon points="${cx - w/2 - 5},${cy} ${cx},${cy + d + 2} ${cx + w/2 + 5},${cy} ${cx + w/2 + 5},${cy + 12} ${cx},${cy + d + 14} ${cx - w/2 - 5},${cy + 12}" fill="#4f46e5" stroke="#bae6fd" stroke-width="1.2"/>
-      <!-- Boca Superior y Núcleo Interior INT-D / INT-E -->
+      <polygon points="${cx},${botY - d - 8} ${cx + w*0.62},${botY} ${cx},${botY + d + 8} ${cx - w*0.62},${botY}" fill="#0284c7" stroke="#bae6fd" stroke-width="1.5"/>
+      <polygon points="${cx - w/2},${topY} ${cx},${topY + d} ${cx},${botY + d} ${cx - w/2},${botY}" fill="rgba(217, 119, 6, 0.82)" stroke="#fef08a" stroke-width="1.8"/>
+      <polygon points="${cx},${topY + d} ${cx + w/2},${topY} ${cx + w/2},${botY} ${cx},${botY + d}" fill="rgba(234, 88, 12, 0.85)" stroke="#fef08a" stroke-width="1.8"/>
+      <polygon points="${cx - w/2 - 5},${cy} ${cx},${cy + d + 2} ${cx + w/2 + 5},${cy} ${cx + w/2 + 5},${cy + 11} ${cx},${cy + d + 13} ${cx - w/2 - 5},${cy + 11}" fill="#4f46e5" stroke="#bae6fd"/>
       <polygon points="${cx},${topY - d} ${cx + w/2},${topY} ${cx},${topY + d} ${cx - w/2},${topY}" fill="rgba(148,163,184,0.5)" stroke="#fff" stroke-width="1.5"/>
       <polygon points="${cx},${topY - d*0.65} ${cx + w*0.32},${topY} ${cx},${topY + d*0.65} ${cx - w*0.32},${topY}" fill="#059669" stroke="#a7f3d0" stroke-width="2"/>
-      <!-- Puente Superior PUENTE-G -->
-      <polygon points="${cx - w*0.58},${topY - 8} ${cx + w*0.58},${topY - 8} ${cx + w*0.52},${topY + 4} ${cx - w*0.52},${topY + 4}" fill="rgba(56,189,248,0.65)" stroke="#fff" stroke-width="1.5"/>
-
-      <rect x="10" y="10" width="195" height="62" fill="rgba(15,23,42,0.88)" stroke="#fbbf24" rx="6"/>
-      <text x="18" y="28" fill="#fbbf24" font-family="monospace" font-size="10.5" font-weight="bold">MOLDE EN MDF (${s.tw.toFixed(1)} CM):</text>
-      <text x="18" y="44" fill="#fff" font-family="monospace" font-size="9.8">• EXT-A: ${s.moldW.toFixed(1)} × ${s.h.toFixed(1)} cm (x2)</text>
-      <text x="18" y="60" fill="#fde047" font-family="monospace" font-size="9.8">• EXT-B: ${s.le.toFixed(1)} × ${s.h.toFixed(1)} cm (x2)</text>
-
-      <rect x="235" y="208" width="195" height="50" fill="rgba(15,23,42,0.88)" stroke="#38bdf8" rx="6"/>
-      <text x="245" y="226" fill="#38bdf8" font-family="monospace" font-size="9.8" font-weight="bold">• BASE-C: ${s.moldW.toFixed(1)} × ${s.moldL.toFixed(1)} cm</text>
-      <text x="245" y="244" fill="#34d399" font-family="monospace" font-size="9.8" font-weight="bold">• Núcleo Int: ${s.wi.toFixed(1)} × ${s.hi.toFixed(1)} cm</text>
+      <rect x="10" y="10" width="200" height="60" fill="rgba(15,23,42,0.88)" stroke="#fbbf24" rx="6"/>
+      <text x="18" y="27" fill="#fbbf24" font-family="monospace" font-size="10" font-weight="bold">COLORES EN LA TABLA:</text>
+      <text x="18" y="43" fill="#fdba74" font-family="monospace" font-size="9.5">■ Naranja: Paredes Ext (${s.moldW.toFixed(1)}×${s.h.toFixed(1)} cm)</text>
+      <text x="18" y="58" fill="#6ee7b7" font-family="monospace" font-size="9.5">■ Verde: Núcleo Int (${s.wi.toFixed(1)}×${s.hi.toFixed(1)} cm)</text>
+      <rect x="230" y="202" width="200" height="48" fill="rgba(15,23,42,0.88)" stroke="#38bdf8" rx="6"/>
+      <text x="238" y="220" fill="#7dd3fc" font-family="monospace" font-size="9.5">■ Azul: Base Inferior (${s.moldW.toFixed(1)}×${s.moldL.toFixed(1)} cm)</text>
+      <text x="238" y="238" fill="#c4b5fd" font-family="monospace" font-size="9.5">■ Morado: Tapa Núcleo y Puentes</text>
     `;
   }
 
-  // EMPAQUETADOR DE PIEZAS SOBRE EL TABLERO TRUPAN DE 244 CM X 183 CM
-  function packRectanglesOnBoard(rectList) {
-    const placed = [];
-    let curX = 0, curY = 0, shelfH = 0;
-    let unplaced = 0;
-
-    rectList.forEach(item => {
-      const rw = item.w, rh = item.h;
-      if (curX + rw > BOARD_W) {
-        curX = 0;
-        curY += shelfH + KERF_CM;
-        shelfH = 0;
-      }
-      if (curY + rh <= BOARD_H && rw <= BOARD_W) {
-        placed.push({ ...item, x: curX, y: curY });
-        curX += rw + KERF_CM;
-        if (rh > shelfH) shelfH = rh;
-      } else {
-        unplaced++;
-      }
-    });
-
-    return { placed, maxYUsed: curY + shelfH, unplaced };
-  }
-
-  // DIBUJA EL TABLERO REAL DE 244 CM X 183 CM A ESCALA CON REGLAS EN CM
-  function drawBoard244x183(s) {
-    const svg = document.getElementById('svg-board-244');
-    const ox = 52, oy = 38;
-    const scale = 3.55; // 244 cm * 3.55 = 866.2 px; 183 cm * 3.55 = 649.6 px -> use 2.65 for height fit
-    const sc = 2.65;    // 244 * 2.65 = 646.6 px, 183 * 2.65 = 484.95 px
-    const scX = 3.55, scY = 2.62; // Escala visual limpia dentro del viewBox 960x560
-
-    // Expandir las piezas de 1 molde
-    const singleMoldRects = [];
-    s.pieces.forEach(p => {
-      for (let i = 1; i <= p.qty; i++) {
-        singleMoldRects.push({
-          code: p.code,
-          label: `${p.code}`,
-          w: p.w,
-          h: p.h,
-          color: p.color,
-          modelId: activeModel.id
-        });
-      }
-    });
-
-    let areaOneMold = 0;
-    singleMoldRects.forEach(r => { areaOneMold += r.w * r.h; });
-    const boardTotalArea = BOARD_W * BOARD_H; // 44,652 cm2
-    const maxTheoreticalMolds = Math.max(1, Math.floor((boardTotalArea * 0.85) / areaOneMold));
-
-    let itemsToPack = [];
-    if (boardMode === 'single') {
-      itemsToPack = singleMoldRects;
-      document.getElementById('board-title').textContent = `MODO 1: CORTES PARA 1 MOLDE DEL MODELO ${activeModel.id} (${activeModel.name}) SOBRE TABLERO DE 244 × 183 CM`;
-    } else if (boardMode === 'multi') {
-      const repeatCount = Math.min(maxTheoreticalMolds, 35);
-      for (let m = 1; m <= repeatCount; m++) {
-        singleMoldRects.forEach(r => {
-          itemsToPack.push({ ...r, label: `${r.code} (M#${m})` });
-        });
-      }
-      document.getElementById('board-title').textContent = `MODO 2: PRODUCCIÓN EN SERIE — ${repeatCount} MOLDES COMPLETOS DE ${activeModel.id} EN TU TABLERO DE 244 × 183 CM`;
-    } else {
-      // Modo Combo Multiformas: mete 12 modelos representativos en el mismo tablero de 244x183 cm
-      const comboIds = ['M-01','M-03','M-05','M-08','M-10','M-14','M-16','M-18','M-22','M-26','M-29','M-33'];
-      const palette = ['#d97706','#0284c7','#059669','#7c3aed','#db2777','#ea580c','#2563eb','#16a34a','#9333ea','#ca8a04','#0891b2','#be123c'];
-      comboIds.forEach((cid, idx) => {
-        const cm = MODELS.find(x => x.id === cid);
-        if (!cm) return;
-        const cs = getPiecesForSpec(cm.wi, cm.li, cm.h, cm.tc, s.tw, cm.geom);
-        cs.pieces.forEach(p => {
-          for (let i = 1; i <= p.qty; i++) {
-            itemsToPack.push({
-              code: `${cid} ${p.code}`,
-              label: `${cid}:${p.code}`,
-              w: p.w,
-              h: p.h,
-              color: palette[idx % palette.length],
-              modelId: cid
-            });
-          }
-        });
-      });
-      document.getElementById('board-title').textContent = `MODO 3: KIT MULTIFORMAS (12 MODELOS DIFERENTES CORTADOS EN 1 SOLO TABLERO DE 244 × 183 CM)`;
-    }
-
-    const packed = packRectanglesOnBoard(itemsToPack);
-
-    // Actualizar métricas en cm
-    const pctOne = ((areaOneMold / boardTotalArea) * 100).toFixed(1);
-    const freeH = Math.max(0, BOARD_H - packed.maxYUsed).toFixed(1);
-    document.getElementById('m-ext').textContent = `${s.we.toFixed(1)} × ${s.le.toFixed(1)} × ${s.h.toFixed(1)} cm`;
-    document.getElementById('m-int').textContent = `${s.wi.toFixed(1)} × ${s.li.toFixed(1)} × ${s.hi.toFixed(1)} cm`;
-    document.getElementById('m-used').textContent = `${Math.round(areaOneMold)} cm² (${pctOne}% del tablero)`;
-    document.getElementById('m-fit').textContent = `${maxTheoreticalMolds} moldes completos`;
-    document.getElementById('m-free').textContent = `Faja libre: 244 × ${freeH} cm`;
-
-    // Reglas graduadas cada 20 cm en X (0 a 244 cm) y en Y (0 a 183 cm)
-    let rulers = '';
-    for (let x = 0; x <= 240; x += 20) {
-      const px = ox + x * scX;
-      rulers += `
-        <line x1="${px}" y1="${oy - 8}" x2="${px}" y2="${oy}" stroke="#fde68a" stroke-width="1.5"/>
-        <text x="${px}" y="${oy - 12}" fill="#fde68a" font-family="monospace" font-size="9.5" text-anchor="middle">${x}cm</text>
-      `;
-    }
-    rulers += `<text x="${ox + 244 * scX}" y="${oy - 12}" fill="#fbbf24" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">244cm</text>`;
-
-    for (let y = 0; y <= 180; y += 20) {
-      const py = oy + y * scY;
-      rulers += `
-        <line x1="${ox - 8}" y1="${py}" x2="${ox}" y2="${py}" stroke="#fde68a" stroke-width="1.5"/>
-        <text x="${ox - 11}" y="${py + 3}" fill="#fde68a" font-family="monospace" font-size="9.5" text-anchor="end">${y}cm</text>
-      `;
-    }
-    rulers += `<text x="${ox - 11}" y="${oy + 183 * scY + 4}" fill="#fbbf24" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">183cm</text>`;
-
-    // Dibujar las piezas empaquetadas sobre el tablero MDF Trupan
-    let rectsSVG = '';
-    packed.placed.forEach(r => {
-      const rx = ox + r.x * scX;
-      const ry = oy + r.y * scY;
-      const rw = Math.max(4, r.w * scX);
-      const rh = Math.max(4, r.h * scY);
-
-      const showText = rw >= 26 && rh >= 14;
-      rectsSVG += `
-        <g>
-          <rect x="${rx}" y="${ry}" width="${rw}" height="${rh}" fill="${r.color}" fill-opacity="0.82" stroke="#fff" stroke-width="1"/>
-          ${showText ? `
-            <text x="${rx + rw/2}" y="${ry + rh/2 - (rh > 24 ? 3 : -3)}" fill="#fff" font-family="monospace" font-size="${rw > 55 ? 9 : 7.5}" font-weight="bold" text-anchor="middle">${r.label}</text>
-            ${rh > 24 ? `<text x="${rx + rw/2}" y="${ry + rh/2 + 8}" fill="#fef08a" font-family="monospace" font-size="${rw > 55 ? 8.5 : 7}" text-anchor="middle">${r.w.toFixed(1)}×${r.h.toFixed(1)}cm</text>` : ''}
-          ` : ''}
-        </g>
-      `;
-    });
-
-    // Línea de corte horizontal que separa el material usado del sobrante libre
-    const cutLineY = oy + Math.min(BOARD_H, packed.maxYUsed) * scY;
-
-    svg.innerHTML = `
-      <!-- Tablero MDF Trupan Completo 244 x 183 cm -->
-      <rect x="${ox}" y="${oy}" width="${BOARD_W * scX}" height="${BOARD_H * scY}" fill="#d6c399" stroke="#f59e0b" stroke-width="3"/>
-      ${rulers}
-      ${rectsSVG}
-      <!-- Línea roja de corte de faja utilizada -->
-      <line x1="${ox}" y1="${cutLineY}" x2="${ox + BOARD_W * scX}" y2="${cutLineY}" stroke="#f43f5e" stroke-width="2.5" stroke-dasharray="7,4"/>
-      <rect x="${ox + 15}" y="${cutLineY + 6}" width="470" height="22" fill="rgba(7,16,32,0.88)" rx="4"/>
-      <text x="${ox + 24}" y="${cutLineY + 21}" fill="#34d399" font-family="monospace" font-size="11" font-weight="bold">
-        ↑ CORTE HORIZONTAL A ${packed.maxYUsed.toFixed(1)} CM DEL BORDE SUPERIOR | SOBRANTE LIBRE: 244.0 × ${freeH} CM
-      </text>
-    `;
-  }
-
-  // DIBUJA EL ZOOM AMPLIADO DE LAS PIEZAS DEL MODELO ACTUAL CON MEDIDAS GRANDES EN CM
-  function drawStripZoom(s) {
-    const svg = document.getElementById('svg-strip-zoom');
-    document.getElementById('zoom-title').textContent = `ZOOM DE CORTES EN CENTÍMETROS PARA ${activeModel.id} (${activeModel.name}) — ESPESOR MDF: ${s.tw.toFixed(1)} CM`;
-
-    let maxW = 0, maxH = 0;
-    s.pieces.forEach(p => { if (p.w > maxW) maxW = p.w; if (p.h > maxH) maxH = p.h; });
-    const sc = Math.min(130 / Math.max(maxW, 5), 115 / Math.max(maxH, 5), 14);
-
-    let curX = 25;
-    let itemsSVG = '';
-    s.pieces.forEach((p, idx) => {
-      const pw = Math.max(105, Math.min(175, p.w * sc));
-      const ph = Math.max(75, Math.min(125, p.h * sc));
-      const py = 45 + (130 - ph) / 2;
-
-      itemsSVG += `
-        <g>
-          <rect x="${curX}" y="${py}" width="${pw}" height="${ph}" fill="${p.color}" fill-opacity="0.85" stroke="#fde68a" stroke-width="2" rx="4"/>
-          <!-- Línea roja de corte a la derecha -->
-          <line x1="${curX + pw + 7}" y1="30" x2="${curX + pw + 7}" y2="195" stroke="#f43f5e" stroke-width="2" stroke-dasharray="5,3"/>
-          <circle cx="${curX + pw + 7}" cy="24" r="9" fill="#f43f5e"/>
-          <text x="${curX + pw + 7}" y="28" fill="#fff" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">C${idx+1}</text>
-
-          <text x="${curX + pw/2}" y="${py - 8}" fill="#fde047" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Ancho: ${p.w.toFixed(1)} cm</text>
-          <text x="${curX + pw/2}" y="${py + ph/2 - 6}" fill="#fff" font-family="monospace" font-size="11.5" font-weight="bold" text-anchor="middle">${p.code} (x${p.qty})</text>
-          <text x="${curX + pw/2}" y="${py + ph/2 + 10}" fill="#fef08a" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Alto: ${p.h.toFixed(1)} cm</text>
-          <text x="${curX + pw/2}" y="${py + ph + 16}" fill="#38bdf8" font-family="monospace" font-size="9.5" text-anchor="middle">${p.angle}</text>
-        </g>
-      `;
-      curX += pw + 18;
-    });
-
-    svg.innerHTML = itemsSVG;
-  }
-
-  function renderTableCM(s) {
+  function renderCutListTable(packed, spec) {
     const tbody = document.getElementById('cutlist-body');
-    tbody.innerHTML = s.pieces.map((p, idx) => `
+    // Agrupar por Tablero + Código de pieza para que la tabla sea súper clara
+    const summaryMap = new Map();
+    packed.allItems.forEach(it => {
+      const key = `B${it.boardNum}_${it.code}_${it.w}_${it.h}`;
+      if (!summaryMap.has(key)) {
+        summaryMap.set(key, {
+          boardNum: it.boardNum,
+          shelfNum: it.shelfNum,
+          code: it.code,
+          partName: it.partName,
+          qty: 0,
+          w: it.origW,
+          h: it.origH,
+          angle: it.angle,
+          note: it.note
+        });
+      }
+      summaryMap.get(key).qty++;
+    });
+
+    tbody.innerHTML = Array.from(summaryMap.values()).map(r => `
       <tr>
-        <td><strong>Corte #${idx + 1}</strong></td>
-        <td><strong>${p.code}</strong></td>
-        <td>${p.name}</td>
-        <td><strong>${p.qty} pza(s)</strong></td>
-        <td><span class="cm-highlight">${p.w.toFixed(1)} cm × ${p.h.toFixed(1)} cm</span></td>
-        <td>${p.angle}</td>
-        <td>${p.note}</td>
+        <td><span class="board-tag">TABLA #${r.boardNum}</span></td>
+        <td>Faja #${r.shelfNum}</td>
+        <td><strong>${r.code}</strong></td>
+        <td>${r.partName}</td>
+        <td><strong>${r.qty} pza(s)</strong></td>
+        <td><span class="cm-highlight">${r.w.toFixed(1)} cm × ${r.h.toFixed(1)} cm</span></td>
+        <td>${r.angle}</td>
+        <td>${r.note}</td>
       </tr>
     `).join('');
   }
 
-  function downloadBoardSVG() {
-    const svgEl = document.getElementById('svg-board-244');
-    const source = new XMLSerializer().serializeToString(svgEl);
-    const blob = new Blob([source], { type: 'image/svg+xml;charset=utf-8' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `tablero_244x183_${activeModel.id}.svg`;
-    a.click();
+  // PERMITE FIJAR EL MODELO ACTUAL ABAJO PARA VER VARIAS TABLAS DE DIFERENTES MODELOS A LA VEZ
+  function pinCurrentModelBelow() {
+    pinnedCount++;
+    const zone = document.getElementById('pinned-models-zone');
+    const currentBoardsHTML = document.getElementById('boards-render-zone').innerHTML;
+    const block = document.createElement('div');
+    block.className = 'panel';
+    block.style.borderColor = '#f59e0b';
+    block.innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+        <h2 style="margin:0; border:none;">MOLDE FIJADO #${pinnedCount}: ${activeModel.id} (${activeModel.name}) — Exterior: ${document.getElementById('m-ext').textContent}</h2>
+        <button class="action-btn outline" onclick="this.parentElement.parentElement.remove()">Quitar esta Tabla</button>
+      </div>
+      ${currentBoardsHTML}
+    `;
+    zone.appendChild(block);
   }
 
-  function downloadShapeSVG() {
-    const svgEl = document.getElementById('svg-final-shape');
+  function downloadFirstBoardSVG() {
+    const svgEl = document.querySelector('.board-svg-item');
+    if (!svgEl) return;
     const source = new XMLSerializer().serializeToString(svgEl);
     const blob = new Blob([source], { type: 'image/svg+xml;charset=utf-8' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = `forma_final_${activeModel.id}.svg`;
+    a.download = `cortes_tabla_244x183_${activeModel.id}.svg`;
     a.click();
   }
 
@@ -1011,7 +1159,7 @@
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = `cortes_en_cm_${activeModel.id}_trupan_244x183.csv`;
+    a.download = `cortes_en_cm_${activeModel.id}.csv`;
     a.click();
   }
 
