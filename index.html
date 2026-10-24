@@ -3,89 +3,87 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CAD Ultra v4.0 — 50 Modelos y 12 Láminas de Cortes de Carpintería (≥ 4.0 cm)</title>
+  <title>Optimizador de Corte Tablero MDF Trupan 4 mm (244 × 183 cm) + Forma Final 3D</title>
   <style>
     :root {
-      --bg: #050a14;
+      --bg: #070d19;
       --panel: #111c2d;
       --card: #1e293b;
       --accent: #38bdf8;
       --accent2: #f59e0b;
       --success: #10b981;
       --danger: #f43f5e;
+      --mdf-bg: #d6c399;
+      --mdf-stroke: #8c6d3b;
       --text: #f8fafc;
       --muted: #94a3b8;
-      --bp-bg: #041326;
-      --bp-grid: rgba(56, 189, 248, 0.12);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.42;
-      padding: 12px;
+      line-height: 1.45;
+      padding: 14px;
     }
     header {
-      background: linear-gradient(135deg, #111c2d 0%, #071020 100%);
+      background: linear-gradient(135deg, #152238 0%, #091326 100%);
       border: 1px solid #334155;
       border-left: 6px solid var(--accent2);
       border-radius: 10px;
-      padding: 12px 18px;
-      margin-bottom: 12px;
+      padding: 14px 20px;
+      margin-bottom: 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 10px;
     }
-    header h1 { font-size: 1.22rem; color: var(--accent); }
-    header p { color: var(--muted); font-size: 0.82rem; }
-    .badge {
-      background: rgba(245, 158, 11, 0.16);
-      color: var(--accent2);
-      border: 1px solid var(--accent2);
-      padding: 5px 12px;
+    header h1 { font-size: 1.25rem; color: var(--accent); }
+    header p { color: var(--muted); font-size: 0.84rem; }
+    .board-badge {
+      background: rgba(214, 195, 153, 0.18);
+      color: #fde68a;
+      border: 1px solid #f59e0b;
+      padding: 6px 14px;
       border-radius: 999px;
-      font-size: 0.76rem;
+      font-size: 0.8rem;
       font-weight: 700;
     }
+
     .workspace {
       display: grid;
-      grid-template-columns: 390px 1fr;
-      gap: 14px;
+      grid-template-columns: 370px 1fr;
+      gap: 16px;
     }
-    @media (max-width: 1180px) {
+    @media (max-width: 1150px) {
       .workspace { grid-template-columns: 1fr; }
     }
     .panel {
       background: var(--panel);
       border: 1px solid #334155;
       border-radius: 10px;
-      padding: 12px;
+      padding: 14px;
+      margin-bottom: 14px;
     }
     .panel h2 {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: var(--accent2);
       margin-bottom: 8px;
       border-bottom: 1px solid #334155;
-      padding-bottom: 4px;
+      padding-bottom: 5px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-    .filter-row {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 8px;
-    }
-    .filter-row input {
-      flex: 1;
-      padding: 6px 9px;
+    .filter-input {
+      width: 100%;
+      padding: 7px 10px;
       background: #050a14;
       border: 1px solid #475569;
       color: var(--text);
-      border-radius: 5px;
-      font-size: 0.78rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      margin-bottom: 8px;
     }
     .family-label {
       font-size: 0.7rem;
@@ -95,7 +93,7 @@
       margin: 7px 0 3px 0;
     }
     .preset-scroll {
-      max-height: 365px;
+      max-height: 360px;
       overflow-y: auto;
       padding-right: 4px;
       margin-bottom: 10px;
@@ -103,13 +101,13 @@
     .preset-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4px;
+      gap: 5px;
     }
     .preset-btn {
       background: #071020;
       color: var(--text);
       border: 1px solid #293548;
-      padding: 5px 7px;
+      padding: 6px 8px;
       border-radius: 5px;
       text-align: left;
       cursor: pointer;
@@ -118,48 +116,48 @@
     }
     .preset-btn:hover, .preset-btn.active {
       border-color: var(--accent2);
-      background: rgba(245, 158, 11, 0.18);
+      background: rgba(245, 158, 11, 0.2);
     }
-    .preset-btn strong { color: var(--accent2); display: block; font-size: 0.74rem; }
-    .preset-btn span { color: var(--muted); font-size: 0.67rem; }
+    .preset-btn strong { color: var(--accent2); display: block; font-size: 0.75rem; }
+    .preset-btn span { color: var(--muted); font-size: 0.68rem; }
 
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 6px;
+      gap: 7px;
     }
-    .form-group { margin-bottom: 4px; }
+    .form-group { margin-bottom: 5px; }
     .form-group.full { grid-column: span 2; }
     .form-group label {
       display: flex;
       justify-content: space-between;
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       color: var(--muted);
       margin-bottom: 2px;
     }
     .form-group input, .form-group select {
       width: 100%;
-      padding: 5px 7px;
+      padding: 5px 8px;
       background: #050a14;
       border: 1px solid #475569;
       color: var(--text);
       border-radius: 5px;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
     }
     .btn-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 6px;
+      gap: 7px;
       margin-top: 8px;
     }
     .action-btn {
       background: var(--accent);
       color: #050a14;
       border: none;
-      padding: 7px 8px;
-      border-radius: 5px;
+      padding: 8px 9px;
+      border-radius: 6px;
       font-weight: 700;
-      font-size: 0.74rem;
+      font-size: 0.75rem;
       cursor: pointer;
     }
     .action-btn.secondary { background: var(--success); color: #052e16; }
@@ -169,296 +167,245 @@
       border: 1px solid var(--accent2);
     }
 
-    /* 12-Sheet Grid Selector */
-    .sheet-bar {
+    /* Top Preview Grid: Final Shape 3D + Mold 3D */
+    .preview-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 5px;
-      margin-bottom: 8px;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
     }
     @media (max-width: 900px) {
-      .sheet-bar { grid-template-columns: repeat(2, 1fr); }
+      .preview-grid { grid-template-columns: 1fr; }
     }
-    .sheet-btn {
-      background: #071020;
-      color: var(--text);
-      border: 1px solid #334155;
-      padding: 6px 8px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.72rem;
-      text-align: left;
+    .preview-card {
+      background: linear-gradient(180deg, #0d1b2a 0%, #071020 100%);
+      border: 1px solid #38bdf8;
+      border-radius: 10px;
+      padding: 12px;
+    }
+    .preview-card.mold-card {
+      border-color: var(--accent2);
+    }
+    .preview-header {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 5px;
-      transition: 0.14s;
-    }
-    .sheet-btn.active, .sheet-btn:hover {
-      background: var(--accent);
-      color: #050a14;
-      border-color: var(--accent);
-    }
-    .sheet-btn .num {
-      background: rgba(0,0,0,0.35);
-      padding: 2px 5px;
-      border-radius: 3px;
-      font-family: monospace;
+      border-bottom: 1px dashed rgba(255,255,255,0.15);
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+      font-size: 0.8rem;
       font-weight: 700;
-      font-size: 0.7rem;
     }
 
-    /* Interactive Piece Cut Inspector Bar */
-    .inspector-bar {
-      background: #071020;
-      border: 1px solid #334155;
-      border-left: 4px solid var(--success);
-      border-radius: 6px;
-      padding: 6px 10px;
-      margin-bottom: 8px;
+    /* Mode Selector for 244x183 Board */
+    .mode-bar {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
       gap: 8px;
-      font-size: 0.76rem;
-    }
-    .piece-pills {
-      display: flex;
-      gap: 5px;
+      margin-bottom: 10px;
       flex-wrap: wrap;
     }
-    .piece-pill {
-      background: #111c2d;
+    .mode-btn {
+      background: #071020;
       color: var(--text);
-      border: 1px solid #475569;
-      padding: 3px 8px;
-      border-radius: 4px;
+      border: 1px solid #334155;
+      padding: 8px 12px;
+      border-radius: 6px;
       cursor: pointer;
-      font-family: monospace;
-      font-size: 0.72rem;
-      font-weight: 700;
+      font-weight: 600;
+      font-size: 0.78rem;
     }
-    .piece-pill.active, .piece-pill:hover {
+    .mode-btn.active, .mode-btn:hover {
       background: var(--accent2);
       color: #050a14;
       border-color: var(--accent2);
     }
 
-    .blueprint-container {
-      background: var(--bp-bg);
-      background-image:
-        linear-gradient(var(--bp-grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--bp-grid) 1px, transparent 1px);
-      background-size: 20px 20px;
-      border: 2px solid var(--accent);
+    .board-container {
+      background: #041222;
+      border: 2px solid var(--accent2);
       border-radius: 10px;
-      padding: 10px;
+      padding: 12px;
       overflow-x: auto;
+      margin-bottom: 14px;
     }
-    .blueprint-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px dashed rgba(56, 189, 248, 0.45);
-      padding-bottom: 5px;
-      margin-bottom: 8px;
-      font-family: monospace;
-      font-size: 0.78rem;
-      color: #bae6fd;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    svg.blueprint-svg {
+    svg.responsive-svg {
       width: 100%;
       height: auto;
-      min-width: 840px;
       display: block;
     }
 
     .metrics-bar {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 6px;
-      margin: 8px 0;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 8px;
+      margin-bottom: 14px;
     }
     .metric-box {
       background: #071020;
       border: 1px solid #334155;
-      border-top: 3px solid var(--accent2);
-      padding: 6px 8px;
-      border-radius: 5px;
+      border-top: 3px solid var(--accent);
+      padding: 8px 10px;
+      border-radius: 6px;
     }
-    .metric-box span { font-size: 0.68rem; color: var(--muted); display: block; }
-    .metric-box strong { font-size: 0.86rem; color: var(--text); }
+    .metric-box span { font-size: 0.7rem; color: var(--muted); display: block; }
+    .metric-box strong { font-size: 0.92rem; color: var(--text); }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.76rem;
+      font-size: 0.8rem;
       margin-top: 6px;
     }
     th, td {
       border: 1px solid #334155;
-      padding: 5px 7px;
+      padding: 7px 9px;
       text-align: left;
     }
     th { background: #071020; color: var(--accent); }
     tr:nth-child(even) { background: rgba(255,255,255,0.02); }
-    .cut-tag {
-      display: inline-block;
-      padding: 2px 5px;
-      border-radius: 3px;
+    .cm-highlight {
+      color: #fde047;
       font-weight: 700;
-      font-size: 0.69rem;
+      font-size: 0.88rem;
       font-family: monospace;
     }
-    .cut-90 { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; }
-    .cut-angle { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid #f59e0b; }
   </style>
 </head>
 <body>
 
 <header>
   <div>
-    <h1>SISTEMA CAD ULTRA v4.0 — 50 MODELOS Y 12 LÁMINAS DE CORTES DE CARPINTERÍA (≥ 4.0 CM)</h1>
-    <p>600 Planos Dinámicos: Guía Paralela + Carro de Escuadrar (Cut-Flip-Mark) + Cortes Ciegos (Kerfs/Rabbet) + Tapas Poligonales + Coordenadas de Taladrado</p>
+    <h1>CORTES EN CENTÍMETROS SOBRE TABLERO MDF TRUPAN 4 MM (244 × 183 CM) + FORMA FINAL 3D</h1>
+    <p>Selecciona cualquier modelo para ver la Imagen 3D de la Maceta Final, el Molde Armado y cómo cortar cada pieza en centímetros sobre tu tablero</p>
   </div>
-  <span class="badge">50 Modelos × 12 Láminas = 600 Planos Técnicos</span>
+  <span class="board-badge">Tablero: Trupan MDF 0.4 cm (4 mm) | 244 cm × 183 cm</span>
 </header>
 
 <div class="workspace">
-  <!-- PANEL IZQUIERDO: 50 MODELOS Y CONTROLES -->
-  <div class="panel">
-    <h2>1. Catálogo de 50 Modelos (≥ 4.0 cm)</h2>
-    <div class="filter-row">
-      <input type="text" id="search-model" placeholder="Buscar entre los 50 modelos (ej. M-34, hexágono, 4 cm, bonsái, pirámide...)" oninput="filterModels()" />
-    </div>
-    <div class="preset-scroll" id="preset-container"></div>
+  <!-- COLUMNA IZQUIERDA: 50 MODELOS Y AJUSTES EN CM -->
+  <div>
+    <div class="panel">
+      <h2>1. Elige el Modelo de Maceta (50 Diseños)</h2>
+      <input type="text" id="search-model" class="filter-input" placeholder="Buscar modelo (ej. M-01, hexágono, 4 cm, patas, bonsái...)" oninput="filterModels()" />
+      <div class="preset-scroll" id="preset-container"></div>
 
-    <h2>2. Parámetros Geométricos y de Sierra</h2>
-    <div class="form-grid">
-      <div class="form-group">
-        <label><span>Ancho / Ø Int. (cm)</span> <strong id="lbl-wi">4.0</strong></label>
-        <input type="number" id="in-wi" min="4.0" max="160.0" step="0.5" value="4.0" oninput="updateAll()" />
+      <h2>2. Medidas de tu Maceta en Centímetros (cm)</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label><span>Ancho / Ø Int. (cm)</span> <strong id="lbl-wi">4.0 cm</strong></label>
+          <input type="number" id="in-wi" min="4.0" max="140.0" step="0.5" value="4.0" oninput="updateAll()" />
+        </div>
+        <div class="form-group">
+          <label><span>Largo Int. (cm)</span> <strong id="lbl-li">4.0 cm</strong></label>
+          <input type="number" id="in-li" min="4.0" max="140.0" step="0.5" value="4.0" oninput="updateAll()" />
+        </div>
+        <div class="form-group">
+          <label><span>Altura Total (cm)</span> <strong id="lbl-h">6.0 cm</strong></label>
+          <input type="number" id="in-h" min="4.0" max="100.0" step="0.5" value="6.0" oninput="updateAll()" />
+        </div>
+        <div class="form-group">
+          <label><span>Pared Concreto (cm)</span> <strong id="lbl-tc">1.0 cm</strong></label>
+          <input type="number" id="in-tc" min="0.8" max="6.0" step="0.1" value="1.0" oninput="updateAll()" />
+        </div>
+        <div class="form-group full">
+          <label><span>Espesor del Tablero (Trupan 4 mm = 0.4 cm)</span></label>
+          <select id="in-tw" onchange="updateAll()">
+            <option value="0.4" selected>0.4 cm (Tablero MDF Trupan 4 mm de tu imagen)</option>
+            <option value="0.9">0.9 cm (MDF 9 mm o Doble Capa 4+4 mm)</option>
+            <option value="1.2">1.2 cm (MDF / Triplex 12 mm)</option>
+            <option value="1.5">1.5 cm (Melamina 15 mm)</option>
+            <option value="1.8">1.8 cm (Contrachapado 18 mm)</option>
+          </select>
+        </div>
       </div>
-      <div class="form-group">
-        <label><span>Largo Int. (cm)</span> <strong id="lbl-li">4.0</strong></label>
-        <input type="number" id="in-li" min="4.0" max="160.0" step="0.5" value="4.0" oninput="updateAll()" />
-      </div>
-      <div class="form-group">
-        <label><span>Altura Total (cm)</span> <strong id="lbl-h">6.0</strong></label>
-        <input type="number" id="in-h" min="4.0" max="120.0" step="0.5" value="6.0" oninput="updateAll()" />
-      </div>
-      <div class="form-group">
-        <label><span>Muro Concreto (cm)</span> <strong id="lbl-tc">1.0</strong></label>
-        <input type="number" id="in-tc" min="0.8" max="8.0" step="0.1" value="1.0" oninput="updateAll()" />
-      </div>
-      <div class="form-group full">
-        <label><span>Geometría de Corte y Ensamble</span></label>
-        <select id="in-geom" onchange="updateAll()">
-          <option value="rect_butt">Cuadrado / Rectangular — Corte a Tope 90° (Envolvente)</option>
-          <option value="rect_miter">Cuadrado / Rectangular — Esquinas a Inglete 45°</option>
-          <option value="taper_sled">Piramidal / Troncocónico — Método Cut-Flip-Mark (5° a 15°)</option>
-          <option value="hybrid_cyl">Caja Madera 90° + Núcleo Cilíndrico PVC/Madera</option>
-          <option value="tri_60">Triangular Equilátero (3 Lados — Bisel 60°)</option>
-          <option value="diamond_30_60">Rombo / Diamante (4 Lados — Biseles 30° y 60°)</option>
-          <option value="pent_36">Pentagonal Regular (5 Lados — Bisel 36°)</option>
-          <option value="hex_30">Hexagonal Regular (6 Lados — Bisel 30°)</option>
-          <option value="hept_257">Heptagonal Regular (7 Lados — Bisel 25.7°)</option>
-          <option value="oct_225">Octogonal Regular (8 Lados — Bisel 22.5°)</option>
-          <option value="non_20">Nonagonal Regular (9 Lados — Bisel 20.0°)</option>
-          <option value="dec_18">Decagonal Regular (10 Lados — Bisel 18.0°)</option>
-          <option value="dodec_15">Dodecagonal Regular (12 Duelas — Bisel 15.0°)</option>
-          <option value="hexadec_1125">Cilindro de 16 Duelas (Hexadecágono — Bisel 11.25°)</option>
-          <option value="chamfer_45">Cubo con Aristas Achaflanadas (Listones 45°)</option>
-          <option value="legged">Maceta con 4 Patas Integradas (Tacos de Reserva)</option>
-          <option value="fluted">Acanalado Vertical (Fluted con Medias Cañas)</option>
-          <option value="louvre">Nervado Horizontal (Louvre con Ranuras de Sierra)</option>
-          <option value="board_formed">Textura Tablas Horizontales (Board-Formed)</option>
-          <option value="stepped">Escalonado Arquitectónico Bauhaus</option>
-          <option value="shadow_gap">Cubo Flotante con Zócalo (Shadow Gap)</option>
-          <option value="rim_lip">Maceta con Labio Superior Grueso (Rim Planter)</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label><span>Espesor Madera</span></label>
-        <select id="in-tw" onchange="updateAll()">
-          <option value="0.9">9 mm (0.9 cm)</option>
-          <option value="1.2" selected>12 mm (1.2 cm)</option>
-          <option value="1.5">15 mm (1.5 cm Melamina)</option>
-          <option value="1.8">18 mm (1.8 cm Fenólico)</option>
-          <option value="1.9">19 mm (3/4" Melamina)</option>
-          <option value="2.0">20 mm (2.0 cm Pino)</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label><span>Salida / Conicidad (°)</span> <strong id="lbl-ang">5°</strong></label>
-        <input type="number" id="in-ang" min="0" max="22" step="1" value="5" oninput="updateAll()" />
-      </div>
-    </div>
 
-    <div class="btn-row">
-      <button class="action-btn" onclick="downloadSVG()">Descargar Lámina SVG</button>
-      <button class="action-btn secondary" onclick="downloadDXF()">Descargar CNC (.DXF)</button>
-      <button class="action-btn outline" onclick="downloadCSV()">Exportar Tabla Cortes CSV</button>
-      <button class="action-btn outline" onclick="window.print()">Imprimir Plano Actual</button>
+      <div class="btn-row">
+        <button class="action-btn" onclick="downloadBoardSVG()">Descargar Plano 244×183 SVG</button>
+        <button class="action-btn secondary" onclick="downloadCSV()">Descargar Tabla en CM (Excel)</button>
+        <button class="action-btn outline" onclick="downloadShapeSVG()">Descargar Imagen Forma 3D</button>
+        <button class="action-btn outline" onclick="window.print()">Imprimir Guía de Cortes</button>
+      </div>
     </div>
   </div>
 
-  <!-- PANEL DERECHO: 12 LÁMINAS DE CORTE + INSPECTOR DE PIEZA + TABLA -->
+  <!-- COLUMNA DERECHA: IMAGEN DE LA FORMA FINAL + PLANO DEL TABLERO 244x183 CM + TABLA EN CM -->
   <div>
-    <div class="sheet-bar">
-      <button class="sheet-btn active" onclick="setSheet(1, this)"><span class="num">L1</span> Armado (Planta + Cortes A-A/B-B)</button>
-      <button class="sheet-btn" onclick="setSheet(2, this)"><span class="num">L2</span> Secuencia Guillotina en Tablero</button>
-      <button class="sheet-btn" onclick="setSheet(3, this)"><span class="num">L3</span> Posición en Sierra y Guía Paralela</button>
-      <button class="sheet-btn" onclick="setSheet(4, this)"><span class="num">L4</span> Biseles 1:1 (Cara Mayor vs Menor)</button>
-      <button class="sheet-btn" onclick="setSheet(5, this)"><span class="num">L5</span> Corte Trapecial "Cut-Flip-Mark"</button>
-      <button class="sheet-btn" onclick="setSheet(6, this)"><span class="num">L6</span> Cortes Ciegos (Kerfs / Galces / Dados)</button>
-      <button class="sheet-btn" onclick="setSheet(7, this)"><span class="num">L7</span> Corte de Tapas Poligonales (3–16 Lados)</button>
-      <button class="sheet-btn" onclick="setSheet(8, this)"><span class="num">L8</span> Mapa de Taladrado y Pocket Holes</button>
-      <button class="sheet-btn" onclick="setSheet(9, this)"><span class="num">L9</span> Cortes de Patas, Chaflanes y Relieves</button>
-      <button class="sheet-btn" onclick="setSheet(10, this)"><span class="num">L10</span> Vista Explotada Isométrica 3D</button>
-      <button class="sheet-btn" onclick="setSheet(11, this)"><span class="num">L11</span> Fichas Individuales de Corte</button>
-      <button class="sheet-btn" onclick="setSheet(12, this)"><span class="num">L12</span> Transportador Calibración Sierra</button>
-    </div>
-
-    <div class="inspector-bar">
-      <span><strong>Inspector de Corte por Pieza:</strong> Selecciona una pieza para ver su configuración exacta en las láminas de corte:</span>
-      <div class="piece-pills" id="piece-selector"></div>
-    </div>
-
-    <div class="blueprint-container">
-      <div class="blueprint-header">
-        <span id="bp-title">MODELO M-01 | LÁMINA 1</span>
-        <span id="bp-sub">UNIDADES: CM Y MM | DISCO DE SIERRA: 3.0 MM</span>
+    <!-- SECCIÓN A: IMAGEN DE LA FORMA FINAL DE LA MACETA + VISTA DEL MOLDE -->
+    <div class="preview-grid">
+      <div class="preview-card">
+        <div class="preview-header">
+          <span style="color:#38bdf8;" id="title-shape">1. IMAGEN DE LA FORMA FINAL DE LA MACETA (CONCRETO)</span>
+          <label style="font-size:0.74rem; color:#34d399; cursor:pointer;">
+            <input type="checkbox" id="chk-plant" checked onchange="updateAll()" /> Ver con Planta
+          </label>
+        </div>
+        <svg id="svg-final-shape" class="responsive-svg" viewBox="0 0 440 270" xmlns="http://www.w3.org/2000/svg"></svg>
       </div>
-      <svg id="cad-svg" class="blueprint-svg" viewBox="0 0 980 530" xmlns="http://www.w3.org/2000/svg"></svg>
+
+      <div class="preview-card mold-card">
+        <div class="preview-header">
+          <span style="color:#fbbf24;">2. CÓMO SE ARMA EL MOLDE CON LOS CORTES DE MDF (0.4 CM)</span>
+          <span style="font-size:0.72rem; color:#fde68a;">Caja Exterior + Núcleo + Costillas</span>
+        </div>
+        <svg id="svg-mold-3d" class="responsive-svg" viewBox="0 0 440 270" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
     </div>
 
+    <!-- BARRA DE RESUMEN RÁPIDO EN CM -->
     <div class="metrics-bar">
-      <div class="metric-box"><span>Exterior Maceta</span><strong id="m-ext">-</strong></div>
-      <div class="metric-box"><span>Cavidad Interior</span><strong id="m-int">-</strong></div>
-      <div class="metric-box"><span>Inclinación Sierra</span><strong id="m-saw">-</strong></div>
-      <div class="metric-box"><span>Diferencia Caras (Δ)</span><strong id="m-delta">-</strong></div>
-      <div class="metric-box"><span>Altura Disco (Kerf)</span><strong id="m-kerf">-</strong></div>
-      <div class="metric-box"><span>Peso Concreto</span><strong id="m-weight">-</strong></div>
+      <div class="metric-box"><span>Medida Exterior Maceta</span><strong id="m-ext">-</strong></div>
+      <div class="metric-box"><span>Hueco Interior (Cavidad)</span><strong id="m-int">-</strong></div>
+      <div class="metric-box"><span>Área Usada por 1 Molde</span><strong id="m-used">-</strong></div>
+      <div class="metric-box"><span>Moldes que Caben en 244×183</span><strong id="m-fit">-</strong></div>
+      <div class="metric-box"><span>Tablero Libre Restante</span><strong id="m-free">-</strong></div>
     </div>
 
+    <!-- SECCIÓN B: PLANO DE CORTE SOBRE EL TABLERO TRUPAN DE 244 CM X 183 CM -->
+    <div class="mode-bar">
+      <button class="mode-btn active" onclick="setBoardMode('single', this)">
+        Modo 1: Cortar 1 Molde de este Modelo en el Tablero (244 × 183 cm)
+      </button>
+      <button class="mode-btn" onclick="setBoardMode('multi', this)">
+        Modo 2: Llenar el Tablero con Varios Moldes de este Modelo
+      </button>
+      <button class="mode-btn" onclick="setBoardMode('combo', this)">
+        Modo 3: Kit Multiformas (12 Modelos Diferentes en tu Tablero de 244 × 183 cm)
+      </button>
+    </div>
+
+    <div class="board-container">
+      <div class="preview-header" style="color:#fde68a;">
+        <span id="board-title">PLANO DE CORTE SOBRE TABLERO MDF TRUPAN DE 244 CM × 183 CM (ESPESOR 0.4 CM)</span>
+        <span>TODAS LAS MEDIDAS ESTÁN EN CENTÍMETROS (CM)</span>
+      </div>
+      <svg id="svg-board-244" class="responsive-svg" viewBox="0 0 960 560" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+
+    <!-- SECCIÓN C: ZOOM DE FAJA DE CORTE (1:1 LEGIBLE EN CENTÍMETROS) -->
+    <div class="board-container" style="border-color:#38bdf8;">
+      <div class="preview-header" style="color:#38bdf8;">
+        <span id="zoom-title">ZOOM DE TIRA DE CORTE (MEDIDAS AMPLIADAS EN CENTÍMETROS PARA EL MODELO SELECCIONADO)</span>
+        <span>LÍNEAS ROJAS PUNTEADAS = POR DÓNDE PASAR LA SIERRA O BISTURÍ PESADO</span>
+      </div>
+      <svg id="svg-strip-zoom" class="responsive-svg" viewBox="0 0 960 220" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+
+    <!-- SECCIÓN D: TABLA DE CORTES EN CENTÍMETROS -->
     <div class="panel">
-      <h2>Planilla Oficial de Taller (Medidas de Corte en Sierra, Cara Externa, Cara Interna y Altura de Disco)</h2>
+      <h2>3. Lista Exacta de Cortes en Centímetros (cm) para el Modelo Seleccionado</h2>
+      <p style="font-size:0.8rem; color:var(--muted); margin-bottom:6px;">
+        Todas las medidas ya incluyen el ajuste exacto para el espesor de tu tablero (**0.4 cm**). Corta primero una faja del ancho indicado y luego divídela en estos tramos:
+      </p>
       <table id="cutlist-table">
         <thead>
           <tr>
-            <th>Paso</th>
-            <th>Pieza</th>
-            <th>Función en el Molde</th>
-            <th>Cant.</th>
-            <th>Cara Mayor / Ext (mm)</th>
-            <th>Cara Menor / Int (mm)</th>
-            <th>Alto Corte (mm)</th>
-            <th>Ángulo Disco Sierra</th>
-            <th>Guía Paralela y Operación de Corte</th>
+            <th>Orden</th>
+            <th>Código Pieza</th>
+            <th>Parte del Molde</th>
+            <th>Cantidad</th>
+            <th>Medida a Cortar en CM (Ancho × Alto)</th>
+            <th>Ángulo en Bordes</th>
+            <th>Cómo se Arma en el Molde</th>
           </tr>
         </thead>
         <tbody id="cutlist-body"></tbody>
@@ -469,75 +416,77 @@
 
 <script>
   const MODELS = [
-    // FAMILIA 1: MICRO Y POLIEDROS DE ESCRITORIO (M-01 a M-14)
-    { id:'M-01', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Micro Cubo Suculenta', desc:'4.0×4.0 cm Int | Alto 6 cm', wi:4.0, li:4.0, h:6.0, tc:1.0, tw:1.2, ang:5, geom:'rect_butt' },
-    { id:'M-02', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Micro Cubo GFRC Ultra-Fino', desc:'4.0×4.0 cm Int | Muro 8 mm', wi:4.0, li:4.0, h:5.0, tc:0.8, tw:0.9, ang:4, geom:'rect_butt' },
-    { id:'M-03', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Micro Cilindro Híbrido', desc:'Ø 4.5 cm Int (PVC) | Alto 7.5 cm', wi:4.5, li:4.5, h:7.5, tc:1.25, tw:1.2, ang:0, geom:'hybrid_cyl' },
-    { id:'M-04', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Micro Pentágono 36°', desc:'Ø 5.0 cm Int | 5 Lados a 36°', wi:5.0, li:5.0, h:7.5, tc:1.0, tw:1.2, ang:5, geom:'pent_36' },
-    { id:'M-05', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Prisma Triangular 60°', desc:'Ø 6.0 cm Int | 3 Lados a 60°', wi:6.0, li:6.0, h:9.0, tc:1.0, tw:1.2, ang:5, geom:'tri_60' },
-    { id:'M-06', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Rombo Diamante 30°/60°', desc:'7.0×7.0 cm Int | Esquinas 60°/120°', wi:7.0, li:7.0, h:9.2, tc:1.0, tw:1.2, ang:5, geom:'diamond_30_60' },
-    { id:'M-07', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Heptágono Escultórico (7)', desc:'Ø 7.5 cm Int | 7 Lados a 25.7°', wi:7.5, li:7.5, h:9.0, tc:1.0, tw:1.2, ang:5, geom:'hept_257' },
-    { id:'M-08', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Hexágono Escritorio (6)', desc:'Ø 8.0 cm Int | 6 Lados a 30°', wi:8.0, li:8.0, h:9.0, tc:1.2, tw:1.2, ang:5, geom:'hex_30' },
-    { id:'M-09', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Nonágono Facetado (9)', desc:'Ø 9.5 cm Int | 9 Lados a 20°', wi:9.5, li:9.5, h:10.5, tc:1.2, tw:1.2, ang:5, geom:'non_20' },
-    { id:'M-10', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Octágono Escritorio (8)', desc:'Ø 10.0 cm Int | 8 Lados a 22.5°', wi:10.0, li:10.0, h:10.0, tc:1.2, tw:1.2, ang:5, geom:'oct_225' },
-    { id:'M-11', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Decágono 10 Duelas (18°)', desc:'Ø 11.0 cm Int | 10 Lados a 18°', wi:11.0, li:11.0, h:11.0, tc:1.2, tw:1.2, ang:5, geom:'dec_18' },
-    { id:'M-12', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Dodecágono 12 Duelas (15°)', desc:'Ø 12.0 cm Int | 12 Lados a 15°', wi:12.0, li:12.0, h:12.0, tc:1.2, tw:1.2, ang:5, geom:'dodec_15' },
-    { id:'M-13', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Cilindro 16 Duelas (11.25°)', desc:'Ø 15.0 cm Int | 16 Duelas 11.25°', wi:15.0, li:15.0, h:16.0, tc:1.5, tw:1.2, ang:5, geom:'hexadec_1125' },
+    // FAMILIA 1: MICRO Y POLIEDROS (4.0 a 15.0 cm)
+    { id:'M-01', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Micro Cubo Suculenta', desc:'4.0×4.0 cm Int | Alto 6.0 cm', wi:4.0, li:4.0, h:6.0, tc:1.0, geom:'rect_butt' },
+    { id:'M-02', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Micro Cubo Fino', desc:'4.0×4.0 cm Int | Alto 5.0 cm', wi:4.0, li:4.0, h:5.0, tc:0.8, geom:'rect_butt' },
+    { id:'M-03', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Micro Cilindro Híbrido', desc:'Ø 4.5 cm Int | Alto 7.5 cm', wi:4.5, li:4.5, h:7.5, tc:1.25, geom:'hybrid_cyl' },
+    { id:'M-04', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Micro Pentágono (5 Lados)', desc:'Ø 5.0 cm Int | Alto 7.5 cm', wi:5.0, li:5.0, h:7.5, tc:1.0, geom:'pent_36' },
+    { id:'M-05', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Prisma Triangular (3 Lados)', desc:'Ø 6.0 cm Int | Alto 9.0 cm', wi:6.0, li:6.0, h:9.0, tc:1.0, geom:'tri_60' },
+    { id:'M-06', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Rombo Diamante', desc:'7.0×7.0 cm Int | Alto 9.2 cm', wi:7.0, li:7.0, h:9.2, tc:1.0, geom:'diamond_30_60' },
+    { id:'M-07', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Heptágono (7 Lados)', desc:'Ø 7.5 cm Int | Alto 9.0 cm', wi:7.5, li:7.5, h:9.0, tc:1.0, geom:'hept_257' },
+    { id:'M-08', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Hexágono Escritorio (6)', desc:'Ø 8.0 cm Int | Alto 9.0 cm', wi:8.0, li:8.0, h:9.0, tc:1.2, geom:'hex_30' },
+    { id:'M-09', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Nonágono Facetado (9)', desc:'Ø 9.5 cm Int | Alto 10.5 cm', wi:9.5, li:9.5, h:10.5, tc:1.2, geom:'non_20' },
+    { id:'M-10', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Octágono Escritorio (8)', desc:'Ø 10.0 cm Int | Alto 10.0 cm', wi:10.0, li:10.0, h:10.0, tc:1.2, geom:'oct_225' },
+    { id:'M-11', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Decágono (10 Lados)', desc:'Ø 11.0 cm Int | Alto 11.0 cm', wi:11.0, li:11.0, h:11.0, tc:1.2, geom:'dec_18' },
+    { id:'M-12', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Dodecágono (12 Lados)', desc:'Ø 12.0 cm Int | Alto 12.0 cm', wi:12.0, li:12.0, h:12.0, tc:1.2, geom:'dodec_15' },
+    { id:'M-13', fam:'1. Micro, Suculentas y Poliedros (4 a 15 cm)', name:'Cilindro 16 Duelas', desc:'Ø 15.0 cm Int | Alto 16.0 cm', wi:15.0, li:15.0, h:16.0, tc:1.5, geom:'hexadec_1125' },
 
-    // FAMILIA 2: ARQUITECTÓNICAS, RELIEVES Y PIRAMIDALES (M-14 a M-27)
-    { id:'M-14', fam:'2. Arquitectónicas, Relieves y Piramidales', name:'Escalonada Bauhaus', desc:'10×10 cm Int | 3 Peldaños', wi:10.0, li:10.0, h:12.0, tc:1.5, tw:1.5, ang:8, geom:'stepped' },
-    { id:'M-15', fam:'2. Arquitectónicas, Relieves y Piramidales', name:'Cubo Aristas Achaflanadas', desc:'12×12 cm Int | 4 Chaflanes 45°', wi:12.0, li:12.0, h:14.0, tc:1.5, tw:1.5, ang:8, geom:'chamfer_45' },
-    { id:'M-16', fam:'2. Arquitectónicas, Relieves y Piramidales', name:'Melamina Salida Rápida 20°', desc:'12×12 cm Int | Núcleo 20°', wi:12.0, li:12.0, h:14.0, tc:1.5, tw:1.5, ang:20, geom:'rect_butt' },
-    { id:'M-17', fam:'2. Arquitectónicas, Relieves y Piramidales', name:'Prisma Reloj de Arena', desc:'12×12 cm Int | Cintura 45°', wi:12.0, li:12.0, h:20.0, tc:2.0, tw:1.5, ang:8, geom:'chamfer_45' },
-    { id:'M-18', fam:'2. Arquitectónicas, Relieves y Piramidales', name:'Maceta con 4 Patas Madera', desc:'14×14 cm Int | Tacos de Patas', wi:14.0, li:14.0, h:18.0, tc:1.5, tw:1.5, ang:6, geom:'legged' },
-    { id:'M-19', fam:'2. Arquitectónicas, Relieves y Piramidales', name:'Maceta Brutalista en Cruz', desc:'14×14 cm Int | 4 Esquinas Macizas', wi:14.0, li:14.0, h:16.0, tc:2.0, tw:1.5, ang:6, geom:'stepped' },
-    { id:'M-20', fam:'2. Arquitectónicas, Relieves y Piramidales', name:'Nervada Horizontal Louvre', desc:'16×16 cm Int | Ranuras cada 2 cm', wi:16.0, li:16.0, h:18.0, tc:2.0, tw:1.8, ang:6, geom:'louvre' },
-    { id:'M-21', fam:'2. Arquitectónicas, Relieves y Piramidales', name:'Pirámide Invertida 12°', desc:'16×16 cm Int | Sled Cut 12°', wi:16.0, li:16.0, h:20.0, tc:2.0, tw:1.5, ang:12, geom:'taper_sled' },
-    { id:'M-22', fam:'2. Arquitectónicas, Relieves y Piramidales', name:'Acanalada Vertical Fluted', desc:'18×18 cm Int | Medias Cañas', wi:18.0, li:18.0, h:20.0, tc:2.0, tw:1.8, ang:6, geom:'fluted' },
-    { id:'M-23', fam:'2. Arquitectónicas, Relieves y Piramidales', name:'Maceta con Labio Superior', desc:'18×18 cm Int | Borde Rim 3 cm', wi:18.0, li:18.0, h:20.0, tc:2.0, tw:1.8, ang:6, geom:'rim_lip' },
-    { id:'M-24', fam:'2. Arquitectónicas, Relieves y Piramidales', name:'Textura Tablas Board-Formed', desc:'20×20 cm Int | Listones Pino', wi:20.0, li:20.0, h:22.0, tc:2.0, tw:1.8, ang:5, geom:'board_formed' },
-    { id:'M-25', fam:'2. Arquitectónicas, Relieves y Piramidales', name:'Pirámide Truncada Clásica 7°', desc:'28×28 cm Int | Cut-Flip-Mark 7°', wi:28.0, li:28.0, h:35.0, tc:2.5, tw:1.8, ang:7, geom:'taper_sled' },
+    // FAMILIA 2: ARQUITECTÓNICAS Y CON RELIEVE (M-14 a M-25)
+    { id:'M-14', fam:'2. Arquitectónicas, Patas y Relieves', name:'Escalonada Bauhaus', desc:'10×10 cm Int | Con Escaleras', wi:10.0, li:10.0, h:12.0, tc:1.5, geom:'stepped' },
+    { id:'M-15', fam:'2. Arquitectónicas, Patas y Relieves', name:'Cubo Bordes Biselados', desc:'12×12 cm Int | Chaflanes 45°', wi:12.0, li:12.0, h:14.0, tc:1.5, geom:'chamfer_45' },
+    { id:'M-16', fam:'2. Arquitectónicas, Patas y Relieves', name:'Cubo Clásico 12 cm', desc:'12×12 cm Int | Alto 14.0 cm', wi:12.0, li:12.0, h:14.0, tc:1.5, geom:'rect_butt' },
+    { id:'M-17', fam:'2. Arquitectónicas, Patas y Relieves', name:'Reloj de Arena / Diábolo', desc:'12×12 cm Int | Alto 20.0 cm', wi:12.0, li:12.0, h:20.0, tc:2.0, geom:'chamfer_45' },
+    { id:'M-18', fam:'2. Arquitectónicas, Patas y Relieves', name:'Maceta con 4 Patas', desc:'14×14 cm Int | Alto 18.0 cm', wi:14.0, li:14.0, h:18.0, tc:1.5, geom:'legged' },
+    { id:'M-19', fam:'2. Arquitectónicas, Patas y Relieves', name:'Brutalista en Cruz', desc:'14×14 cm Int | Alto 16.0 cm', wi:14.0, li:14.0, h:16.0, tc:2.0, geom:'stepped' },
+    { id:'M-20', fam:'2. Arquitectónicas, Patas y Relieves', name:'Anillada Horizontal Louvre', desc:'16×16 cm Int | Alto 18.0 cm', wi:16.0, li:16.0, h:18.0, tc:2.0, geom:'louvre' },
+    { id:'M-21', fam:'2. Arquitectónicas, Patas y Relieves', name:'Pirámide Invertida Moderna', desc:'16×16 cm Int | Alto 20.0 cm', wi:16.0, li:16.0, h:20.0, tc:2.0, geom:'taper_sled' },
+    { id:'M-22', fam:'2. Arquitectónicas, Patas y Relieves', name:'Acanalada Vertical Fluted', desc:'18×18 cm Int | Alto 20.0 cm', wi:18.0, li:18.0, h:20.0, tc:2.0, geom:'fluted' },
+    { id:'M-23', fam:'2. Arquitectónicas, Patas y Relieves', name:'Maceta con Labio Superior', desc:'18×18 cm Int | Alto 20.0 cm', wi:18.0, li:18.0, h:20.0, tc:2.0, geom:'rim_lip' },
+    { id:'M-24', fam:'2. Arquitectónicas, Patas y Relieves', name:'Textura Listones Horizontales', desc:'20×20 cm Int | Alto 22.0 cm', wi:20.0, li:20.0, h:22.0, tc:2.0, geom:'board_formed' },
+    { id:'M-25', fam:'2. Arquitectónicas, Patas y Relieves', name:'Pirámide Truncada Clásica', desc:'28×28 cm Int | Alto 35.0 cm', wi:28.0, li:28.0, h:35.0, tc:2.5, geom:'taper_sled' },
 
-    // FAMILIA 3: BONSÁI, PAILAS Y JARDINERAS MEDIANAS (M-26 a M-38)
-    { id:'M-26', fam:'3. Bonsái, Pailas y Modulares', name:'Bandeja Bonsái Rectangular', desc:'20×14 cm Int | Alto 6.5 cm', wi:20.0, li:14.0, h:6.5, tc:1.5, tw:1.5, ang:12, geom:'legged' },
-    { id:'M-27', fam:'3. Bonsái, Pailas y Modulares', name:'Bandeja Bonsái Octogonal', desc:'Ø 22.0 cm Int | 8 Duelas Bajas', wi:22.0, li:22.0, h:7.0, tc:1.5, tw:1.5, ang:10, geom:'oct_225' },
-    { id:'M-28', fam:'3. Bonsái, Pailas y Modulares', name:'Bonsái Hexagonal con Labio', desc:'Ø 26.0 cm Int | Alto 7.5 cm', wi:26.0, li:26.0, h:7.5, tc:2.0, tw:1.5, ang:10, geom:'hex_30' },
-    { id:'M-29', fam:'3. Bonsái, Pailas y Modulares', name:'Paila Hexagonal Cactus', desc:'Ø 24.0 cm Int | Alto 10 cm', wi:24.0, li:24.0, h:10.0, tc:2.0, tw:1.5, ang:8, geom:'hex_30' },
-    { id:'M-30', fam:'3. Bonsái, Pailas y Modulares', name:'Paila Decagonal Cactus (10)', desc:'Ø 30.0 cm Int | Alto 11 cm', wi:30.0, li:30.0, h:11.0, tc:2.0, tw:1.5, ang:8, geom:'dec_18' },
-    { id:'M-31', fam:'3. Bonsái, Pailas y Modulares', name:'Módulo Hexagonal Panal', desc:'Ø 20.0 cm Int | Acoplable 30°', wi:20.0, li:20.0, h:20.0, tc:2.0, tw:1.5, ang:5, geom:'hex_30' },
-    { id:'M-32', fam:'3. Bonsái, Pailas y Modulares', name:'Esquinera de Pared 45°', desc:'25×25 cm Int | Frente 45°', wi:25.0, li:25.0, h:25.0, tc:2.5, tw:1.8, ang:6, geom:'rect_miter' },
-    { id:'M-33', fam:'3. Bonsái, Pailas y Modulares', name:'Jardinera Clásica 40×40×20', desc:'36×36 cm Int | 40×40×20 Ext', wi:36.0, li:36.0, h:20.0, tc:2.0, tw:2.0, ang:5, geom:'rect_butt' },
-    { id:'M-34', fam:'3. Bonsái, Pailas y Modulares', name:'Jardinera Pared Trapezoidal', desc:'40×20 cm Int | Inclinación 15°', wi:40.0, li:20.0, h:25.0, tc:2.5, tw:1.8, ang:15, geom:'taper_sled' },
-    { id:'M-35', fam:'3. Bonsái, Pailas y Modulares', name:'Jardinera 2 Niveles Escalonada', desc:'40×20 cm Int | Doble Altura', wi:40.0, li:20.0, h:25.0, tc:2.5, tw:1.8, ang:6, geom:'stepped' },
-    { id:'M-36', fam:'3. Bonsái, Pailas y Modulares', name:'Cubo Flotante Shadow Gap', desc:'38×38 cm Int | Zócalo Inferior', wi:38.0, li:38.0, h:45.0, tc:3.5, tw:1.8, ang:5, geom:'shadow_gap' },
-    { id:'M-37', fam:'3. Bonsái, Pailas y Modulares', name:'Jardinera Balcón 60 cm', desc:'55×16 cm Int | Alto 20 cm', wi:55.0, li:16.0, h:20.0, tc:2.5, tw:1.8, ang:5, geom:'rect_butt' },
-    { id:'M-38', fam:'3. Bonsái, Pailas y Modulares', name:'Jardinera Ventana 80 cm', desc:'75×15 cm Int | Triple Drenaje', wi:75.0, li:15.0, h:18.0, tc:2.5, tw:1.8, ang:5, geom:'rect_butt' },
+    // FAMILIA 3: BONSÁI, PAILAS Y JARDINERAS (M-26 a M-38)
+    { id:'M-26', fam:'3. Bonsái, Pailas y Jardineras', name:'Bandeja Bonsái Rectangular', desc:'20×14 cm Int | Alto 6.5 cm', wi:20.0, li:14.0, h:6.5, tc:1.5, geom:'legged' },
+    { id:'M-27', fam:'3. Bonsái, Pailas y Jardineras', name:'Bandeja Bonsái Octogonal', desc:'Ø 22.0 cm Int | Alto 7.0 cm', wi:22.0, li:22.0, h:7.0, tc:1.5, geom:'oct_225' },
+    { id:'M-28', fam:'3. Bonsái, Pailas y Jardineras', name:'Bonsái Hexagonal', desc:'Ø 26.0 cm Int | Alto 7.5 cm', wi:26.0, li:26.0, h:7.5, tc:2.0, geom:'hex_30' },
+    { id:'M-29', fam:'3. Bonsái, Pailas y Jardineras', name:'Paila Hexagonal Cactus', desc:'Ø 24.0 cm Int | Alto 10.0 cm', wi:24.0, li:24.0, h:10.0, tc:2.0, geom:'hex_30' },
+    { id:'M-30', fam:'3. Bonsái, Pailas y Jardineras', name:'Paila Decagonal Cactus', desc:'Ø 30.0 cm Int | Alto 11.0 cm', wi:30.0, li:30.0, h:11.0, tc:2.0, geom:'dec_18' },
+    { id:'M-31', fam:'3. Bonsái, Pailas y Jardineras', name:'Módulo Hexagonal Panal', desc:'Ø 20.0 cm Int | Alto 20.0 cm', wi:20.0, li:20.0, h:20.0, tc:2.0, geom:'hex_30' },
+    { id:'M-32', fam:'3. Bonsái, Pailas y Jardineras', name:'Esquinera de Pared', desc:'25×25 cm Int | Alto 25.0 cm', wi:25.0, li:25.0, h:25.0, tc:2.5, geom:'rect_miter' },
+    { id:'M-33', fam:'3. Bonsái, Pailas y Jardineras', name:'Jardinera Clásica 40×40×20', desc:'36×36 cm Int | Alto 20.0 cm', wi:36.0, li:36.0, h:20.0, tc:2.0, geom:'rect_butt' },
+    { id:'M-34', fam:'3. Bonsái, Pailas y Jardineras', name:'Jardinera Pared Trapezoidal', desc:'40×20 cm Int | Alto 25.0 cm', wi:40.0, li:20.0, h:25.0, tc:2.5, geom:'taper_sled' },
+    { id:'M-35', fam:'3. Bonsái, Pailas y Jardineras', name:'Jardinera 2 Niveles', desc:'40×20 cm Int | Alto 25.0 cm', wi:40.0, li:20.0, h:25.0, tc:2.5, geom:'stepped' },
+    { id:'M-36', fam:'3. Bonsái, Pailas y Jardineras', name:'Cubo Flotante Shadow Gap', desc:'38×38 cm Int | Alto 45.0 cm', wi:38.0, li:38.0, h:45.0, tc:3.5, geom:'shadow_gap' },
+    { id:'M-37', fam:'3. Bonsái, Pailas y Jardineras', name:'Jardinera Balcón 60 cm', desc:'55×16 cm Int | Alto 20.0 cm', wi:55.0, li:16.0, h:20.0, tc:2.5, geom:'rect_butt' },
+    { id:'M-38', fam:'3. Bonsái, Pailas y Jardineras', name:'Jardinera Ventana 80 cm', desc:'75×15 cm Int | Alto 18.0 cm', wi:75.0, li:15.0, h:18.0, tc:2.5, geom:'rect_butt' },
 
-    // FAMILIA 4: MONUMENTALES Y MOBILIARIO URBANO (M-39 a M-50)
-    { id:'M-39', fam:'4. Monumentales y Mobiliario Urbano', name:'Octágono de Patio 35 cm', desc:'Ø 35 cm Int | 8 Paneles 22.5°', wi:35.0, li:35.0, h:35.0, tc:3.0, tw:1.8, ang:5, geom:'oct_225' },
-    { id:'M-40', fam:'4. Monumentales y Mobiliario Urbano', name:'Maceta Acústica Facetada', desc:'30×30 cm Int | Relieves 3D', wi:30.0, li:30.0, h:35.0, tc:3.0, tw:1.8, ang:6, geom:'chamfer_45' },
-    { id:'M-41', fam:'4. Monumentales y Mobiliario Urbano', name:'Obelisco Piramidal Alto 5°', desc:'32×32 cm Int | Alto 70 cm (5°)', wi:32.0, li:32.0, h:70.0, tc:3.0, tw:1.8, ang:5, geom:'taper_sled' },
-    { id:'M-42', fam:'4. Monumentales y Mobiliario Urbano', name:'Cilindro Patio 16 Duelas', desc:'Ø 45 cm Int | 16 Duelas 11.25°', wi:45.0, li:45.0, h:45.0, tc:3.0, tw:1.8, ang:5, geom:'hexadec_1125' },
-    { id:'M-43', fam:'4. Monumentales y Mobiliario Urbano', name:'Torre Alta 60×60×80 cm', desc:'50×50 cm Int | Alto 80 cm', wi:50.0, li:50.0, h:80.0, tc:5.0, tw:1.9, ang:7, geom:'rect_butt' },
-    { id:'M-44', fam:'4. Monumentales y Mobiliario Urbano', name:'Columna Hexagonal 90 cm', desc:'Ø 40 cm Int | Alto 90 cm', wi:40.0, li:40.0, h:90.0, tc:4.0, tw:1.9, ang:5, geom:'hex_30' },
-    { id:'M-45', fam:'4. Monumentales y Mobiliario Urbano', name:'Jardinera Esquinera L 80 cm', desc:'70×70 cm Int | Alto 40 cm', wi:70.0, li:70.0, h:40.0, tc:5.0, tw:1.9, ang:5, geom:'shadow_gap' },
-    { id:'M-46', fam:'4. Monumentales y Mobiliario Urbano', name:'Jardinera en U Envolvente', desc:'80×60 cm Int | Alto 40 cm', wi:80.0, li:60.0, h:40.0, tc:5.0, tw:1.9, ang:5, geom:'rect_butt' },
-    { id:'M-47', fam:'4. Monumentales y Mobiliario Urbano', name:'Cubo Monumental 80×80×80', desc:'68×68 cm Int | Chaflanes 45°', wi:68.0, li:68.0, h:80.0, tc:6.0, tw:1.9, ang:5, geom:'chamfer_45' },
-    { id:'M-48', fam:'4. Monumentales y Mobiliario Urbano', name:'Divisor Urbano 100 cm', desc:'90×28 cm Int | 100×38×45 Ext', wi:90.0, li:28.0, h:45.0, tc:5.0, tw:1.9, ang:5, geom:'rect_butt' },
-    { id:'M-49', fam:'4. Monumentales y Mobiliario Urbano', name:'Banca Jardinera 120 cm', desc:'108×38 cm Int | 120×50×50 Ext', wi:108.0, li:38.0, h:50.0, tc:6.0, tw:1.9, ang:5, geom:'rim_lip' },
-    { id:'M-50', fam:'4. Monumentales y Mobiliario Urbano', name:'Corredor Urbano 150 cm', desc:'138×33 cm Int | 150×45×45 Ext', wi:138.0, li:33.0, h:45.0, tc:6.0, tw:1.9, ang:5, geom:'rect_butt' }
+    // FAMILIA 4: GRANDES FORMATOS (M-39 a M-50)
+    { id:'M-39', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Octágono de Patio 35 cm', desc:'Ø 35 cm Int | Alto 35.0 cm', wi:35.0, li:35.0, h:35.0, tc:3.0, geom:'oct_225' },
+    { id:'M-40', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Maceta Facetada 3D', desc:'30×30 cm Int | Alto 35.0 cm', wi:30.0, li:30.0, h:35.0, tc:3.0, geom:'chamfer_45' },
+    { id:'M-41', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Obelisco Piramidal Alto', desc:'32×32 cm Int | Alto 70.0 cm', wi:32.0, li:32.0, h:70.0, tc:3.0, geom:'taper_sled' },
+    { id:'M-42', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Cilindro Patio 16 Duelas', desc:'Ø 45 cm Int | Alto 45.0 cm', wi:45.0, li:45.0, h:45.0, tc:3.0, geom:'hexadec_1125' },
+    { id:'M-43', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Torre Alta 60×60×80 cm', desc:'50×50 cm Int | Alto 80.0 cm', wi:50.0, li:50.0, h:80.0, tc:5.0, geom:'rect_butt' },
+    { id:'M-44', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Columna Hexagonal 90 cm', desc:'Ø 40 cm Int | Alto 90.0 cm', wi:40.0, li:40.0, h:90.0, tc:4.0, geom:'hex_30' },
+    { id:'M-45', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Jardinera Esquinera 80 cm', desc:'70×70 cm Int | Alto 40.0 cm', wi:70.0, li:70.0, h:40.0, tc:5.0, geom:'shadow_gap' },
+    { id:'M-46', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Jardinera Envolvente 90 cm', desc:'80×60 cm Int | Alto 40.0 cm', wi:80.0, li:60.0, h:40.0, tc:5.0, geom:'rect_butt' },
+    { id:'M-47', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Cubo Monumental 80×80 cm', desc:'68×68 cm Int | Alto 80.0 cm', wi:68.0, li:68.0, h:80.0, tc:6.0, geom:'chamfer_45' },
+    { id:'M-48', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Divisor Urbano 100 cm', desc:'90×28 cm Int | Alto 45.0 cm', wi:90.0, li:28.0, h:45.0, tc:5.0, geom:'rect_butt' },
+    { id:'M-49', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Banca Jardinera 120 cm', desc:'108×38 cm Int | Alto 50.0 cm', wi:108.0, li:38.0, h:50.0, tc:6.0, geom:'rim_lip' },
+    { id:'M-50', fam:'4. Grandes Formatos (30 a 150 cm)', name:'Corredor Urbano 150 cm', desc:'138×33 cm Int | Alto 45.0 cm', wi:138.0, li:33.0, h:45.0, tc:6.0, geom:'rect_butt' }
   ];
 
+  const BOARD_W = 244.0; // cm (Largo del tablero Trupan)
+  const BOARD_H = 183.0; // cm (Ancho del tablero Trupan)
+  const KERF_CM = 0.3;   // 3 mm de disco de sierra
+
   let activeModel = MODELS[0];
-  let activeSheet = 1;
-  let activePieceIdx = 0;
-  let currentPieces = [];
+  let boardMode = 'single'; // 'single', 'multi', 'combo'
 
   function initPresets(filterText = '') {
     const container = document.getElementById('preset-container');
     const q = filterText.trim().toLowerCase();
     let html = '', lastFam = '';
-    MODELS.forEach((m) => {
+    MODELS.forEach(m => {
       if (q && !(m.id.toLowerCase().includes(q) || m.name.toLowerCase().includes(q) || m.desc.toLowerCase().includes(q))) return;
       if (m.fam !== lastFam) {
         if (lastFam !== '') html += '</div>';
@@ -564,7 +513,6 @@
     const m = MODELS.find(x => x.id === id);
     if (!m) return;
     activeModel = m;
-    activePieceIdx = 0;
     document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
     const btn = document.getElementById('pbtn-' + id);
     if (btn) btn.classList.add('active');
@@ -573,67 +521,33 @@
     document.getElementById('in-li').value = m.li;
     document.getElementById('in-h').value = m.h;
     document.getElementById('in-tc').value = m.tc;
-    document.getElementById('in-tw').value = m.tw;
-    document.getElementById('in-ang').value = m.ang;
-    document.getElementById('in-geom').value = m.geom;
     updateAll();
   }
 
-  function setSheet(num, btn) {
-    activeSheet = num;
-    document.querySelectorAll('.sheet-btn').forEach(b => b.classList.remove('active'));
+  function setBoardMode(mode, btn) {
+    boardMode = mode;
+    document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     updateAll();
   }
 
-  function selectPiece(idx) {
-    activePieceIdx = idx;
-    updateAll();
-  }
-
-  function computeSpec() {
-    const wi = Math.max(4.0, parseFloat(document.getElementById('in-wi').value) || 4.0);
-    const li = Math.max(4.0, parseFloat(document.getElementById('in-li').value) || 4.0);
-    const h = Math.max(4.0, parseFloat(document.getElementById('in-h').value) || 6.0);
-    const tc = Math.max(0.8, parseFloat(document.getElementById('in-tc').value) || 1.0);
-    const tw = parseFloat(document.getElementById('in-tw').value) || 1.2;
-    const ang = parseFloat(document.getElementById('in-ang').value) || 0;
-    const geom = document.getElementById('in-geom').value;
-
-    document.getElementById('lbl-wi').textContent = wi.toFixed(1) + ' cm';
-    document.getElementById('lbl-li').textContent = li.toFixed(1) + ' cm';
-    document.getElementById('lbl-h').textContent = h.toFixed(1) + ' cm';
-    document.getElementById('lbl-tc').textContent = tc.toFixed(1) + ' cm';
-    document.getElementById('lbl-ang').textContent = ang + '°';
-
+  function getPiecesForSpec(wi, li, h, tc, tw, geom) {
     const polyMap = {
-      'tri_60': { sides: 3, bevel: 60.0, label: '60.0° Bisel (3 Lados)' },
-      'pent_36': { sides: 5, bevel: 36.0, label: '36.0° Bisel (5 Lados)' },
-      'hex_30': { sides: 6, bevel: 30.0, label: '30.0° Bisel (6 Lados)' },
-      'hept_257': { sides: 7, bevel: 25.7, label: '25.7° Bisel (7 Lados)' },
-      'oct_225': { sides: 8, bevel: 22.5, label: '22.5° Bisel (8 Lados)' },
-      'non_20': { sides: 9, bevel: 20.0, label: '20.0° Bisel (9 Lados)' },
-      'dec_18': { sides: 10, bevel: 18.0, label: '18.0° Bisel (10 Lados)' },
-      'dodec_15': { sides: 12, bevel: 15.0, label: '15.0° Bisel (12 Duelas)' },
-      'hexadec_1125': { sides: 16, bevel: 11.25, label: '11.25° Bisel (16 Duelas)' }
+      'tri_60': { sides: 3, bevel: 60.0 },
+      'pent_36': { sides: 5, bevel: 36.0 },
+      'hex_30': { sides: 6, bevel: 30.0 },
+      'hept_257': { sides: 7, bevel: 25.7 },
+      'oct_225': { sides: 8, bevel: 22.5 },
+      'non_20': { sides: 9, bevel: 20.0 },
+      'dec_18': { sides: 10, bevel: 18.0 },
+      'dodec_15': { sides: 12, bevel: 15.0 },
+      'hexadec_1125': { sides: 16, bevel: 11.25 }
     };
 
-    let sides = 4, bevelDeg = 0, sawAngleText = '0° Vertical (Corte Recto 90°)';
+    let sides = 4, bevelDeg = 0;
     if (polyMap[geom]) {
       sides = polyMap[geom].sides;
       bevelDeg = polyMap[geom].bevel;
-      sawAngleText = polyMap[geom].label;
-    } else if (geom === 'rect_miter') {
-      bevelDeg = 45.0;
-      sawAngleText = '45.0° Inglete en Cantos';
-    } else if (geom === 'taper_sled') {
-      bevelDeg = 45.0;
-      sawAngleText = `Sled ${ang}° + Bisel 45°`;
-    } else if (geom === 'diamond_30_60') {
-      bevelDeg = 30.0;
-      sawAngleText = '30° y 60° Alternados';
-    } else if (geom === 'louvre') {
-      sawAngleText = '90° + Ranuras Ciegas 5 mm';
     }
 
     const we = wi + 2 * tc;
@@ -642,938 +556,448 @@
     const moldW = we + 2 * tw;
     const moldL = le + 2 * tw;
 
-    const deltaSingleCm = bevelDeg > 0 ? tw * Math.tan(bevelDeg * Math.PI / 180) : 0;
-    const deltaBothCm = deltaSingleCm * 2;
-    const kerfDepthMm = (tw * 5).toFixed(1);
-
     const pieces = [];
     if (sides !== 4) {
       const tanHalf = Math.tan(Math.PI / sides);
-      const sideOuterMajor = moldW * tanHalf;
-      const sideOuterMinor = we * tanHalf;
-      const sideInnerMajor = wi * tanHalf;
-      const sideInnerMinor = Math.max(0.6, (wi - 2 * tw) * tanHalf);
+      const extSide = parseFloat((moldW * tanHalf).toFixed(2));
+      const intSide = parseFloat((wi * tanHalf).toFixed(2));
+      const capW = parseFloat(Math.max(2.0, wi - 2 * tw).toFixed(2));
 
-      pieces.push({
-        code: 'EXT-DUELA',
-        name: `Duelas Exteriores Poligonales (${sides} caras)`,
-        qty: sides,
-        wMajor: sideOuterMajor,
-        wMinor: sideOuterMinor,
-        h: h,
-        bevelDeg: bevelDeg,
-        bevel: `${bevelDeg}° en ambos cantos`,
-        isAngle: true,
-        bladeHeightMm: Math.round(tw * 12),
-        op: `Guía paralela a ${(sideOuterMajor*10).toFixed(1)} mm; inclinar disco a ${bevelDeg}° en ambos cantos largos`
-      });
-      pieces.push({
-        code: 'BASE-POL',
-        name: 'Tablero Base Inferior de Soporte',
-        qty: 1,
-        wMajor: moldW + 2.0,
-        wMinor: moldW + 2.0,
-        h: moldW + 2.0,
-        bevelDeg: 0,
-        bevel: '90° Corte Recto',
-        isAngle: false,
-        bladeHeightMm: Math.round(tw * 11),
-        op: `Cortar cuadrado a 90°; perforar centro en X=${((moldW+2)*5).toFixed(0)} mm, Y=${((moldW+2)*5).toFixed(0)} mm`
-      });
-      pieces.push({
-        code: 'INT-DUELA',
-        name: `Duelas del Núcleo Interior (${sides} caras)`,
-        qty: sides,
-        wMajor: sideInnerMajor,
-        wMinor: sideInnerMinor,
-        h: hi,
-        bevelDeg: bevelDeg,
-        bevel: `${bevelDeg}° cantos + ${ang}° base`,
-        isAngle: true,
-        bladeHeightMm: Math.round(tw * 12),
-        op: `Guía a ${(sideInnerMajor*10).toFixed(1)} mm con disco a ${bevelDeg}°; unir por dentro con cinta o bisagra`
-      });
-      pieces.push({
-        code: 'TAPA-POL',
-        name: `Tapas Internas Poligonales (${sides} lados)`,
-        qty: 2,
-        wMajor: Math.max(2.0, wi - 2 * tw),
-        wMinor: Math.max(2.0, wi - 2 * tw),
-        h: Math.max(2.0, wi - 2 * tw),
-        bevelDeg: 0,
-        bevel: `Polígono ${sides} lados (Ver L7)`,
-        isAngle: false,
-        bladeHeightMm: Math.round(tw * 11),
-        op: `Cortar en ingleteadora girando la pieza ${(360/sides).toFixed(1)}° en cada corte`
-      });
+      pieces.push({ code:'EXT-DUELA', name:`Duelas Exteriores (${sides} lados)`, qty:sides, w:extSide, h:h, angle:`Bisel ${bevelDeg}°`, color:'#d97706', note:`Cortar ${sides} tablas iguales de ${extSide.toFixed(1)} × ${h.toFixed(1)} cm` });
+      pieces.push({ code:'BASE-C', name:'Base Inferior del Molde', qty:1, w:parseFloat((moldW+1.2).toFixed(2)), h:parseFloat((moldW+1.2).toFixed(2)), angle:'Recto 90°', color:'#0284c7', note:'Placa base donde asienta el molde exterior (perforar drenaje central)' });
+      pieces.push({ code:'INT-DUELA', name:`Duelas Núcleo Interior (${sides} lados)`, qty:sides, w:intSide, h:hi, angle:`Bisel ${bevelDeg}°`, color:'#059669', note:`Forman el hueco interior de Ø ${wi.toFixed(1)} cm` });
+      pieces.push({ code:'TAPA-INT', name:'Tapas Internas del Núcleo', qty:2, w:capW, h:capW, angle:`Polígono ${sides} lados`, color:'#7c3aed', note:'Dan firmeza interna al núcleo de MDF de 0.4 cm' });
     } else {
-      const isMiter = (geom === 'rect_miter' || geom === 'taper_sled' || geom === 'diamond_30_60');
-      const extAMaj = moldW;
-      const extAMin = isMiter ? we : moldW;
-      const extBMaj = isMiter ? moldL : le;
-      const extBMin = isMiter ? le : le;
+      const intShort = parseFloat(Math.max(1.5, li - 2 * tw).toFixed(2));
+      const intCapW = parseFloat(Math.max(1.5, wi - 2 * tw).toFixed(2));
 
-      pieces.push({
-        code: 'EXT-A',
-        name: 'Paneles Exteriores Largos (Frontal y Posterior)',
-        qty: 2,
-        wMajor: extAMaj,
-        wMinor: extAMin,
-        h: h,
-        bevelDeg: isMiter ? bevelDeg : 0,
-        bevel: geom === 'taper_sled' ? `Trapecio ${ang}° + Bisel 45°` : isMiter ? `${bevelDeg}° ambos cantos` : '90° Corte Recto (Solapa EXT-B)',
-        isAngle: isMiter,
-        bladeHeightMm: Math.round(tw * 11.5),
-        op: geom === 'taper_sled'
-          ? `Usar carro Cut-Flip-Mark a ${ang}° (Ver L5) + disco inclinado a 45°`
-          : `Guía paralela a ${(extAMaj*10).toFixed(0)} mm; corte longitudinal y transversal a ${isMiter ? '45°' : '90°'}`
-      });
-      pieces.push({
-        code: 'EXT-B',
-        name: 'Paneles Exteriores Cortos (Laterales Izq/Der)',
-        qty: 2,
-        wMajor: extBMaj,
-        wMinor: extBMin,
-        h: h,
-        bevelDeg: isMiter ? bevelDeg : 0,
-        bevel: geom === 'taper_sled' ? `Trapecio ${ang}° + Bisel 45°` : isMiter ? `${bevelDeg}° ambos cantos` : '90° Corte Recto (Entre EXT-A)',
-        isAngle: isMiter,
-        bladeHeightMm: Math.round(tw * 11.5),
-        op: `Guía paralela a ${(extBMaj*10).toFixed(0)} mm; sellar cantos con cordón de silicona`
-      });
-      pieces.push({
-        code: 'BASE-C',
-        name: 'Placa Base Inferior del Molde',
-        qty: 1,
-        wMajor: moldW,
-        wMinor: moldW,
-        h: moldL,
-        bevelDeg: 0,
-        bevel: '90° + Galce Opcional 4 mm',
-        isAngle: false,
-        bladeHeightMm: Math.round(tw * 11),
-        op: `Corte a escuadra 90°; perforar drenaje Ø 20 mm en centro (${(moldW*5).toFixed(0)}, ${(moldL*5).toFixed(0)} mm)`
-      });
+      pieces.push({ code:'EXT-A', name:'Paredes Exteriores Largas (x2)', qty:2, w:parseFloat(moldW.toFixed(2)), h:h, angle:geom==='taper_sled'?'Trapecio 7°':'Recto 90°', color:'#d97706', note:`Abrazan por fuera a EXT-B (${we.toFixed(1)} + ${(2*tw).toFixed(1)} cm de espesor MDF)` });
+      pieces.push({ code:'EXT-B', name:'Paredes Exteriores Cortas (x2)', qty:2, w:parseFloat(le.toFixed(2)), h:h, angle:geom==='taper_sled'?'Trapecio 7°':'Recto 90°', color:'#ea580c', note:`Van entre las dos paredes EXT-A` });
+      pieces.push({ code:'BASE-C', name:'Base Inferior del Molde (x1)', qty:1, w:parseFloat(moldW.toFixed(2)), h:parseFloat(moldL.toFixed(2)), angle:'Recto 90°', color:'#0284c7', note:`Mide el ancho y largo total exterior del molde (${moldW.toFixed(1)} × ${moldL.toFixed(1)} cm)` });
 
-      if (geom === 'hybrid_cyl' || wi < 5.0) {
-        pieces.push({
-          code: 'NUC-CIL',
-          name: 'Núcleo Cilíndrico (Tubo PVC o Tarugo Madera)',
-          qty: 1,
-          wMajor: wi,
-          wMinor: wi,
-          h: hi + 2.0,
-          bevelDeg: 0,
-          bevel: 'Corte transversal 90°',
-          isAngle: false,
-          bladeHeightMm: Math.round(wi * 10),
-          op: `Cortar cilindro Ø ${(wi*10).toFixed(0)} mm a ${(hi*10 + 20).toFixed(0)} mm de largo y forrar en goma EVA 2 mm`
-        });
+      if (geom === 'hybrid_cyl') {
+        pieces.push({ code:'TAPA-PVC', name:'Centrador para Tubo PVC Interior', qty:2, w:wi, h:wi, angle:'Redondo / Cuadrado', color:'#059669', note:`Centra el tubo PVC de Ø ${wi.toFixed(1)} cm que forma el hueco` });
       } else {
-        const intEW = Math.max(1.4, li - 2 * tw);
-        pieces.push({
-          code: 'INT-D',
-          name: 'Caras Largas del Núcleo Interno (Con Kerfs)',
-          qty: 2,
-          wMajor: wi,
-          wMinor: wi,
-          h: hi,
-          bevelDeg: ang,
-          bevel: `90° cantos + 4 Kerfs (${kerfDepthMm} mm)`,
-          isAngle: ang > 0,
-          bladeHeightMm: parseFloat(kerfDepthMm),
-          op: `Cortar contorno y luego bajar disco a ${kerfDepthMm} mm para hacer 4 ranuras de alivio (Ver L6)`
-        });
-        pieces.push({
-          code: 'INT-E',
-          name: 'Caras Cortas del Núcleo Interno',
-          qty: 2,
-          wMajor: intEW,
-          wMinor: intEW,
-          h: hi,
-          bevelDeg: ang,
-          bevel: `90° + Pocket Holes 15°`,
-          isAngle: ang > 0,
-          bladeHeightMm: Math.round(tw * 11),
-          op: `Guía a ${(intEW*10).toFixed(0)} mm; perforar 4 Pocket Holes a 15° por la cara interna (Ver L8)`
-        });
-        pieces.push({
-          code: 'INT-F',
-          name: 'Tapa Inferior del Núcleo Interno',
-          qty: 1,
-          wMajor: Math.max(1.4, wi - 2 * tw),
-          wMinor: Math.max(1.4, wi - 2 * tw),
-          h: intEW,
-          bevelDeg: 0,
-          bevel: '90° Corte Recto',
-          isAngle: false,
-          bladeHeightMm: Math.round(tw * 11),
-          op: `Cortar a escuadra y forrar cantos con cinta impermeable Tuck Tape`
-        });
+        pieces.push({ code:'INT-D', name:'Caras Largas Núcleo Interior (x2)', qty:2, w:parseFloat(wi.toFixed(2)), h:hi, angle:'Recto 90°', color:'#059669', note:`Dan el ancho exacto del hueco interior (${wi.toFixed(1)} cm)` });
+        pieces.push({ code:'INT-E', name:'Caras Cortas Núcleo Interior (x2)', qty:2, w:intShort, h:hi, angle:'Recto 90°', color:'#10b981', note:`Van entre INT-D (${li.toFixed(1)} - ${(2*tw).toFixed(1)} cm = ${intShort.toFixed(1)} cm)` });
+        pieces.push({ code:'INT-F', name:'Tapa Fondo del Núcleo Interior (x1)', qty:1, w:intCapW, h:intShort, angle:'Recto 90°', color:'#7c3aed', note:`Cierra el núcleo por abajo (${intCapW.toFixed(1)} × ${intShort.toFixed(1)} cm)` });
       }
 
-      // Insertos de corte especial
-      if (geom === 'chamfer_45' || geom === 'legged' || geom === 'shadow_gap' || geom === 'stepped' || geom === 'rim_lip' || geom === 'louvre') {
-        pieces.push({
-          code: 'INS-ESP',
-          name: 'Insertos Internos (Chaflanes 45° / Patas / Zócalo / Escaleras)',
-          qty: 4,
-          wMajor: geom === 'legged' ? we : 2.5,
-          wMinor: geom === 'legged' ? we - 5.0 : 1.5,
-          h: geom === 'legged' || geom === 'shadow_gap' || geom === 'rim_lip' ? 3.0 : h,
-          bevelDeg: 45,
-          bevel: 'Corte de Listón a 45° / 15°',
-          isAngle: true,
-          bladeHeightMm: 28,
-          op: 'Cortar listones perfilados según detalle de Lámina L9 para moldear relieves o patas'
-        });
+      if (geom === 'stepped' || geom === 'legged' || geom === 'shadow_gap' || geom === 'rim_lip' || geom === 'fluted' || geom === 'chamfer_45' || geom === 'louvre') {
+        pieces.push({ code:'REL-INS', name:'Tiras de Relieve / Patas / Escalones', qty:4, w:parseFloat(we.toFixed(2)), h:3.0, angle:'Recto 90° / 45°', color:'#db2777', note:'Se pegan por dentro del molde para crear las patas, escalones o biseles' });
       }
     }
 
-    pieces.push({
-      code: 'PUENTE-G',
-      name: 'Puentes Superiores de Suspensión + Tacos Espaciadores',
-      qty: 2,
-      wMajor: moldW + 8.0,
-      wMinor: moldW + 8.0,
-      h: 4.5,
-      bevelDeg: 0,
-      bevel: '90° Corte Recto',
-      isAngle: false,
-      bladeHeightMm: Math.round(tw * 11),
-      op: `Cortar 2 listones de ${Math.round((moldW+8)*10)}×45 mm + 4 tacos espaciadores de ${Math.round(tc*10)} mm`
-    });
+    // Puente superior y costillas de refuerzo para MDF 0.4 cm
+    pieces.push({ code:'PUENTE-G', name:'Puentes Superiores + Costillas de Refuerzo', qty:4, w:parseFloat((moldW + 4.0).toFixed(2)), h:3.5, angle:'Recto 90°', color:'#4f46e5', note:'Sostienen el núcleo desde arriba y refuerzan el MDF de 0.4 cm por fuera' });
 
-    currentPieces = pieces;
-    if (activePieceIdx >= pieces.length) activePieceIdx = 0;
-
-    // Actualizar botones de selección de pieza en el Inspector
-    const pillBox = document.getElementById('piece-selector');
-    pillBox.innerHTML = pieces.map((p, idx) => `
-      <button class="piece-pill ${idx === activePieceIdx ? 'active' : ''}" onclick="selectPiece(${idx})">
-        ${p.code} (${p.qty}x)
-      </button>
-    `).join('');
-
-    const volExt = we * le * h;
-    const volInt = wi * li * hi;
-    const weightKg = Math.max(0.05, (volExt - volInt) * 0.0022);
-
-    document.getElementById('m-ext').textContent = `${we.toFixed(1)} × ${le.toFixed(1)} × ${h.toFixed(1)} cm`;
-    document.getElementById('m-int').textContent = `${wi.toFixed(1)} × ${li.toFixed(1)} × ${hi.toFixed(1)} cm`;
-    document.getElementById('m-saw').textContent = sawAngleText;
-    document.getElementById('m-delta').textContent = bevelDeg > 0
-      ? `Δ = ${(deltaBothCm*10).toFixed(1)} mm (${(deltaSingleCm*10).toFixed(1)} mm/lado)`
-      : '0.0 mm (Corte 90°)';
-    document.getElementById('m-kerf').textContent = `Pasante: ${Math.round(tw*11.5)} mm | Ciego: ${kerfDepthMm} mm`;
-    document.getElementById('m-weight').textContent = `${weightKg.toFixed(2)} kg`;
-
-    return {
-      wi, li, we, le, h, hi, tc, tw, ang, geom,
-      moldW, moldL, sides, bevelDeg, sawAngleText,
-      deltaSingleCm, deltaBothCm, kerfDepthMm, pieces,
-      selPiece: pieces[activePieceIdx] || pieces[0]
-    };
+    return { wi, li, we, le, h, hi, tc, tw, geom, sides, bevelDeg, moldW, moldL, pieces };
   }
 
   function updateAll() {
-    const s = computeSpec();
-    const titles = {
-      1: 'LÁMINA 1: PLANO DE ARMADO GENERAL (PLANTA + CORTE A-A + CORTE B-B)',
-      2: 'LÁMINA 2: SECUENCIA DE CORTES GUILLOTINA EN TABLERO (CORTES NUMERADOS 1°, 2°, 3°...)',
-      3: 'LÁMINA 3: POSICIÓN EXACTA EN SIERRA DE BANCO Y DISTANCIA DE GUÍA PARALELA (RIP FENCE)',
-      4: 'LÁMINA 4: SECCIÓN 1:1 DE CANTOS Y BISELES (CARA MAYOR EXTERNA VS. CARA MENOR INTERNA)',
-      5: 'LÁMINA 5: CORTE TRAPECIAL Y MÉTODO "CUT-FLIP-MARK" EN CARRO DE ESCUADRAR (SLED)',
-      6: 'LÁMINA 6: CORTES CIEGOS A MEDIA MADERA (RANURAS KERFS, GALCES RABBET Y LOUVRES)',
-      7: 'LÁMINA 7: PLANTILLA DE CORTE PARA TAPAS Y BASES POLIGONALES (3 A 16 LADOS)',
-      8: 'LÁMINA 8: MAPA DE TALADRADO, AVELLANADO, POCKET HOLES (15°) Y DRENAJE PVC',
-      9: 'LÁMINA 9: CORTES DE INSERTOS PARA PATAS INTEGRADAS, CHAFLANES 45°, ESCALERAS Y ZÓCALOS',
-      10: 'LÁMINA 10: VISTA EXPLOTADA ISOMÉTRICA 3D DE ENSAMBLE DE PIEZAS CORTADAS',
-      11: 'LÁMINA 11: FICHAS DE CORTE PIEZA POR PIEZA CON DOBLE COTA (EXTERNA E INTERNA)',
-      12: 'LÁMINA 12: PLANTILLA GONIOMÉTRICA DE CALIBRACIÓN DE SIERRA Y FALSA ESCUADRA'
-    };
-    document.getElementById('bp-title').textContent = `${activeModel.id} (${activeModel.name}) — ${titles[activeSheet]}`;
-    document.getElementById('bp-sub').textContent = `PIEZA ACTIVA: ${s.selPiece.code} (${(s.selPiece.wMajor*10).toFixed(0)}×${(s.selPiece.h*10).toFixed(0)} MM) | SIERRA: ${s.sawAngleText.toUpperCase()}`;
+    const wi = Math.max(4.0, parseFloat(document.getElementById('in-wi').value) || 4.0);
+    const li = Math.max(4.0, parseFloat(document.getElementById('in-li').value) || 4.0);
+    const h = Math.max(4.0, parseFloat(document.getElementById('in-h').value) || 6.0);
+    const tc = Math.max(0.8, parseFloat(document.getElementById('in-tc').value) || 1.0);
+    const tw = parseFloat(document.getElementById('in-tw').value) || 0.4;
 
-    if (activeSheet === 1) drawL1(s);
-    else if (activeSheet === 2) drawL2_Guillotine(s);
-    else if (activeSheet === 3) drawL3_TableSawSetup(s);
-    else if (activeSheet === 4) drawL4_Bevel1to1(s);
-    else if (activeSheet === 5) drawL5_CutFlipMark(s);
-    else if (activeSheet === 6) drawL6_BlindCuts(s);
-    else if (activeSheet === 7) drawL7_PolygonCapCut(s);
-    else if (activeSheet === 8) drawL8_DrillingMap(s);
-    else if (activeSheet === 9) drawL9_InsertCuts(s);
-    else if (activeSheet === 10) drawL10_Exploded(s);
-    else if (activeSheet === 11) drawL11_PartCards(s);
-    else if (activeSheet === 12) drawL12_Protractor(s);
+    document.getElementById('lbl-wi').textContent = wi.toFixed(1) + ' cm';
+    document.getElementById('lbl-li').textContent = li.toFixed(1) + ' cm';
+    document.getElementById('lbl-h').textContent = h.toFixed(1) + ' cm';
+    document.getElementById('lbl-tc').textContent = tc.toFixed(1) + ' cm';
 
-    renderCutTable(s);
+    const spec = getPiecesForSpec(wi, li, h, tc, tw, activeModel.geom);
+
+    document.getElementById('title-shape').textContent = `1. FORMA FINAL DE LA MACETA: ${activeModel.id} (${activeModel.name})`;
+
+    drawFinalShape3D(spec);
+    drawMold3D(spec);
+    drawBoard244x183(spec);
+    drawStripZoom(spec);
+    renderTableCM(spec);
   }
 
-  function polyPts(cx, cy, r, sides, rotDeg = 0) {
-    const pts = [];
-    for (let i = 0; i < sides; i++) {
-      const a = ((i * 360 / sides) + rotDeg) * Math.PI / 180;
-      pts.push(`${(cx + r * Math.cos(a)).toFixed(1)},${(cy + r * Math.sin(a)).toFixed(1)}`);
+  // DIBUJA LA IMAGEN 3D ILUSTRADA DE LA FORMA FINAL DE LA MACETA
+  function drawFinalShape3D(s) {
+    const svg = document.getElementById('svg-final-shape');
+    const showPlant = document.getElementById('chk-plant').checked;
+    const cx = 215, cy = 148;
+
+    // Escala visual armónica según proporción ancho/alto real de la maceta
+    const ratioWH = s.we / Math.max(s.h, 1);
+    const potH = Math.min(130, Math.max(58, 105 / Math.max(0.55, Math.min(1.6, ratioWH * 0.7))));
+    const potW = Math.min(190, Math.max(76, potH * Math.min(2.1, Math.max(0.65, ratioWH))));
+    const depthY = Math.min(34, potW * 0.24);
+
+    const topY = cy - potH * 0.42;
+    const botY = topY + potH;
+    const taper = (s.geom === 'taper_sled') ? potW * 0.16 : 0;
+    const legH = (s.geom === 'legged') ? 20 : 0;
+    const bodyBotY = botY - legH;
+
+    let plantSVG = '';
+    if (showPlant) {
+      plantSVG = `
+        <g>
+          <ellipse cx="${cx}" cy="${topY - 4}" rx="${potW*0.32}" ry="${depthY*0.55}" fill="#422006"/>
+          <path d="M ${cx} ${topY-6} C ${cx-28} ${topY-42}, ${cx-48} ${topY-18}, ${cx-14} ${topY-4} Z" fill="#16a34a" stroke="#86efac" stroke-width="1"/>
+          <path d="M ${cx} ${topY-6} C ${cx+28} ${topY-42}, ${cx+48} ${topY-18}, ${cx+14} ${topY-4} Z" fill="#15803d" stroke="#86efac" stroke-width="1"/>
+          <path d="M ${cx} ${topY-8} C ${cx-18} ${topY-58}, ${cx+18} ${topY-58}, ${cx} ${topY-8} Z" fill="#22c55e" stroke="#bbf7d0" stroke-width="1.2"/>
+          <path d="M ${cx-8} ${topY-6} C ${cx-38} ${topY-26}, ${cx-42} ${topY-2}, ${cx-10} ${topY-2} Z" fill="#4ade80" stroke="#dcfce7" stroke-width="0.8"/>
+          <path d="M ${cx+8} ${topY-6} C ${cx+38} ${topY-26}, ${cx+42} ${topY-2}, ${cx+10} ${topY-2} Z" fill="#22c55e" stroke="#dcfce7" stroke-width="0.8"/>
+        </g>
+      `;
     }
-    return pts.join(' ');
-  }
 
-  // L1: ARMADO GENERAL
-  function drawL1(s) {
-    const svg = document.getElementById('cad-svg');
-    const maxDim = Math.max(s.moldW, s.moldL, s.h + s.tw);
-    const scale = Math.min(185 / maxDim, 25);
-    const cx1 = 190, cy1 = 260;
-    const pMoldW = s.moldW * scale, pMoldL = s.moldL * scale;
-    const pWe = s.we * scale, pLe = s.le * scale;
-    const pWi = s.wi * scale, pLi = s.li * scale;
-
-    let planGeom = '';
-    if (s.sides !== 4) {
-      const rot = -90;
-      let rays = '';
-      for (let i = 0; i < s.sides; i++) {
-        const a = ((i * 360 / s.sides) + rot) * Math.PI / 180;
-        rays += `<line x1="${cx1 + (pWi/2)*Math.cos(a)}" y1="${cy1 + (pWi/2)*Math.sin(a)}" x2="${cx1 + (pMoldW/2)*Math.cos(a)}" y2="${cy1 + (pMoldW/2)*Math.sin(a)}" stroke="#f43f5e" stroke-width="1.6"/>`;
+    let bodySVG = '';
+    if (s.sides !== 4 || s.geom === 'hybrid_cyl') {
+      // Poligonal facetado (3, 5, 6, 7, 8, 9, 10, 12, 16 lados) o cilíndrico
+      const nCols = s.geom === 'hybrid_cyl' ? 16 : Math.max(3, Math.min(7, Math.floor(s.sides / 2) + 1));
+      const colW = potW / nCols;
+      const shades = ['#cbd5e1', '#94a3b8', '#64748b', '#475569', '#334155', '#475569', '#64748b'];
+      let facets = '';
+      for (let i = 0; i < nCols; i++) {
+        const x1 = (cx - potW/2) + i * colW;
+        const x2 = x1 + colW;
+        const sh = shades[i % shades.length];
+        facets += `<polygon points="${x1},${topY} ${x2},${topY} ${x2},${bodyBotY} ${x1},${bodyBotY}" fill="${sh}" stroke="#475569" stroke-width="0.8"/>`;
       }
-      planGeom = `
-        <polygon points="${polyPts(cx1, cy1, pMoldW/2, s.sides, rot)}" fill="rgba(245,158,11,0.34)" stroke="#fbbf24" stroke-width="2"/>
-        <polygon points="${polyPts(cx1, cy1, pWe/2, s.sides, rot)}" fill="rgba(148,163,184,0.48)" stroke="#e0f2fe" stroke-width="2"/>
-        <polygon points="${polyPts(cx1, cy1, pWi/2, s.sides, rot)}" fill="#041326" stroke="#fbbf24" stroke-width="2"/>
-        ${rays}
+      bodySVG = `
+        <ellipse cx="${cx}" cy="${botY + 6}" rx="${potW*0.54}" ry="${depthY*0.7}" fill="rgba(0,0,0,0.45)"/>
+        ${facets}
+        <ellipse cx="${cx}" cy="${topY}" rx="${potW/2}" ry="${depthY}" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+        <ellipse cx="${cx}" cy="${topY}" rx="${potW*0.38}" ry="${depthY*0.74}" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
       `;
     } else {
-      const innerShape = s.geom === 'hybrid_cyl'
-        ? `<circle cx="${cx1}" cy="${cy1}" r="${pWi/2}" fill="#041326" stroke="#fbbf24" stroke-width="2.5"/>`
-        : `<rect x="${cx1 - pWi/2}" y="${cy1 - pLi/2}" width="${pWi}" height="${pLi}" fill="#041326" stroke="#fbbf24" stroke-width="2"/>`;
-      planGeom = `
-        <rect x="${cx1 - pMoldW/2}" y="${cy1 - pMoldL/2}" width="${pMoldW}" height="${pMoldL}" fill="rgba(245,158,11,0.34)" stroke="#fbbf24" stroke-width="2"/>
-        <rect x="${cx1 - pWe/2}" y="${cy1 - pLe/2}" width="${pWe}" height="${pLe}" fill="rgba(148,163,184,0.48)" stroke="#e0f2fe" stroke-width="2"/>
-        ${innerShape}
+      // Prisma Isométrico (Cuadrado, Rectangular, Piramidal, Escalonado, Acanalado, con Patas, Shadow Gap)
+      const lx = cx - potW/2, rx = cx + potW/2;
+      const bLx = lx + taper, bRx = rx - taper;
+
+      let extraDecor = '';
+      if (s.geom === 'fluted') {
+        for (let x = lx + 8; x < cx - 4; x += 9) {
+          extraDecor += `<line x1="${x}" y1="${topY + depthY*0.5}" x2="${x}" y2="${bodyBotY + depthY*0.4}" stroke="#475569" stroke-width="2.5"/>`;
+        }
+        for (let x = cx + 6; x < rx - 6; x += 9) {
+          extraDecor += `<line x1="${x}" y1="${topY + depthY*0.5}" x2="${x}" y2="${bodyBotY + depthY*0.4}" stroke="#334155" stroke-width="2.5"/>`;
+        }
+      }
+      if (s.geom === 'louvre' || s.geom === 'board_formed') {
+        for (let y = topY + 22; y < bodyBotY; y += 16) {
+          extraDecor += `<line x1="${lx}" y1="${y}" x2="${cx}" y2="${y + depthY*0.6}" stroke="#334155" stroke-width="2"/>`;
+          extraDecor += `<line x1="${cx}" y1="${y + depthY*0.6}" x2="${rx}" y2="${y}" stroke="#1e293b" stroke-width="2"/>`;
+        }
+      }
+      if (s.geom === 'stepped') {
+        extraDecor += `
+          <polygon points="${cx},${topY+depthY} ${rx},${topY} ${rx},${topY+24} ${cx+18},${topY+depthY+16}" fill="#475569" stroke="#e2e8f0"/>
+          <polygon points="${cx+18},${topY+depthY+16} ${rx},${topY+24} ${rx},${topY+48} ${cx+34},${topY+depthY+32}" fill="#334155" stroke="#e2e8f0"/>
+        `;
+      }
+      if (s.geom === 'legged') {
+        extraDecor += `
+          <polygon points="${bLx},${bodyBotY} ${bLx+18},${bodyBotY+6} ${bLx+18},${botY+6} ${bLx},${botY}" fill="#64748b" stroke="#cbd5e1"/>
+          <polygon points="${cx-10},${bodyBotY+depthY*0.8} ${cx+10},${bodyBotY+depthY*0.8} ${cx+10},${botY+depthY*0.8} ${cx-10},${botY+depthY*0.8}" fill="#475569" stroke="#cbd5e1"/>
+          <polygon points="${bRx-18},${bodyBotY+6} ${bRx},${bodyBotY} ${bRx},${botY} ${bRx-18},${botY+6}" fill="#334155" stroke="#cbd5e1"/>
+        `;
+      }
+      if (s.geom === 'shadow_gap') {
+        extraDecor += `<polygon points="${bLx+10},${bodyBotY-8} ${cx},${bodyBotY+depthY-8} ${bRx-10},${bodyBotY-8} ${bRx-10},${bodyBotY+6} ${cx},${bodyBotY+depthY+6} ${bLx+10},${bodyBotY+6}" fill="#0f172a"/>`;
+      }
+      if (s.geom === 'rim_lip') {
+        extraDecor += `
+          <polygon points="${lx-5},${topY} ${cx},${topY+depthY+3} ${cx},${topY+depthY+18} ${lx-5},${topY+15}" fill="#cbd5e1" stroke="#475569"/>
+          <polygon points="${cx},${topY+depthY+3} ${rx+5},${topY} ${rx+5},${topY+15} ${cx},${topY+depthY+18}" fill="#94a3b8" stroke="#475569"/>
+        `;
+      }
+
+      bodySVG = `
+        <!-- Sombra de piso -->
+        <ellipse cx="${cx}" cy="${botY + depthY*0.6 + 6}" rx="${potW*0.55}" ry="${depthY*0.65}" fill="rgba(0,0,0,0.45)"/>
+        <!-- Cara Izquierda iluminada -->
+        <polygon points="${lx},${topY} ${cx},${topY + depthY} ${cx},${bodyBotY + depthY} ${bLx},${bodyBotY}" fill="#94a3b8" stroke="#e2e8f0" stroke-width="1.5"/>
+        <!-- Cara Derecha sombreada -->
+        <polygon points="${cx},${topY + depthY} ${rx},${topY} ${bRx},${bodyBotY} ${cx},${bodyBotY + depthY}" fill="#64748b" stroke="#cbd5e1" stroke-width="1.5"/>
+        ${extraDecor}
+        <!-- Borde Superior (Espesor del concreto) -->
+        <polygon points="${cx},${topY - depthY} ${rx},${topY} ${cx},${topY + depthY} ${lx},${topY}" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/>
+        <!-- Cavidad Interior Oscura -->
+        <polygon points="${cx},${topY - depthY*0.72} ${cx + potW*0.36},${topY} ${cx},${topY + depthY*0.72} ${cx - potW*0.36},${topY}" fill="#1e293b" stroke="#475569" stroke-width="1.2"/>
       `;
     }
 
-    const cx2 = 520, by2 = 400, cx3 = 820, by3 = 400;
-    const sMoldW = s.moldW * scale, sWe = s.we * scale, sWi = s.wi * scale;
-    const sMoldL = s.moldL * scale, sLe = s.le * scale, sLi = s.li * scale;
-    const sH = s.h * scale, sTw = Math.max(6, s.tw * scale), sTc = Math.max(8, s.tc * scale);
-    const taperPx = Math.min(Math.tan(s.ang * Math.PI / 180) * (sH - sTc) * 0.4, sWi * 0.25);
-
     svg.innerHTML = `
-      <text x="190" y="30" fill="#38bdf8" font-family="monospace" font-size="12.5" font-weight="bold" text-anchor="middle">1. VISTA EN PLANTA (${s.sides} LADOS)</text>
-      <text x="520" y="30" fill="#38bdf8" font-family="monospace" font-size="12.5" font-weight="bold" text-anchor="middle">2. CORTE TRANSVERSAL A-A</text>
-      <text x="820" y="30" fill="#fbbf24" font-family="monospace" font-size="12.5" font-weight="bold" text-anchor="middle">3. CORTE LONGITUDINAL B-B</text>
-      ${planGeom}
-      <circle cx="${cx1}" cy="${cy1}" r="5" fill="#38bdf8" stroke="#fff"/>
-      <text x="${cx1}" y="${cy1 - pMoldL/2 - 16}" fill="#e0f2fe" font-family="monospace" font-size="11" text-anchor="middle">Molde Ext: ${s.moldW.toFixed(1)}×${s.moldL.toFixed(1)} cm</text>
-      <text x="${cx1}" y="${cy1 + pMoldL/2 + 24}" fill="#fbbf24" font-family="monospace" font-size="11" text-anchor="middle">Cavidad Int: ${s.wi.toFixed(1)}×${s.li.toFixed(1)} cm</text>
-      <text x="${cx1}" y="${cy1 + pMoldL/2 + 42}" fill="#34d399" font-family="monospace" font-size="10.5" text-anchor="middle">${s.sawAngleText}</text>
+      ${bodySVG}
+      ${plantSVG}
+      <!-- Etiquetas de medidas reales en cm sobre la imagen 3D -->
+      <rect x="10" y="10" width="168" height="62" fill="rgba(15,23,42,0.85)" stroke="#38bdf8" rx="6"/>
+      <text x="18" y="28" fill="#38bdf8" font-family="monospace" font-size="10.5" font-weight="bold">MEDIDAS MACETA FINAL:</text>
+      <text x="18" y="44" fill="#fff" font-family="monospace" font-size="10">• Exterior: ${s.we.toFixed(1)}×${s.le.toFixed(1)} cm</text>
+      <text x="18" y="60" fill="#fde047" font-family="monospace" font-size="10" font-weight="bold">• Hueco Int: ${s.wi.toFixed(1)}×${s.li.toFixed(1)} cm</text>
 
-      <!-- Corte A-A -->
-      <rect x="${cx2 - sMoldW/2 - 12}" y="${by2 - sH - 10}" width="${sMoldW + 24}" height="9" fill="rgba(56,189,248,0.3)" stroke="#38bdf8"/>
-      <rect x="${cx2 - sMoldW/2}" y="${by2}" width="${sMoldW}" height="${sTw}" fill="rgba(245,158,11,0.45)" stroke="#fbbf24" stroke-width="2"/>
-      <rect x="${cx2 - sMoldW/2}" y="${by2 - sH}" width="${sTw}" height="${sH}" fill="rgba(245,158,11,0.45)" stroke="#fbbf24" stroke-width="2"/>
-      <rect x="${cx2 + sWe/2}" y="${by2 - sH}" width="${sTw}" height="${sH}" fill="rgba(245,158,11,0.45)" stroke="#fbbf24" stroke-width="2"/>
-      <rect x="${cx2 - sWe/2}" y="${by2 - sH}" width="${sWe}" height="${sH}" fill="rgba(148,163,184,0.48)" stroke="#e0f2fe" stroke-width="2"/>
-      <polygon points="${cx2 - sWi/2},${by2 - sH} ${cx2 + sWi/2},${by2 - sH} ${cx2 + sWi/2 - taperPx},${by2 - sTc} ${cx2 - sWi/2 + taperPx},${by2 - sTc}" fill="rgba(245,158,11,0.35)" stroke="#fbbf24" stroke-width="2"/>
-      <rect x="${cx2 - 5}" y="${by2 - sTc}" width="10" height="${sTc + sTw}" fill="#38bdf8" stroke="#fff"/>
-      <text x="${cx2}" y="${by2 + sTw + 22}" fill="#e0f2fe" font-family="monospace" font-size="11" text-anchor="middle">Ancho Ext: ${s.we.toFixed(1)} cm / Int: ${s.wi.toFixed(1)} cm</text>
-
-      <!-- Corte B-B -->
-      <rect x="${cx3 - sMoldL/2}" y="${by3}" width="${sMoldL}" height="${sTw}" fill="rgba(245,158,11,0.45)" stroke="#fbbf24" stroke-width="2"/>
-      <rect x="${cx3 - sMoldL/2}" y="${by3 - sH}" width="${sTw}" height="${sH}" fill="rgba(245,158,11,0.45)" stroke="#fbbf24" stroke-width="2"/>
-      <rect x="${cx3 + sLe/2}" y="${by3 - sH}" width="${sTw}" height="${sH}" fill="rgba(245,158,11,0.45)" stroke="#fbbf24" stroke-width="2"/>
-      <rect x="${cx3 - sLe/2}" y="${by3 - sH}" width="${sLe}" height="${sH}" fill="rgba(148,163,184,0.48)" stroke="#e0f2fe" stroke-width="2"/>
-      <polygon points="${cx3 - sLi/2},${by3 - sH} ${cx3 + sLi/2},${by3 - sH} ${cx3 + sLi/2 - taperPx},${by3 - sTc} ${cx3 - sLi/2 + taperPx},${by3 - sTc}" fill="rgba(245,158,11,0.35)" stroke="#fbbf24" stroke-width="2"/>
-      <text x="${cx3}" y="${by3 + sTw + 22}" fill="#fbbf24" font-family="monospace" font-size="11" text-anchor="middle">Largo Ext: ${s.le.toFixed(1)} cm / Alto: ${s.h.toFixed(1)} cm</text>
+      <rect x="275" y="208" width="155" height="50" fill="rgba(15,23,42,0.85)" stroke="#10b981" rx="6"/>
+      <text x="285" y="226" fill="#34d399" font-family="monospace" font-size="10" font-weight="bold">Altura Total: ${s.h.toFixed(1)} cm</text>
+      <text x="285" y="244" fill="#e2e8f0" font-family="monospace" font-size="10">Pared Concreto: ${s.tc.toFixed(1)} cm</text>
     `;
   }
 
-  // L2: SECUENCIA GUILLOTINA EN TABLERO
-  function drawL2_Guillotine(s) {
-    const svg = document.getElementById('cad-svg');
-    const expanded = [];
-    s.pieces.forEach((p, pIdx) => {
-      const cnt = Math.min(p.qty, 6);
-      for (let i = 1; i <= cnt; i++) {
-        expanded.push({ code: `${p.code} (${i}/${p.qty})`, wMaj: p.wMajor, wMin: p.wMinor, h: p.h, isAngle: p.isAngle, isSel: pIdx === activePieceIdx });
+  // DIBUJA EL MOLDE ARMADO EN MDF DE 0.4 CM
+  function drawMold3D(s) {
+    const svg = document.getElementById('svg-mold-3d');
+    const cx = 220, cy = 145;
+    const w = 150, h = 100, d = 28;
+    const topY = cy - h * 0.4, botY = topY + h;
+
+    svg.innerHTML = `
+      <!-- Base Inferior MDF BASE-C -->
+      <polygon points="${cx},${botY - d - 8} ${cx + w*0.62},${botY} ${cx},${botY + d + 8} ${cx - w*0.62},${botY}" fill="#b45309" stroke="#fde68a" stroke-width="1.5"/>
+      <!-- Caja Exterior MDF EXT-A y EXT-B -->
+      <polygon points="${cx - w/2},${topY} ${cx},${topY + d} ${cx},${botY + d} ${cx - w/2},${botY}" fill="rgba(217, 119, 6, 0.78)" stroke="#fef08a" stroke-width="1.8"/>
+      <polygon points="${cx},${topY + d} ${cx + w/2},${topY} ${cx + w/2},${botY} ${cx},${botY + d}" fill="rgba(180, 83, 9, 0.85)" stroke="#fef08a" stroke-width="1.8"/>
+      <!-- Costilla Exterior de Refuerzo COST-R a media altura -->
+      <polygon points="${cx - w/2 - 5},${cy} ${cx},${cy + d + 2} ${cx + w/2 + 5},${cy} ${cx + w/2 + 5},${cy + 12} ${cx},${cy + d + 14} ${cx - w/2 - 5},${cy + 12}" fill="#4f46e5" stroke="#bae6fd" stroke-width="1.2"/>
+      <!-- Boca Superior y Núcleo Interior INT-D / INT-E -->
+      <polygon points="${cx},${topY - d} ${cx + w/2},${topY} ${cx},${topY + d} ${cx - w/2},${topY}" fill="rgba(148,163,184,0.5)" stroke="#fff" stroke-width="1.5"/>
+      <polygon points="${cx},${topY - d*0.65} ${cx + w*0.32},${topY} ${cx},${topY + d*0.65} ${cx - w*0.32},${topY}" fill="#059669" stroke="#a7f3d0" stroke-width="2"/>
+      <!-- Puente Superior PUENTE-G -->
+      <polygon points="${cx - w*0.58},${topY - 8} ${cx + w*0.58},${topY - 8} ${cx + w*0.52},${topY + 4} ${cx - w*0.52},${topY + 4}" fill="rgba(56,189,248,0.65)" stroke="#fff" stroke-width="1.5"/>
+
+      <rect x="10" y="10" width="195" height="62" fill="rgba(15,23,42,0.88)" stroke="#fbbf24" rx="6"/>
+      <text x="18" y="28" fill="#fbbf24" font-family="monospace" font-size="10.5" font-weight="bold">MOLDE EN MDF (${s.tw.toFixed(1)} CM):</text>
+      <text x="18" y="44" fill="#fff" font-family="monospace" font-size="9.8">• EXT-A: ${s.moldW.toFixed(1)} × ${s.h.toFixed(1)} cm (x2)</text>
+      <text x="18" y="60" fill="#fde047" font-family="monospace" font-size="9.8">• EXT-B: ${s.le.toFixed(1)} × ${s.h.toFixed(1)} cm (x2)</text>
+
+      <rect x="235" y="208" width="195" height="50" fill="rgba(15,23,42,0.88)" stroke="#38bdf8" rx="6"/>
+      <text x="245" y="226" fill="#38bdf8" font-family="monospace" font-size="9.8" font-weight="bold">• BASE-C: ${s.moldW.toFixed(1)} × ${s.moldL.toFixed(1)} cm</text>
+      <text x="245" y="244" fill="#34d399" font-family="monospace" font-size="9.8" font-weight="bold">• Núcleo Int: ${s.wi.toFixed(1)} × ${s.hi.toFixed(1)} cm</text>
+    `;
+  }
+
+  // EMPAQUETADOR DE PIEZAS SOBRE EL TABLERO TRUPAN DE 244 CM X 183 CM
+  function packRectanglesOnBoard(rectList) {
+    const placed = [];
+    let curX = 0, curY = 0, shelfH = 0;
+    let unplaced = 0;
+
+    rectList.forEach(item => {
+      const rw = item.w, rh = item.h;
+      if (curX + rw > BOARD_W) {
+        curX = 0;
+        curY += shelfH + KERF_CM;
+        shelfH = 0;
+      }
+      if (curY + rh <= BOARD_H && rw <= BOARD_W) {
+        placed.push({ ...item, x: curX, y: curY });
+        curX += rw + KERF_CM;
+        if (rh > shelfH) shelfH = rh;
+      } else {
+        unplaced++;
       }
     });
-    let maxW = 0, maxH = 0;
-    expanded.forEach(b => { if (b.wMaj > maxW) maxW = b.wMaj; if (b.h > maxH) maxH = b.h; });
-    const scale = Math.min(130 / Math.max(maxW, 6), 88 / Math.max(maxH, 6), 11);
 
-    let curX = 40, curY = 85, rowH = 0, cutNum = 1;
-    let elements = `
-      <line x1="25" y1="68" x2="950" y2="68" stroke="#f43f5e" stroke-width="2" stroke-dasharray="6,4"/>
-      <circle cx="42" cy="68" r="10" fill="#f43f5e"/><text x="42" y="72" fill="#fff" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">C1</text>
-      <text x="195" y="62" fill="#f43f5e" font-family="monospace" font-size="10" font-weight="bold">← CORTE LONGITUDINAL #1 (FAJA DE ${s.h.toFixed(1)} CM DE ANCHO CON GUÍA PARALELA)</text>
-    `;
-    expanded.forEach((b) => {
-      const pw = Math.max(68, b.wMaj * scale), ph = Math.max(46, b.h * scale);
-      if (curX + pw > 935) {
-        const ripY = curY + rowH + 10;
-        cutNum++;
-        elements += `<line x1="25" y1="${ripY}" x2="950" y2="${ripY}" stroke="#f43f5e" stroke-width="2" stroke-dasharray="6,4"/><circle cx="42" cy="${ripY}" r="10" fill="#f43f5e"/><text x="42" y="${ripY+4}" fill="#fff" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">C${cutNum}</text>`;
-        curX = 40; curY += rowH + 28; rowH = 0;
+    return { placed, maxYUsed: curY + shelfH, unplaced };
+  }
+
+  // DIBUJA EL TABLERO REAL DE 244 CM X 183 CM A ESCALA CON REGLAS EN CM
+  function drawBoard244x183(s) {
+    const svg = document.getElementById('svg-board-244');
+    const ox = 52, oy = 38;
+    const scale = 3.55; // 244 cm * 3.55 = 866.2 px; 183 cm * 3.55 = 649.6 px -> use 2.65 for height fit
+    const sc = 2.65;    // 244 * 2.65 = 646.6 px, 183 * 2.65 = 484.95 px
+    const scX = 3.55, scY = 2.62; // Escala visual limpia dentro del viewBox 960x560
+
+    // Expandir las piezas de 1 molde
+    const singleMoldRects = [];
+    s.pieces.forEach(p => {
+      for (let i = 1; i <= p.qty; i++) {
+        singleMoldRects.push({
+          code: p.code,
+          label: `${p.code}`,
+          w: p.w,
+          h: p.h,
+          color: p.color,
+          modelId: activeModel.id
+        });
       }
-      if (ph > rowH) rowH = ph;
-      cutNum++;
-      const strokeCol = b.isSel ? '#10b981' : (b.isAngle ? '#fbbf24' : '#38bdf8');
-      const fillCol = b.isSel ? 'rgba(16,185,129,0.32)' : (b.isAngle ? 'rgba(245,158,11,0.26)' : 'rgba(56,189,248,0.18)');
-      elements += `
+    });
+
+    let areaOneMold = 0;
+    singleMoldRects.forEach(r => { areaOneMold += r.w * r.h; });
+    const boardTotalArea = BOARD_W * BOARD_H; // 44,652 cm2
+    const maxTheoreticalMolds = Math.max(1, Math.floor((boardTotalArea * 0.85) / areaOneMold));
+
+    let itemsToPack = [];
+    if (boardMode === 'single') {
+      itemsToPack = singleMoldRects;
+      document.getElementById('board-title').textContent = `MODO 1: CORTES PARA 1 MOLDE DEL MODELO ${activeModel.id} (${activeModel.name}) SOBRE TABLERO DE 244 × 183 CM`;
+    } else if (boardMode === 'multi') {
+      const repeatCount = Math.min(maxTheoreticalMolds, 35);
+      for (let m = 1; m <= repeatCount; m++) {
+        singleMoldRects.forEach(r => {
+          itemsToPack.push({ ...r, label: `${r.code} (M#${m})` });
+        });
+      }
+      document.getElementById('board-title').textContent = `MODO 2: PRODUCCIÓN EN SERIE — ${repeatCount} MOLDES COMPLETOS DE ${activeModel.id} EN TU TABLERO DE 244 × 183 CM`;
+    } else {
+      // Modo Combo Multiformas: mete 12 modelos representativos en el mismo tablero de 244x183 cm
+      const comboIds = ['M-01','M-03','M-05','M-08','M-10','M-14','M-16','M-18','M-22','M-26','M-29','M-33'];
+      const palette = ['#d97706','#0284c7','#059669','#7c3aed','#db2777','#ea580c','#2563eb','#16a34a','#9333ea','#ca8a04','#0891b2','#be123c'];
+      comboIds.forEach((cid, idx) => {
+        const cm = MODELS.find(x => x.id === cid);
+        if (!cm) return;
+        const cs = getPiecesForSpec(cm.wi, cm.li, cm.h, cm.tc, s.tw, cm.geom);
+        cs.pieces.forEach(p => {
+          for (let i = 1; i <= p.qty; i++) {
+            itemsToPack.push({
+              code: `${cid} ${p.code}`,
+              label: `${cid}:${p.code}`,
+              w: p.w,
+              h: p.h,
+              color: palette[idx % palette.length],
+              modelId: cid
+            });
+          }
+        });
+      });
+      document.getElementById('board-title').textContent = `MODO 3: KIT MULTIFORMAS (12 MODELOS DIFERENTES CORTADOS EN 1 SOLO TABLERO DE 244 × 183 CM)`;
+    }
+
+    const packed = packRectanglesOnBoard(itemsToPack);
+
+    // Actualizar métricas en cm
+    const pctOne = ((areaOneMold / boardTotalArea) * 100).toFixed(1);
+    const freeH = Math.max(0, BOARD_H - packed.maxYUsed).toFixed(1);
+    document.getElementById('m-ext').textContent = `${s.we.toFixed(1)} × ${s.le.toFixed(1)} × ${s.h.toFixed(1)} cm`;
+    document.getElementById('m-int').textContent = `${s.wi.toFixed(1)} × ${s.li.toFixed(1)} × ${s.hi.toFixed(1)} cm`;
+    document.getElementById('m-used').textContent = `${Math.round(areaOneMold)} cm² (${pctOne}% del tablero)`;
+    document.getElementById('m-fit').textContent = `${maxTheoreticalMolds} moldes completos`;
+    document.getElementById('m-free').textContent = `Faja libre: 244 × ${freeH} cm`;
+
+    // Reglas graduadas cada 20 cm en X (0 a 244 cm) y en Y (0 a 183 cm)
+    let rulers = '';
+    for (let x = 0; x <= 240; x += 20) {
+      const px = ox + x * scX;
+      rulers += `
+        <line x1="${px}" y1="${oy - 8}" x2="${px}" y2="${oy}" stroke="#fde68a" stroke-width="1.5"/>
+        <text x="${px}" y="${oy - 12}" fill="#fde68a" font-family="monospace" font-size="9.5" text-anchor="middle">${x}cm</text>
+      `;
+    }
+    rulers += `<text x="${ox + 244 * scX}" y="${oy - 12}" fill="#fbbf24" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">244cm</text>`;
+
+    for (let y = 0; y <= 180; y += 20) {
+      const py = oy + y * scY;
+      rulers += `
+        <line x1="${ox - 8}" y1="${py}" x2="${ox}" y2="${py}" stroke="#fde68a" stroke-width="1.5"/>
+        <text x="${ox - 11}" y="${py + 3}" fill="#fde68a" font-family="monospace" font-size="9.5" text-anchor="end">${y}cm</text>
+      `;
+    }
+    rulers += `<text x="${ox - 11}" y="${oy + 183 * scY + 4}" fill="#fbbf24" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">183cm</text>`;
+
+    // Dibujar las piezas empaquetadas sobre el tablero MDF Trupan
+    let rectsSVG = '';
+    packed.placed.forEach(r => {
+      const rx = ox + r.x * scX;
+      const ry = oy + r.y * scY;
+      const rw = Math.max(4, r.w * scX);
+      const rh = Math.max(4, r.h * scY);
+
+      const showText = rw >= 26 && rh >= 14;
+      rectsSVG += `
         <g>
-          <rect x="${curX}" y="${curY}" width="${pw}" height="${ph}" fill="${fillCol}" stroke="${strokeCol}" stroke-width="${b.isSel ? 3 : 2}"/>
-          <text x="${curX + pw/2}" y="${curY + ph/2 - 5}" fill="#fff" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">${b.code}</text>
-          <text x="${curX + pw/2}" y="${curY + ph/2 + 8}" fill="#fbbf24" font-family="monospace" font-size="9.5" text-anchor="middle">${Math.round(b.wMaj*10)}×${Math.round(b.h*10)} mm</text>
-          <line x1="${curX + pw + 5}" y1="${curY - 6}" x2="${curX + pw + 5}" y2="${curY + ph + 6}" stroke="#f43f5e" stroke-width="1.8" stroke-dasharray="4,3"/>
-          <circle cx="${curX + pw + 5}" cy="${curY - 6}" r="8" fill="#f43f5e"/><text x="${curX + pw + 5}" y="${curY - 3}" fill="#fff" font-family="monospace" font-size="8.5" font-weight="bold" text-anchor="middle">${cutNum}</text>
-        </g>
-      `;
-      curX += pw + 16;
-    });
-    svg.innerHTML = `
-      <rect x="16" y="14" width="948" height="495" fill="rgba(15,23,42,0.65)" stroke="#fbbf24" stroke-width="2" rx="8"/>
-      <text x="32" y="38" fill="#fbbf24" font-family="monospace" font-size="12" font-weight="bold">MAPA DE SECUENCIA DE CORTES EN TABLERO — PIEZA RESALTADA EN VERDE: ${s.selPiece.code}</text>
-      <text x="948" y="38" fill="#34d399" font-family="monospace" font-size="10.5" text-anchor="end">Pérdida por pasada de disco (Kerf) = 3.0 mm</text>
-      ${elements}
-    `;
-  }
-
-  // L3: POSICIÓN EXACTA EN SIERRA DE BANCO Y DISTANCIA DE GUÍA PARALELA (RIP FENCE)
-  function drawL3_TableSawSetup(s) {
-    const svg = document.getElementById('cad-svg');
-    const p = s.selPiece;
-    const bev = p.bevelDeg || 0;
-    const rad = bev * Math.PI / 180;
-    const bx2 = 240 + Math.sin(rad) * 115;
-    const by2 = 310 - Math.cos(rad) * 115;
-    const fenceDistMm = (p.wMajor * 10).toFixed(1);
-
-    svg.innerHTML = `
-      <!-- VISTA FRONTAL DE LA SIERRA DE BANCO -->
-      <rect x="20" y="20" width="460" height="485" fill="rgba(15,23,42,0.84)" stroke="#38bdf8" rx="8"/>
-      <text x="250" y="46" fill="#38bdf8" font-family="monospace" font-size="12.5" font-weight="bold" text-anchor="middle">1. VISTA FRONTAL DE SIERRA — PIEZA: ${p.code}</text>
-
-      <!-- Mesa de hierro fundido -->
-      <rect x="45" y="310" width="410" height="16" fill="#64748b" stroke="#cbd5e1"/>
-      <text x="250" y="344" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">MESA DE SIERRA DE BANCO (REFERENCIA 0°)</text>
-
-      <!-- Guía Paralela (Rip Fence) a la derecha -->
-      <rect x="380" y="245" width="32" height="65" fill="#38bdf8" stroke="#fff" stroke-width="2"/>
-      <text x="396" y="235" fill="#38bdf8" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">GUÍA PARALELA</text>
-
-      <!-- Tabla apoyada entre el disco y la guía paralela -->
-      <polygon points="${240 + Math.tan(rad)*32},278 380,278 380,310 240,310" fill="rgba(245,158,11,0.5)" stroke="#fbbf24" stroke-width="2.5"/>
-      <text x="315" y="298" fill="#fff" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">${p.code}</text>
-
-      <!-- Cota de distancia entre disco y guía -->
-      <line x1="240" y1="205" x2="380" y2="205" stroke="#34d399" stroke-width="2"/>
-      <line x1="240" y1="195" x2="240" y2="310" stroke="#34d399" stroke-width="1" stroke-dasharray="3,3"/>
-      <line x1="380" y1="195" x2="380" y2="245" stroke="#34d399" stroke-width="1" stroke-dasharray="3,3"/>
-      <text x="310" y="196" fill="#34d399" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">DISTANCIA GUÍA = ${fenceDistMm} mm</text>
-
-      <!-- Disco de sierra inclinado -->
-      <line x1="${240 - Math.sin(rad)*35}" y1="${310 + Math.cos(rad)*35}" x2="${bx2}" y2="${by2}" stroke="#f43f5e" stroke-width="5"/>
-      <circle cx="240" cy="310" r="7" fill="#fbbf24"/>
-      <text x="145" y="235" fill="#f43f5e" font-family="monospace" font-size="12" font-weight="bold">DISCO A ${bev}° →</text>
-      <text x="145" y="255" fill="#fbbf24" font-family="monospace" font-size="10.5">Altura: ${p.bladeHeightMm} mm</text>
-
-      <rect x="45" y="365" width="410" height="118" fill="#041326" stroke="#334155" rx="6"/>
-      <text x="60" y="390" fill="#fbbf24" font-family="monospace" font-size="11" font-weight="bold">AJUSTE DE MÁQUINA PARA CORTAR ${p.code}:</text>
-      <text x="60" y="412" fill="#e0f2fe" font-family="monospace" font-size="10">• Fijar guía paralela (Rip Fence) a ${fenceDistMm} mm (${p.wMajor.toFixed(2)} cm) de la base del disco.</text>
-      <text x="60" y="432" fill="#e0f2fe" font-family="monospace" font-size="10">• Inclinar volante de bisel a ${bev}° (el disco se inclina alejándose de la guía).</text>
-      <text x="60" y="452" fill="#34d399" font-family="monospace" font-size="10">• Elevar el disco a ${p.bladeHeightMm} mm sobre la mesa (3 mm por encima del tablero).</text>
-
-      <!-- VISTA SUPERIOR DE PASO DE TABLA Y EMPUJE -->
-      <rect x="500" y="20" width="460" height="485" fill="rgba(15,23,42,0.84)" stroke="#fbbf24" rx="8"/>
-      <text x="730" y="46" fill="#fbbf24" font-family="monospace" font-size="12.5" font-weight="bold" text-anchor="middle">2. VISTA SUPERIOR DE AVANCE EN SIERRA</text>
-
-      <!-- Mesa vista desde arriba -->
-      <rect x="550" y="85" width="360" height="270" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
-      <!-- Guía paralela derecha -->
-      <rect x="835" y="75" width="24" height="290" fill="#38bdf8" stroke="#fff"/>
-      <text x="885" y="220" fill="#38bdf8" font-family="monospace" font-size="10.5" font-weight="bold" transform="rotate(90 885,220)" text-anchor="middle">GUÍA PARALELA FIJA</text>
-
-      <!-- Ranura del disco de sierra -->
-      <rect x="690" y="160" width="6" height="110" fill="#f43f5e"/>
-      <text x="675" y="220" fill="#f43f5e" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="end">DISCO (KERF 3 MM) →</text>
-
-      <!-- Tabla avanzando hacia el disco -->
-      <rect x="696" y="135" width="139" height="185" fill="rgba(245,158,11,0.42)" stroke="#fbbf24" stroke-width="2"/>
-      <text x="765" y="215" fill="#fff" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">${p.code}</text>
-      <text x="765" y="232" fill="#fbbf24" font-family="monospace" font-size="10" text-anchor="middle">CARA EXTERNA ARRIBA</text>
-
-      <!-- Flecha de empuje -->
-      <line x1="765" y1="345" x2="765" y2="265" stroke="#34d399" stroke-width="4"/>
-      <polygon points="755,270 775,270 765,250" fill="#34d399"/>
-      <text x="765" y="378" fill="#34d399" font-family="monospace" font-size="11.5" font-weight="bold" text-anchor="middle">DIRECCIÓN DE EMPUJE (USAR PALO EMPUJADOR)</text>
-
-      <rect x="530" y="395" width="400" height="90" fill="#041326" stroke="#334155" rx="6"/>
-      <text x="548" y="420" fill="#38bdf8" font-family="monospace" font-size="10.5" font-weight="bold">INSTRUCCIÓN DE SEGURIDAD Y PRECISIÓN:</text>
-      <text x="548" y="442" fill="#e0f2fe" font-family="monospace" font-size="10">${p.op}</text>
-      <text x="548" y="464" fill="#fbbf24" font-family="monospace" font-size="10">Para cortar el segundo canto biselado, girar la tabla 180° manteniendo la cara mayor arriba.</text>
-    `;
-  }
-
-  // L4: SECCIÓN 1:1 DE CANTOS Y BISELES
-  function drawL4_Bevel1to1(s) {
-    const svg = document.getElementById('cad-svg');
-    const p = s.selPiece;
-    const bev = p.bevelDeg || 0;
-    const rad = bev * Math.PI / 180;
-    const boardH = 85;
-    const shiftPx = Math.min(95, Math.tan(rad) * boardH);
-    const topW = 380, botW = topW - 2 * shiftPx;
-    const majMm = (p.wMajor * 10).toFixed(1), minMm = (p.wMinor * 10).toFixed(1);
-    const diffSideMm = ((p.wMajor - p.wMinor) * 5).toFixed(1);
-
-    svg.innerHTML = `
-      <rect x="20" y="18" width="940" height="285" fill="rgba(15,23,42,0.84)" stroke="#fbbf24" rx="8"/>
-      <text x="490" y="45" fill="#fbbf24" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">SECCIÓN TRANSVERSAL 1:1 DE LA PIEZA ACTIVA: ${p.code} (${p.name})</text>
-
-      <!-- Cota Cara Mayor -->
-      <line x1="${490 - topW/2}" y1="88" x2="${490 + topW/2}" y2="88" stroke="#fbbf24" stroke-width="2.5"/>
-      <text x="490" y="78" fill="#fbbf24" font-family="monospace" font-size="12.5" font-weight="bold" text-anchor="middle">CARA MAYOR EXTERNA = ${majMm} mm (${p.wMajor.toFixed(2)} cm)</text>
-
-      <!-- Trapecio de la tabla -->
-      <polygon points="${490 - topW/2},102 ${490 + topW/2},102 ${490 + botW/2},${102 + boardH} ${490 - botW/2},${102 + boardH}" fill="rgba(245,158,11,0.45)" stroke="#fbbf24" stroke-width="2.5"/>
-      <text x="490" y="${102 + boardH/2 + 5}" fill="#fff" font-family="monospace" font-size="12.5" font-weight="bold" text-anchor="middle">ESPESOR DE MADERA = ${Math.round(s.tw*10)} mm (${s.tw.toFixed(1)} cm)</text>
-
-      <!-- Triángulos de desbaste del bisel en cada extremo -->
-      <line x1="${490 - topW/2}" y1="102" x2="${490 - topW/2}" y2="${102 + boardH}" stroke="#38bdf8" stroke-dasharray="3,3"/>
-      <line x1="${490 + topW/2}" y1="102" x2="${490 + topW/2}" y2="${102 + boardH}" stroke="#38bdf8" stroke-dasharray="3,3"/>
-      <text x="${490 - topW/2 - 15}" y="148" fill="#f43f5e" font-family="monospace" font-size="11" font-weight="bold" text-anchor="end">Corte Bisel ${bev}° (Desbaste: ${diffSideMm} mm) →</text>
-      <text x="${490 + topW/2 + 15}" y="148" fill="#f43f5e" font-family="monospace" font-size="11" font-weight="bold">← Corte Bisel ${bev}° (Desbaste: ${diffSideMm} mm)</text>
-
-      <!-- Cota Cara Menor -->
-      <line x1="${490 - botW/2}" y1="${102 + boardH + 24}" x2="${490 + botW/2}" y2="${102 + boardH + 24}" stroke="#34d399" stroke-width="2.5"/>
-      <text x="490" y="${102 + boardH + 44}" fill="#34d399" font-family="monospace" font-size="12.5" font-weight="bold" text-anchor="middle">CARA MENOR INTERNA (MOLDEA EL CONCRETO) = ${minMm} mm (${p.wMinor.toFixed(2)} cm)</text>
-      <text x="490" y="${102 + boardH + 68}" fill="#bae6fd" font-family="monospace" font-size="11" text-anchor="middle">Ángulo Interno del Polígono Armado = ${(180 - 2*bev).toFixed(1)}° | Suma de 2 Cantos Contiguos = ${(2*bev).toFixed(1)}°</text>
-
-      <!-- Cuadros inferiores comparativos -->
-      <rect x="20" y="320" width="460" height="185" fill="rgba(15,23,42,0.84)" stroke="#334155" rx="8"/>
-      <text x="250" y="348" fill="#38bdf8" font-family="monospace" font-size="11.5" font-weight="bold" text-anchor="middle">CÓMO MEDIR CON FLEXÓMETRO SIN EQUIVOCARSE</text>
-      <text x="40" y="376" fill="#e0f2fe" font-family="monospace" font-size="10.5">1. Marca siempre ${majMm} mm sobre la CARA EXTERNA de la tabla.</text>
-      <text x="40" y="398" fill="#e0f2fe" font-family="monospace" font-size="10.5">2. Asegúrate de que el bisel se corte "hacia adentro" de esa marca,</text>
-      <text x="40" y="418" fill="#e0f2fe" font-family="monospace" font-size="10.5">   de modo que la cara interna quede automáticamente de ${minMm} mm.</text>
-      <text x="40" y="442" fill="#34d399" font-family="monospace" font-size="10.5">3. Une todas las duelas lado a lado sobre una mesa plana con</text>
-      <text x="40" y="462" fill="#34d399" font-family="monospace" font-size="10.5">   cinta de embalaje por la cara externa y pliégalas como un acordeón.</text>
-
-      <rect x="500" y="320" width="460" height="185" fill="rgba(15,23,42,0.84)" stroke="#334155" rx="8"/>
-      <text x="730" y="348" fill="#fbbf24" font-family="monospace" font-size="11.5" font-weight="bold" text-anchor="middle">VERIFICACIÓN DE DIÁMETRO CONCRETO (≥ 4.0 CM)</text>
-      <text x="520" y="376" fill="#e0f2fe" font-family="monospace" font-size="10.5">• Diámetro/Ancho Interior Garantizado: ${s.wi.toFixed(1)} cm (${Math.round(s.wi*10)} mm).</text>
-      <text x="520" y="398" fill="#e0f2fe" font-family="monospace" font-size="10.5">• Espesor neto de pared de concreto: ${s.tc.toFixed(1)} cm (${Math.round(s.tc*10)} mm).</text>
-      <text x="520" y="420" fill="#e0f2fe" font-family="monospace" font-size="10.5">• Diámetro/Ancho Exterior de la Maceta: ${s.we.toFixed(1)} cm (${Math.round(s.we*10)} mm).</text>
-      <text x="520" y="445" fill="#fbbf24" font-family="monospace" font-size="10.5">• Medida Exterior Total del Encofrado: ${s.moldW.toFixed(1)} cm (${Math.round(s.moldW*10)} mm).</text>
-    `;
-  }
-
-  // L5: CORTE TRAPECIAL Y MÉTODO "CUT-FLIP-MARK" EN CARRO DE ESCUADRAR (SLED)
-  function drawL5_CutFlipMark(s) {
-    const svg = document.getElementById('cad-svg');
-    const taperDeg = s.ang > 0 ? s.ang : 7;
-    const topW = s.moldW;
-    const botW = Math.max(4.0, s.moldW - 2 * s.h * Math.tan(taperDeg * Math.PI / 180));
-
-    svg.innerHTML = `
-      <rect x="20" y="20" width="460" height="485" fill="rgba(15,23,42,0.84)" stroke="#fbbf24" rx="8"/>
-      <text x="250" y="46" fill="#fbbf24" font-family="monospace" font-size="12.5" font-weight="bold" text-anchor="middle">1. PLANTILLA EN CARRO DE ESCUADRAR (SLED A ${taperDeg}°)</text>
-
-      <!-- Carro de escuadrar (Crosscut Sled) -->
-      <rect x="65" y="85" width="370" height="240" fill="#1e293b" stroke="#94a3b8" stroke-width="2"/>
-      <!-- Línea del disco de sierra en el centro del Sled -->
-      <line x1="250" y1="70" x2="250" y2="340" stroke="#f43f5e" stroke-width="3.5" stroke-dasharray="6,3"/>
-      <text x="250" y="64" fill="#f43f5e" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">LÍNEA DE CORTE DEL DISCO (INCLINADO A 45°)</text>
-
-      <!-- Tope angular en el Sled a taperDeg -->
-      <polygon points="110,305 250,305 250,125 145,125" fill="rgba(245,158,11,0.45)" stroke="#fbbf24" stroke-width="2"/>
-      <!-- Descarte triangular a la derecha del disco -->
-      <polygon points="250,305 290,305 250,125" fill="rgba(244,63,94,0.3)" stroke="#f43f5e" stroke-dasharray="3,2"/>
-      <text x="185" y="215" fill="#fff" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">CARA TRAPECIAL</text>
-      <text x="185" y="232" fill="#fbbf24" font-family="monospace" font-size="10" text-anchor="middle">Inclinación: ${taperDeg}°</text>
-
-      <rect x="45" y="345" width="410" height="140" fill="#041326" stroke="#334155" rx="6"/>
-      <text x="62" y="370" fill="#34d399" font-family="monospace" font-size="11" font-weight="bold">MÉTODO "CUT-FLIP-MARK" (CORTAR, VOLTEAR Y MARCAR):</text>
-      <text x="62" y="392" fill="#e0f2fe" font-family="monospace" font-size="10">1. Corta una tira larga de madera con altura H = ${s.h.toFixed(1)} cm (${Math.round(s.h*10)} mm).</text>
-      <text x="62" y="412" fill="#e0f2fe" font-family="monospace" font-size="10">2. Fija una guía a ${taperDeg}° en el carro de escuadrar e inclina el disco a 45°.</text>
-      <text x="62" y="432" fill="#e0f2fe" font-family="monospace" font-size="10">3. Haz el Corte #1, voltea la tira 180° (Flip), mide ${topW.toFixed(1)} cm en el</text>
-      <text x="62" y="452" fill="#fbbf24" font-family="monospace" font-size="10">   borde ancho y haz el Corte #2. ¡No se desperdicia madera entre piezas!</text>
-
-      <!-- PANEL DERECHO: DIMENSIONES EXACTAS DEL TRAPECIO CORTADO -->
-      <rect x="500" y="20" width="460" height="485" fill="rgba(15,23,42,0.84)" stroke="#38bdf8" rx="8"/>
-      <text x="730" y="46" fill="#38bdf8" font-family="monospace" font-size="12.5" font-weight="bold" text-anchor="middle">2. GEOMETRÍA DEL PANEL TRAPECIAL TERMINADO</text>
-
-      <polygon points="565,130 895,130 845,335 615,335" fill="rgba(245,158,11,0.4)" stroke="#fbbf24" stroke-width="2.5"/>
-      <text x="730" y="115" fill="#fbbf24" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">BOCA ANCHA SUPERIOR = ${topW.toFixed(1)} cm (${Math.round(topW*10)} mm)</text>
-      <text x="730" y="235" fill="#fff" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">ALTURA DEL PANEL = ${s.h.toFixed(1)} cm (${Math.round(s.h*10)} mm)</text>
-      <text x="730" y="362" fill="#34d399" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">BASE INFERIOR ANGOSTA = ${botW.toFixed(1)} cm (${Math.round(botW*10)} mm)</text>
-
-      <text x="565" y="240" fill="#f43f5e" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="end">Canto: ${taperDeg}° + Bisel 45° →</text>
-      <text x="895" y="240" fill="#f43f5e" font-family="monospace" font-size="10.5" font-weight="bold">← Canto: ${taperDeg}° + Bisel 45°</text>
-
-      <rect x="530" y="385" width="400" height="100" fill="#041326" stroke="#334155" rx="6"/>
-      <text x="550" y="412" fill="#38bdf8" font-family="monospace" font-size="10.5" font-weight="bold">VENTAJA EN MACETAS PIRAMIDALES:</text>
-      <text x="550" y="434" fill="#e0f2fe" font-family="monospace" font-size="10">Como las 4 paredes tienen una conicidad natural de ${taperDeg}°, tanto el molde</text>
-      <text x="550" y="454" fill="#e0f2fe" font-family="monospace" font-size="10">exterior como el núcleo interno salen deslizando sin esfuerzo.</text>
-    `;
-  }
-
-  // L6: CORTES CIEGOS A MEDIA MADERA (KERFS, GALCES RABBET Y LOUVRES)
-  function drawL6_BlindCuts(s) {
-    const svg = document.getElementById('cad-svg');
-    const kerfMm = s.kerfDepthMm;
-    const rabbetMm = Math.max(4, Math.round(s.tw * 3.5));
-
-    svg.innerHTML = `
-      <!-- 1. RANURAS DE ALIVIO (RELIEF KERFS) EN EL NÚCLEO -->
-      <rect x="20" y="20" width="300" height="485" fill="rgba(15,23,42,0.84)" stroke="#10b981" rx="8"/>
-      <text x="170" y="46" fill="#34d399" font-family="monospace" font-size="11.5" font-weight="bold" text-anchor="middle">1. CORTES DE ALIVIO (RELIEF KERFS)</text>
-
-      <rect x="45" y="135" width="250" height="70" fill="rgba(245,158,11,0.45)" stroke="#fbbf24" stroke-width="2"/>
-      <rect x="90" y="135" width="8" height="36" fill="#041326" stroke="#f43f5e" stroke-width="1.5"/>
-      <rect x="140" y="135" width="8" height="36" fill="#041326" stroke="#f43f5e" stroke-width="1.5"/>
-      <rect x="190" y="135" width="8" height="36" fill="#041326" stroke="#f43f5e" stroke-width="1.5"/>
-      <rect x="240" y="135" width="8" height="36" fill="#041326" stroke="#f43f5e" stroke-width="1.5"/>
-
-      <text x="170" y="118" fill="#f43f5e" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">Profundidad Disco = ${kerfMm} mm (50%)</text>
-      <text x="170" y="228" fill="#38bdf8" font-family="monospace" font-size="10" text-anchor="middle">Ancho de cada ranura = 3.0 mm (1 disco)</text>
-      <text x="170" y="248" fill="#e0f2fe" font-family="monospace" font-size="10" text-anchor="middle">Separación entre cortes = 30 mm</text>
-
-      <rect x="38" y="285" width="264" height="195" fill="#041326" stroke="#334155" rx="6"/>
-      <text x="52" y="312" fill="#34d399" font-family="monospace" font-size="10.5" font-weight="bold">CÓMO HACERLO EN LA SIERRA:</text>
-      <text x="52" y="336" fill="#e0f2fe" font-family="monospace" font-size="9.8">• Baja el disco de la sierra hasta que</text>
-      <text x="52" y="354" fill="#e0f2fe" font-family="monospace" font-size="9.8">  sobresalga exactamente ${kerfMm} mm.</text>
-      <text x="52" y="376" fill="#e0f2fe" font-family="monospace" font-size="9.8">• Pasa las tablas INT-D e INT-E por su</text>
-      <text x="52" y="394" fill="#e0f2fe" font-family="monospace" font-size="9.8">  cara interna cada 3 cm.</text>
-      <text x="52" y="418" fill="#fbbf24" font-family="monospace" font-size="9.8">• Cuando el concreto se contrae, las</text>
-      <text x="52" y="436" fill="#fbbf24" font-family="monospace" font-size="9.8">  ranuras se cierran sin romper la maceta.</text>
-
-      <!-- 2. CORTE DE GALCE PERIMETRAL (RABBET JOINT) PARA ENCASTRAR LA BASE -->
-      <rect x="340" y="20" width="300" height="485" fill="rgba(15,23,42,0.84)" stroke="#38bdf8" rx="8"/>
-      <text x="490" y="46" fill="#38bdf8" font-family="monospace" font-size="11.5" font-weight="bold" text-anchor="middle">2. GALCE DE ENCASTRE (RABBET BASE)</text>
-
-      <!-- Pared vertical con escalón Rabbet en su base -->
-      <polygon points="395,105 445,105 445,220 422,220 422,250 395,250" fill="rgba(245,158,11,0.45)" stroke="#fbbf24" stroke-width="2"/>
-      <!-- Placa base encastrada en el escalón -->
-      <rect x="422" y="220" width="175" height="30" fill="rgba(56,189,248,0.4)" stroke="#38bdf8" stroke-width="2"/>
-      <text x="515" y="240" fill="#fff" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">BASE-C ENCASTRADA</text>
-      <text x="490" y="185" fill="#fbbf24" font-family="monospace" font-size="10.5" font-weight="bold">Escalón: ${rabbetMm}×${Math.round(s.tw*10)} mm</text>
-
-      <rect x="358" y="285" width="264" height="195" fill="#041326" stroke="#334155" rx="6"/>
-      <text x="372" y="312" fill="#38bdf8" font-family="monospace" font-size="10.5" font-weight="bold">DOS PASADAS DE SIERRA A 90°:</text>
-      <text x="372" y="336" fill="#e0f2fe" font-family="monospace" font-size="9.8">• Pasada 1 (Acostada): Disco a ${rabbetMm} mm de</text>
-      <text x="372" y="354" fill="#e0f2fe" font-family="monospace" font-size="9.8">  altura y guía a ${Math.round(s.tw*10)} mm del borde.</text>
-      <text x="372" y="376" fill="#e0f2fe" font-family="monospace" font-size="9.8">• Pasada 2 (De canto): Retira el filete</text>
-      <text x="372" y="394" fill="#e0f2fe" font-family="monospace" font-size="9.8">  para formar el escalón en "L".</text>
-      <text x="372" y="418" fill="#34d399" font-family="monospace" font-size="9.8">• Garantiza escuadra perfecta y evita</text>
-      <text x="372" y="436" fill="#34d399" font-family="monospace" font-size="9.8">  fugas de lechada de cemento por abajo.</text>
-
-      <!-- 3. RANURADO DECORATIVO HORIZONTAL (LOUVRE / RELIEVE LINEAL) -->
-      <rect x="660" y="20" width="300" height="485" fill="rgba(15,23,42,0.84)" stroke="#fbbf24" rx="8"/>
-      <text x="810" y="46" fill="#fbbf24" font-family="monospace" font-size="11.5" font-weight="bold" text-anchor="middle">3. RANURAS DECORATIVAS (LOUVRE)</text>
-
-      <!-- Tabla exterior con ranuras en la cara que toca el concreto -->
-      <rect x="735" y="100" width="45" height="160" fill="rgba(245,158,11,0.45)" stroke="#fbbf24" stroke-width="2"/>
-      <rect x="765" y="120" width="22" height="10" fill="rgba(148,163,184,0.6)" stroke="#e0f2fe"/>
-      <rect x="765" y="155" width="22" height="10" fill="rgba(148,163,184,0.6)" stroke="#e0f2fe"/>
-      <rect x="765" y="190" width="22" height="10" fill="rgba(148,163,184,0.6)" stroke="#e0f2fe"/>
-      <rect x="765" y="225" width="22" height="10" fill="rgba(148,163,184,0.6)" stroke="#e0f2fe"/>
-      <rect x="780" y="100" width="90" height="160" fill="rgba(148,163,184,0.45)" stroke="#e0f2fe" stroke-width="2"/>
-      <text x="825" y="185" fill="#fff" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">CONCRETO</text>
-
-      <rect x="678" y="285" width="264" height="195" fill="#041326" stroke="#334155" rx="6"/>
-      <text x="692" y="312" fill="#fbbf24" font-family="monospace" font-size="10.5" font-weight="bold">TEXTURA ARQUITECTÓNICA:</text>
-      <text x="692" y="336" fill="#e0f2fe" font-family="monospace" font-size="9.8">• Disco a 4 mm de altura en la cara</text>
-      <text x="692" y="354" fill="#e0f2fe" font-family="monospace" font-size="9.8">  interna de EXT-A y EXT-B (o insertar</text>
-      <text x="692" y="372" fill="#e0f2fe" font-family="monospace" font-size="9.8">  tiras de acrílico/madera de 4 mm).</text>
-      <text x="692" y="396" fill="#e0f2fe" font-family="monospace" font-size="9.8">• Genera anillos horizontales en bajo</text>
-      <text x="692" y="414" fill="#e0f2fe" font-family="monospace" font-size="9.8">  o alto relieve alrededor de la maceta.</text>
-    `;
-  }
-
-  // L7: PLANTILLA DE CORTE PARA TAPAS Y BASES POLIGONALES (3 A 16 LADOS)
-  function drawL7_PolygonCapCut(s) {
-    const svg = document.getElementById('cad-svg');
-    const n = s.sides !== 4 ? s.sides : 6;
-    const capW = Math.max(3.0, s.wi - 2 * s.tw);
-    const stepAngle = (360 / n).toFixed(1);
-    const miterSetting = (90 - 180 / n).toFixed(1);
-    const sideLen = (capW * Math.tan(Math.PI / n)).toFixed(2);
-
-    svg.innerHTML = `
-      <rect x="20" y="20" width="460" height="485" fill="rgba(15,23,42,0.84)" stroke="#38bdf8" rx="8"/>
-      <text x="250" y="46" fill="#38bdf8" font-family="monospace" font-size="12.5" font-weight="bold" text-anchor="middle">1. TRAZADO Y CORTE DE TAPA POLIGONAL (${n} LADOS)</text>
-
-      <!-- Tablero cuadrado inicial en línea punteada -->
-      <rect x="110" y="95" width="280" height="280" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-dasharray="5,4" stroke-width="1.8"/>
-      <!-- Polígono inscrito cortado -->
-      <polygon points="${polyPts(250, 235, 138, n, -90)}" fill="rgba(245,158,11,0.42)" stroke="#fbbf24" stroke-width="2.5"/>
-      <circle cx="250" cy="235" r="138" fill="none" stroke="#f43f5e" stroke-dasharray="3,3"/>
-      <circle cx="250" cy="235" r="5" fill="#34d399"/>
-
-      <text x="250" y="84" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Cuadrado Inicial a Cortar: ${capW.toFixed(1)} × ${capW.toFixed(1)} cm (${Math.round(capW*10)} mm)</text>
-      <text x="250" y="238" fill="#fff" font-family="monospace" font-size="11.5" font-weight="bold" text-anchor="middle">APOTEMA = ${(capW/2).toFixed(1)} cm</text>
-      <text x="250" y="402" fill="#fbbf24" font-family="monospace" font-size="11.5" font-weight="bold" text-anchor="middle">Lado del Polígono = ${sideLen} cm (${Math.round(sideLen*10)} mm)</text>
-      <text x="250" y="425" fill="#34d399" font-family="monospace" font-size="11" text-anchor="middle">Giro entre cada corte = ${stepAngle}° | Inglete = ${miterSetting}°</text>
-
-      <!-- PANEL DERECHO: PLANTILLA DE GIRO EN SIERRA INGLETEADORA O BANCO -->
-      <rect x="500" y="20" width="460" height="485" fill="rgba(15,23,42,0.84)" stroke="#fbbf24" rx="8"/>
-      <text x="730" y="46" fill="#fbbf24" font-family="monospace" font-size="12.5" font-weight="bold" text-anchor="middle">2. MÉTODO DE PLANTILLA CON PIVOTE CENTRAL</text>
-
-      <rect x="555" y="95" width="350" height="220" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
-      <line x1="825" y1="80" x2="825" y2="330" stroke="#f43f5e" stroke-width="3.5" stroke-dasharray="6,3"/>
-      <polygon points="${polyPts(715, 205, 110, n, 0)}" fill="rgba(245,158,11,0.45)" stroke="#fbbf24" stroke-width="2"/>
-      <circle cx="715" cy="205" r="7" fill="#38bdf8" stroke="#fff" stroke-width="2"/>
-      <text x="715" y="185" fill="#fff" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">CLAVO PIVOTE A ${(capW/2).toFixed(1)} CM DEL DISCO</text>
-
-      <rect x="530" y="335" width="400" height="145" fill="#041326" stroke="#334155" rx="6"/>
-      <text x="548" y="362" fill="#34d399" font-family="monospace" font-size="11" font-weight="bold">PASO A PASO PARA CORTAR TAPAS PERFECTAS:</text>
-      <text x="548" y="384" fill="#e0f2fe" font-family="monospace" font-size="10">1. Corta un cuadrado de ${Math.round(capW*10)} × ${Math.round(capW*10)} mm y traza sus 2 diagonales</text>
-      <text x="548" y="402" fill="#e0f2fe" font-family="monospace" font-size="10">   para encontrar el centro exacto.</text>
-      <text x="548" y="424" fill="#e0f2fe" font-family="monospace" font-size="10">2. Coloca la tabla sobre un carro auxiliar con un clavo central ubicado</text>
-      <text x="548" y="442" fill="#e0f2fe" font-family="monospace" font-size="10">   a ${(capW*5).toFixed(1)} mm del disco de la sierra.</text>
-      <text x="548" y="462" fill="#fbbf24" font-family="monospace" font-size="10">3. Corta el lado 1, gira ${stepAngle}°, corta el lado 2 y repite ${n} veces.</text>
-    `;
-  }
-
-  // L8: MAPA DE TALADRADO, AVELLANADO, POCKET HOLES (15°) Y DRENAJE PVC
-  function drawL8_DrillingMap(s) {
-    const svg = document.getElementById('cad-svg');
-    const edgeOffsetMm = Math.round(s.tw * 5); // Centro del espesor de la tabla contigua
-    const drainX = (s.moldW / 2).toFixed(1), drainY = (s.moldL / 2).toFixed(1);
-
-    svg.innerHTML = `
-      <!-- PANEL 1: TALADRADO Y AVELLANADO EN PANEL EXTERIOR EXT-A -->
-      <rect x="20" y="20" width="460" height="485" fill="rgba(15,23,42,0.84)" stroke="#38bdf8" rx="8"/>
-      <text x="250" y="46" fill="#38bdf8" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">1. PLANTILLA DE TALADRADO EN PANEL EXT-A</text>
-
-      <rect x="70" y="95" width="360" height="220" fill="rgba(245,158,11,0.35)" stroke="#fbbf24" stroke-width="2.5"/>
-      <!-- Líneas de eje de tornillos a edgeOffsetMm de cada borde -->
-      <line x1="92" y1="95" x2="92" y2="315" stroke="#f43f5e" stroke-dasharray="4,3" stroke-width="1.5"/>
-      <line x1="408" y1="95" x2="408" y2="315" stroke="#f43f5e" stroke-dasharray="4,3" stroke-width="1.5"/>
-
-      <!-- 3 Tornillos por lado -->
-      <circle cx="92" cy="135" r="5" fill="#f43f5e" stroke="#fff"/><circle cx="92" cy="205" r="5" fill="#f43f5e" stroke="#fff"/><circle cx="92" cy="275" r="5" fill="#f43f5e" stroke="#fff"/>
-      <circle cx="408" cy="135" r="5" fill="#f43f5e" stroke="#fff"/><circle cx="408" cy="205" r="5" fill="#f43f5e" stroke="#fff"/><circle cx="408" cy="275" r="5" fill="#f43f5e" stroke-fff/>
-
-      <text x="250" y="82" fill="#fbbf24" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Ancho Total EXT-A = ${(s.moldW*10).toFixed(0)} mm</text>
-      <text x="250" y="205" fill="#fff" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">BROCA PILOTO Ø 3.0 MM (1/8") + AVELLANADOR</text>
-      <text x="250" y="340" fill="#f43f5e" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Distancia del Borde al Centro del Tornillo = ${edgeOffsetMm} mm</text>
-
-      <rect x="45" y="360" width="410" height="125" fill="#041326" stroke="#334155" rx="6"/>
-      <text x="62" y="386" fill="#34d399" font-family="monospace" font-size="10.5" font-weight="bold">POR QUÉ TALADRAR A ${edgeOffsetMm} MM DEL BORDE:</text>
-      <text x="62" y="408" fill="#e0f2fe" font-family="monospace" font-size="10">• Como el tablero mide ${Math.round(s.tw*10)} mm de espesor, su centro exacto está</text>
-      <text x="62" y="426" fill="#e0f2fe" font-family="monospace" font-size="10">  a ${edgeOffsetMm} mm del borde. Pre-taladrar evita que el tornillo abra</text>
-      <text x="62" y="444" fill="#e0f2fe" font-family="monospace" font-size="10">  la melamina o el contrachapado al ensamblar.</text>
-
-      <!-- PANEL 2: POCKET HOLES EN NÚCLEO Y SACABOCADOS EN BASE -->
-      <rect x="500" y="20" width="460" height="485" fill="rgba(15,23,42,0.84)" stroke="#fbbf24" rx="8"/>
-      <text x="730" y="46" fill="#fbbf24" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">2. POCKET HOLES (15°) Y PERFORACIÓN DE DRENAJE</text>
-
-      <!-- Base con coordenadas del agujero de drenaje -->
-      <rect x="570" y="90" width="320" height="180" fill="rgba(56,189,248,0.22)" stroke="#38bdf8" stroke-width="2"/>
-      <line x1="570" y1="180" x2="890" y2="180" stroke="#34d399" stroke-dasharray="4,3"/>
-      <line x1="730" y1="90" x2="730" y2="270" stroke="#34d399" stroke-dasharray="4,3"/>
-      <circle cx="730" cy="180" r="18" fill="#041326" stroke="#fbbf24" stroke-width="2.5"/>
-      <text x="730" y="80" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">BASE-C: Centro en X = ${drainX} cm, Y = ${drainY} cm</text>
-      <text x="730" y="292" fill="#fbbf24" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Broca Pala o Sierra Copa Ø 20 mm (Tubo PVC 1/2" Ced. 40)</text>
-
-      <!-- Esquema Pocket Hole 15° abajo -->
-      <rect x="530" y="320" width="400" height="165" fill="#041326" stroke="#334155" rx="6"/>
-      <text x="548" y="346" fill="#fbbf24" font-family="monospace" font-size="11" font-weight="bold">AGUJEROS OCULTOS (POCKET HOLES A 15° EN NÚCLEO):</text>
-      <text x="548" y="370" fill="#e0f2fe" font-family="monospace" font-size="10">• Usar plantilla Kreg/Pocket Jig en la cara INTERNA de INT-E.</text>
-      <text x="548" y="392" fill="#e0f2fe" font-family="monospace" font-size="10">• Permite meter el destornillador por dentro del núcleo cuando</text>
-      <text x="548" y="410" fill="#e0f2fe" font-family="monospace" font-size="10">  el concreto ya endureció y desarmar las 4 paredes hacia adentro</text>
-      <text x="548" y="428" fill="#34d399" font-family="monospace" font-size="10">  sin hacer palanca contra los bordes frescos de la maceta.</text>
-    `;
-  }
-
-  // L9: CORTES DE INSERTOS PARA PATAS, CHAFLANES 45°, ESCALERAS Y ZÓCALOS
-  function drawL9_InsertCuts(s) {
-    const svg = document.getElementById('cad-svg');
-    const legCrossLen = s.we.toFixed(1);
-    const legWidth = Math.max(2.0, s.we * 0.22).toFixed(1);
-
-    svg.innerHTML = `
-      <!-- 1. CORTE DE CRUCETA INFERIOR PARA FORMAR 4 PATAS EN LA MACETA -->
-      <rect x="20" y="20" width="460" height="485" fill="rgba(15,23,42,0.84)" stroke="#fbbf24" rx="8"/>
-      <text x="250" y="46" fill="#fbbf24" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">1. CORTE DE CRUCETA PARA 4 PATAS INTEGRADAS</text>
-
-      <!-- Planta del fondo del molde con la cruceta de madera -->
-      <rect x="110" y="90" width="280" height="240" fill="rgba(148,163,184,0.35)" stroke="#e0f2fe" stroke-width="2"/>
-      <!-- Listón Horizontal de la cruceta -->
-      <rect x="110" y="175" width="280" height="70" fill="rgba(245,158,11,0.55)" stroke="#fbbf24" stroke-width="2"/>
-      <!-- Listón Vertical de la cruceta -->
-      <rect x="215" y="90" width="70" height="240" fill="rgba(245,158,11,0.55)" stroke="#fbbf24" stroke-width="2"/>
-      <circle cx="250" cy="210" r="10" fill="#041326" stroke="#38bdf8" stroke-width="2"/>
-
-      <!-- Las 4 esquinas libres donde entra el concreto para formar las 4 patas -->
-      <text x="160" y="138" fill="#34d399" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">PATA 1</text>
-      <text x="340" y="138" fill="#34d399" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">PATA 2</text>
-      <text x="160" y="290" fill="#34d399" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">PATA 3</text>
-      <text x="340" y="290" fill="#34d399" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">PATA 4</text>
-
-      <rect x="45" y="350" width="410" height="135" fill="#041326" stroke="#334155" rx="6"/>
-      <text x="62" y="376" fill="#fbbf24" font-family="monospace" font-size="10.5" font-weight="bold">CÓMO CORTAR EL ENCASTRE EN CRUZ (MEDIA MADERA):</text>
-      <text x="62" y="398" fill="#e0f2fe" font-family="monospace" font-size="10">• Corta 2 bloques de ${legCrossLen} cm de largo con cantos biselados a 15°.</text>
-      <text x="62" y="418" fill="#e0f2fe" font-family="monospace" font-size="10">• Haz un rebaje a media madera en el centro para cruzarlos sobre</text>
-      <text x="62" y="436" fill="#e0f2fe" font-family="monospace" font-size="10">  la placa BASE-C. Las 4 esquinas libres (${legWidth}×${legWidth} cm) se llenan</text>
-      <text x="62" y="454" fill="#34d399" font-family="monospace" font-size="10">  de concreto formando las 4 patas monolíticas de la maceta.</text>
-
-      <!-- 2. CORTES DE ESCALERAS BAUHAUS, CHAFLANES 45° Y LABIO SUPERIOR -->
-      <rect x="500" y="20" width="460" height="485" fill="rgba(15,23,42,0.84)" stroke="#38bdf8" rx="8"/>
-      <text x="730" y="46" fill="#38bdf8" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">2. CORTES DE ESCALERAS BAUHAUS Y CHAFLANES 45°</text>
-
-      <!-- Escalonado Bauhaus -->
-      <rect x="550" y="100" width="40" height="150" fill="rgba(245,158,11,0.5)" stroke="#fbbf24" stroke-width="2"/>
-      <rect x="590" y="145" width="40" height="105" fill="rgba(245,158,11,0.5)" stroke="#fbbf24" stroke-width="2"/>
-      <rect x="630" y="190" width="40" height="60" fill="rgba(245,158,11,0.5)" stroke="#fbbf24" stroke-width="2"/>
-      <text x="610" y="275" fill="#fbbf24" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">3 Listones Bauhaus (Corte 90°)</text>
-
-      <!-- Chaflán 45° a partir de listón cuadrado -->
-      <rect x="755" y="120" width="110" height="110" fill="rgba(56,189,248,0.18)" stroke="#38bdf8" stroke-dasharray="4,3"/>
-      <polygon points="755,120 865,230 755,230" fill="rgba(245,158,11,0.55)" stroke="#fbbf24" stroke-width="2"/>
-      <line x1="745" y1="110" x2="875" y2="240" stroke="#f43f5e" stroke-width="3"/>
-      <text x="810" y="275" fill="#f43f5e" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">1 Listón Cuadrado → 2 Chaflanes 45°</text>
-
-      <rect x="530" y="310" width="400" height="175" fill="#041326" stroke="#334155" rx="6"/>
-      <text x="548" y="336" fill="#38bdf8" font-family="monospace" font-size="10.5" font-weight="bold">DIMENSIONES DE CORTE DE INSERTOS:</text>
-      <text x="548" y="360" fill="#e0f2fe" font-family="monospace" font-size="10">• Peldaños Bauhaus: Cortar 3 listones de 25×25 mm con largos</text>
-      <text x="548" y="378" fill="#e0f2fe" font-family="monospace" font-size="10">  escalonados al 75%, 50% y 25% de la altura de la maceta.</text>
-      <text x="548" y="402" fill="#e0f2fe" font-family="monospace" font-size="10">• Chaflanes 45°: Cortar al medio con el disco a 45° dos listones</text>
-      <text x="548" y="420" fill="#e0f2fe" font-family="monospace" font-size="10">  de 20×20 mm para obtener las 4 molduras triangulares de esquina.</text>
-      <text x="548" y="444" fill="#34d399" font-family="monospace" font-size="10">• Labio Superior (Rim): Fijar fajas de ${(s.h*0.8).toFixed(1)} cm abajo dejando</text>
-      <text x="548" y="462" fill="#34d399" font-family="monospace" font-size="10">  libre el quinto superior para que el borde sea más ancho.</text>
-    `;
-  }
-
-  // L10: VISTA EXPLOTADA ISOMÉTRICA 3D
-  function drawL10_Exploded(s) {
-    const svg = document.getElementById('cad-svg');
-    svg.innerHTML = `
-      <text x="490" y="32" fill="#fbbf24" font-family="monospace" font-size="13.5" font-weight="bold" text-anchor="middle">VISTA EXPLOTADA ISOMÉTRICA DE LAS PIEZAS CORTADAS — SECUENCIA DE MONTAJE</text>
-      <polygon points="350,65 630,65 655,85 375,85" fill="rgba(56,189,248,0.35)" stroke="#38bdf8" stroke-width="2"/>
-      <text x="780" y="80" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold">5°. PUENTES SUPERIORES (${(s.moldW+8).toFixed(1)}×4.5 cm)</text>
-
-      <polygon points="415,125 565,125 550,210 430,210" fill="rgba(245,158,11,0.45)" stroke="#fbbf24" stroke-width="2.5"/>
-      <line x1="490" y1="85" x2="490" y2="125" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <text x="780" y="168" fill="#fbbf24" font-family="monospace" font-size="11" font-weight="bold">4°. NÚCLEO INTERNO (${s.wi.toFixed(1)}×${s.li.toFixed(1)}×${s.hi.toFixed(1)} cm)</text>
-
-      <polygon points="150,220 285,195 285,305 150,330" fill="rgba(245,158,11,0.3)" stroke="#fbbf24" stroke-width="2"/>
-      <text x="140" y="185" fill="#e0f2fe" font-family="monospace" font-size="10.5" font-weight="bold">2°. LATERAL IZQ (${s.le.toFixed(1)}×${s.h.toFixed(1)} cm)</text>
-
-      <polygon points="695,195 830,220 830,330 695,305" fill="rgba(245,158,11,0.3)" stroke="#fbbf24" stroke-width="2"/>
-      <text x="695" y="185" fill="#e0f2fe" font-family="monospace" font-size="10.5" font-weight="bold">2°. LATERAL DER (${s.le.toFixed(1)}×${s.h.toFixed(1)} cm)</text>
-
-      <polygon points="365,250 615,250 615,355 365,355" fill="rgba(245,158,11,0.38)" stroke="#fbbf24" stroke-width="2"/>
-      <text x="490" y="305" fill="#fff" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">3°. FRONTAL / POSTERIOR (${s.moldW.toFixed(1)}×${s.h.toFixed(1)} cm)</text>
-      <text x="490" y="322" fill="#34d399" font-family="monospace" font-size="10" text-anchor="middle">${s.sawAngleText}</text>
-
-      <polygon points="335,415 645,415 690,475 290,475" fill="rgba(245,158,11,0.5)" stroke="#fbbf24" stroke-width="2.5"/>
-      <ellipse cx="490" cy="445" rx="14" ry="7" fill="#041326" stroke="#38bdf8" stroke-width="2"/>
-      <text x="490" y="502" fill="#fbbf24" font-family="monospace" font-size="11.5" font-weight="bold" text-anchor="middle">1°. PLACA BASE INFERIOR (${s.moldW.toFixed(1)}×${s.moldL.toFixed(1)} cm) + BARRENO DRENAJE Ø 20 MM</text>
-    `;
-  }
-
-  // L11: FICHAS INDIVIDUALES DE CORTE
-  function drawL11_PartCards(s) {
-    const svg = document.getElementById('cad-svg');
-    let cards = '';
-    const cols = 3, cardW = 300, cardH = 230;
-    s.pieces.slice(0, 6).forEach((p, idx) => {
-      const col = idx % cols, row = Math.floor(idx / cols);
-      const x = 22 + col * (cardW + 18), y = 20 + row * (cardH + 22);
-      const ratio = p.wMajor / Math.max(p.h, 1);
-      const drawW = ratio >= 1 ? 165 : Math.max(60, 120 * ratio);
-      const drawH = ratio >= 1 ? Math.max(48, 165 / ratio) : 95;
-      const rx = x + (cardW - drawW) / 2, ry = y + 60 + (95 - drawH) / 2;
-      const isSel = idx === activePieceIdx;
-
-      cards += `
-        <g onclick="selectPiece(${idx})" style="cursor:pointer;">
-          <rect x="${x}" y="${y}" width="${cardW}" height="${cardH}" fill="rgba(15,23,42,0.88)" stroke="${isSel ? '#10b981' : (p.isAngle ? '#fbbf24' : '#38bdf8')}" stroke-width="${isSel ? 3 : 2}" rx="8"/>
-          <text x="${x + 12}" y="${y + 22}" fill="#fbbf24" font-family="monospace" font-size="11.5" font-weight="bold">${p.code} — CANT: ${p.qty} PZA(S)</text>
-          <text x="${x + 12}" y="${y + 38}" fill="#94a3b8" font-family="monospace" font-size="9">${p.name.substring(0, 38)}</text>
-          <rect x="${rx}" y="${ry}" width="${drawW}" height="${drawH}" fill="rgba(245,158,11,0.32)" stroke="#fbbf24" stroke-width="2"/>
-          <text x="${x + cardW/2}" y="${ry - 6}" fill="#e0f2fe" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">Cara Ext: ${(p.wMajor*10).toFixed(1)} mm (${p.wMajor.toFixed(1)} cm)</text>
-          <text x="${x + cardW/2}" y="${ry + drawH/2 + 4}" fill="#fff" font-family="monospace" font-size="10" text-anchor="middle">Alto: ${(p.h*10).toFixed(0)} mm</text>
-          <text x="${x + cardW/2}" y="${ry + drawH + 15}" fill="#34d399" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Cara Int: ${(p.wMinor*10).toFixed(1)} mm (${p.wMinor.toFixed(1)} cm)</text>
-          <text x="${x + cardW/2}" y="${y + cardH - 10}" fill="#f43f5e" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">${p.bevel}</text>
+          <rect x="${rx}" y="${ry}" width="${rw}" height="${rh}" fill="${r.color}" fill-opacity="0.82" stroke="#fff" stroke-width="1"/>
+          ${showText ? `
+            <text x="${rx + rw/2}" y="${ry + rh/2 - (rh > 24 ? 3 : -3)}" fill="#fff" font-family="monospace" font-size="${rw > 55 ? 9 : 7.5}" font-weight="bold" text-anchor="middle">${r.label}</text>
+            ${rh > 24 ? `<text x="${rx + rw/2}" y="${ry + rh/2 + 8}" fill="#fef08a" font-family="monospace" font-size="${rw > 55 ? 8.5 : 7}" text-anchor="middle">${r.w.toFixed(1)}×${r.h.toFixed(1)}cm</text>` : ''}
+          ` : ''}
         </g>
       `;
     });
-    svg.innerHTML = cards;
-  }
 
-  // L12: TRANSPORTADOR DE CALIBRACIÓN DE SIERRA
-  function drawL12_Protractor(s) {
-    const svg = document.getElementById('cad-svg');
-    const bev = s.bevelDeg > 0 ? s.bevelDeg : 0;
-    const cx = 510, cy = 420, r = 320;
-    let ticks = '';
-    const notable = [0, 5, 7, 11.25, 15, 18, 20, 22.5, 25.7, 30, 36, 45, 60];
-    notable.forEach(deg => {
-      const rad = deg * Math.PI / 180;
-      const x2 = cx + r * Math.sin(rad), y2 = cy - r * Math.cos(rad);
-      const tx = cx + (r + 30) * Math.sin(rad), ty = cy - (r + 30) * Math.cos(rad);
-      const isT = Math.abs(deg - bev) < 0.2;
-      ticks += `
-        <line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="${isT ? '#f43f5e' : 'rgba(56,189,248,0.35)'}" stroke-width="${isT ? 4 : 1.2}" ${isT ? '' : 'stroke-dasharray="4,4"'}/>
-        <text x="${tx}" y="${ty}" fill="${isT ? '#f43f5e' : '#bae6fd'}" font-family="monospace" font-size="${isT ? 13.5 : 10}" font-weight="${isT ? 'bold' : 'normal'}" text-anchor="middle">${deg}°</text>
-      `;
-    });
+    // Línea de corte horizontal que separa el material usado del sobrante libre
+    const cutLineY = oy + Math.min(BOARD_H, packed.maxYUsed) * scY;
+
     svg.innerHTML = `
-      <text x="490" y="34" fill="#fbbf24" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">PLANTILLA GONIOMÉTRICA DE CALIBRACIÓN DE SIERRA — ÁNGULO ACTIVO: ${bev}° | SALIDA: ${s.ang}°</text>
-      <path d="M ${cx} ${cy - r} A ${r} ${r} 0 0 1 ${cx + r} ${cy}" fill="none" stroke="#38bdf8" stroke-width="3"/>
-      <line x1="${cx}" y1="${cy}" x2="${cx}" y2="${cy - r}" stroke="#10b981" stroke-width="3"/>
-      <line x1="${cx}" y1="${cy}" x2="${cx + r}" y2="${cy}" stroke="#94a3b8" stroke-width="3"/>
-      ${ticks}
-      <circle cx="${cx}" cy="${cy}" r="8" fill="#fbbf24"/>
-      <rect x="25" y="60" width="375" height="390" fill="rgba(15,23,42,0.88)" stroke="#38bdf8" rx="8"/>
-      <text x="212" y="88" fill="#38bdf8" font-family="monospace" font-size="11.5" font-weight="bold" text-anchor="middle">TABLA MAESTRA DE ÁNGULOS DE SIERRA (3–16 LADOS)</text>
-      <text x="42" y="116" fill="#e0f2fe" font-family="monospace" font-size="10">• 3 Lados (Triángulo):      Bisel a 60.00°</text>
-      <text x="42" y="138" fill="#e0f2fe" font-family="monospace" font-size="10">• 4 Lados (Inglete):        Bisel a 45.00°</text>
-      <text x="42" y="160" fill="#e0f2fe" font-family="monospace" font-size="10">• 5 Lados (Pentágono):      Bisel a 36.00°</text>
-      <text x="42" y="182" fill="#e0f2fe" font-family="monospace" font-size="10">• 6 Lados (Hexágono):       Bisel a 30.00°</text>
-      <text x="42" y="204" fill="#e0f2fe" font-family="monospace" font-size="10">• 7 Lados (Heptágono):      Bisel a 25.71°</text>
-      <text x="42" y="226" fill="#e0f2fe" font-family="monospace" font-size="10">• 8 Lados (Octágono):       Bisel a 22.50°</text>
-      <text x="42" y="248" fill="#e0f2fe" font-family="monospace" font-size="10">• 9 Lados (Nonágono):       Bisel a 20.00°</text>
-      <text x="42" y="270" fill="#e0f2fe" font-family="monospace" font-size="10">• 10 Lados (Decágono):      Bisel a 18.00°</text>
-      <text x="42" y="292" fill="#e0f2fe" font-family="monospace" font-size="10">• 12 Lados (Dodecágono):    Bisel a 15.00°</text>
-      <text x="42" y="314" fill="#e0f2fe" font-family="monospace" font-size="10">• 16 Lados (Hexadecágono):  Bisel a 11.25°</text>
-      <text x="42" y="345" fill="#fbbf24" font-family="monospace" font-size="10" font-weight="bold">• Obelisco / Pirámide:      Sled a 5° / 7° / 12°</text>
-      <text x="42" y="370" fill="#34d399" font-family="monospace" font-size="10" font-weight="bold">• Fórmula Universal:        θ = 180° / N_lados</text>
-      <text x="42" y="405" fill="#f43f5e" font-family="monospace" font-size="11" font-weight="bold">LÍNEA ROJA ACTIVA = ${bev}°</text>
+      <!-- Tablero MDF Trupan Completo 244 x 183 cm -->
+      <rect x="${ox}" y="${oy}" width="${BOARD_W * scX}" height="${BOARD_H * scY}" fill="#d6c399" stroke="#f59e0b" stroke-width="3"/>
+      ${rulers}
+      ${rectsSVG}
+      <!-- Línea roja de corte de faja utilizada -->
+      <line x1="${ox}" y1="${cutLineY}" x2="${ox + BOARD_W * scX}" y2="${cutLineY}" stroke="#f43f5e" stroke-width="2.5" stroke-dasharray="7,4"/>
+      <rect x="${ox + 15}" y="${cutLineY + 6}" width="470" height="22" fill="rgba(7,16,32,0.88)" rx="4"/>
+      <text x="${ox + 24}" y="${cutLineY + 21}" fill="#34d399" font-family="monospace" font-size="11" font-weight="bold">
+        ↑ CORTE HORIZONTAL A ${packed.maxYUsed.toFixed(1)} CM DEL BORDE SUPERIOR | SOBRANTE LIBRE: 244.0 × ${freeH} CM
+      </text>
     `;
   }
 
-  function renderCutTable(s) {
+  // DIBUJA EL ZOOM AMPLIADO DE LAS PIEZAS DEL MODELO ACTUAL CON MEDIDAS GRANDES EN CM
+  function drawStripZoom(s) {
+    const svg = document.getElementById('svg-strip-zoom');
+    document.getElementById('zoom-title').textContent = `ZOOM DE CORTES EN CENTÍMETROS PARA ${activeModel.id} (${activeModel.name}) — ESPESOR MDF: ${s.tw.toFixed(1)} CM`;
+
+    let maxW = 0, maxH = 0;
+    s.pieces.forEach(p => { if (p.w > maxW) maxW = p.w; if (p.h > maxH) maxH = p.h; });
+    const sc = Math.min(130 / Math.max(maxW, 5), 115 / Math.max(maxH, 5), 14);
+
+    let curX = 25;
+    let itemsSVG = '';
+    s.pieces.forEach((p, idx) => {
+      const pw = Math.max(105, Math.min(175, p.w * sc));
+      const ph = Math.max(75, Math.min(125, p.h * sc));
+      const py = 45 + (130 - ph) / 2;
+
+      itemsSVG += `
+        <g>
+          <rect x="${curX}" y="${py}" width="${pw}" height="${ph}" fill="${p.color}" fill-opacity="0.85" stroke="#fde68a" stroke-width="2" rx="4"/>
+          <!-- Línea roja de corte a la derecha -->
+          <line x1="${curX + pw + 7}" y1="30" x2="${curX + pw + 7}" y2="195" stroke="#f43f5e" stroke-width="2" stroke-dasharray="5,3"/>
+          <circle cx="${curX + pw + 7}" cy="24" r="9" fill="#f43f5e"/>
+          <text x="${curX + pw + 7}" y="28" fill="#fff" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">C${idx+1}</text>
+
+          <text x="${curX + pw/2}" y="${py - 8}" fill="#fde047" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Ancho: ${p.w.toFixed(1)} cm</text>
+          <text x="${curX + pw/2}" y="${py + ph/2 - 6}" fill="#fff" font-family="monospace" font-size="11.5" font-weight="bold" text-anchor="middle">${p.code} (x${p.qty})</text>
+          <text x="${curX + pw/2}" y="${py + ph/2 + 10}" fill="#fef08a" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Alto: ${p.h.toFixed(1)} cm</text>
+          <text x="${curX + pw/2}" y="${py + ph + 16}" fill="#38bdf8" font-family="monospace" font-size="9.5" text-anchor="middle">${p.angle}</text>
+        </g>
+      `;
+      curX += pw + 18;
+    });
+
+    svg.innerHTML = itemsSVG;
+  }
+
+  function renderTableCM(s) {
     const tbody = document.getElementById('cutlist-body');
     tbody.innerHTML = s.pieces.map((p, idx) => `
-      <tr onclick="selectPiece(${idx})" style="cursor:pointer; ${idx === activePieceIdx ? 'background:rgba(16,185,129,0.18);' : ''}">
-        <td><strong>#${idx + 1}</strong></td>
+      <tr>
+        <td><strong>Corte #${idx + 1}</strong></td>
         <td><strong>${p.code}</strong></td>
         <td>${p.name}</td>
-        <td><strong>${p.qty}</strong></td>
-        <td><strong>${(p.wMajor * 10).toFixed(1)} mm</strong> (${p.wMajor.toFixed(1)} cm)</td>
-        <td><strong>${(p.wMinor * 10).toFixed(1)} mm</strong> (${p.wMinor.toFixed(1)} cm)</td>
-        <td><strong>${(p.h * 10).toFixed(1)} mm</strong> (${p.h.toFixed(1)} cm)</td>
-        <td><span class="cut-tag ${p.isAngle ? 'cut-angle' : 'cut-90'}">${p.bevel}</span></td>
-        <td>${p.op}</td>
+        <td><strong>${p.qty} pza(s)</strong></td>
+        <td><span class="cm-highlight">${p.w.toFixed(1)} cm × ${p.h.toFixed(1)} cm</span></td>
+        <td>${p.angle}</td>
+        <td>${p.note}</td>
       </tr>
     `).join('');
   }
 
-  function downloadSVG() {
-    const svgEl = document.getElementById('cad-svg');
+  function downloadBoardSVG() {
+    const svgEl = document.getElementById('svg-board-244');
     const source = new XMLSerializer().serializeToString(svgEl);
     const blob = new Blob([source], { type: 'image/svg+xml;charset=utf-8' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = `${activeModel.id}_lamina_${activeSheet}.svg`;
+    a.download = `tablero_244x183_${activeModel.id}.svg`;
+    a.click();
+  }
+
+  function downloadShapeSVG() {
+    const svgEl = document.getElementById('svg-final-shape');
+    const source = new XMLSerializer().serializeToString(svgEl);
+    const blob = new Blob([source], { type: 'image/svg+xml;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `forma_final_${activeModel.id}.svg`;
     a.click();
   }
 
@@ -1587,34 +1011,7 @@
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = `cortes_taller_${activeModel.id}.csv`;
-    a.click();
-  }
-
-  function downloadDXF() {
-    function dxfRect(x, y, w, h) {
-      return `0\nPOLYLINE\n8\nCUT_WOOD\n66\n1\n70\n1\n` +
-        `0\nVERTEX\n8\nCUT_WOOD\n10\n${x}\n20\n${y}\n` +
-        `0\nVERTEX\n8\nCUT_WOOD\n10\n${x+w}\n20\n${y}\n` +
-        `0\nVERTEX\n8\nCUT_WOOD\n10\n${x+w}\n20\n${y+h}\n` +
-        `0\nVERTEX\n8\nCUT_WOOD\n10\n${x}\n20\n${y+h}\n0\nSEQEND\n`;
-    }
-    let dxf = `0\nSECTION\n2\nENTITIES\n`;
-    let offsetY = 0;
-    currentPieces.forEach(p => {
-      let offsetX = 0;
-      const wMm = p.wMajor * 10, hMm = p.h * 10;
-      for (let i = 0; i < Math.min(p.qty, 16); i++) {
-        dxf += dxfRect(offsetX, offsetY, wMm, hMm);
-        offsetX += wMm + 12;
-      }
-      offsetY += hMm + 18;
-    });
-    dxf += `0\nENDSEC\n0\nEOF\n`;
-    const blob = new Blob([dxf], { type: 'application/dxf' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `corte_cnc_${activeModel.id}.dxf`;
+    a.download = `cortes_en_cm_${activeModel.id}_trupan_244x183.csv`;
     a.click();
   }
 
